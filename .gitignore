@@ -11,3 +11,4 @@ components.d.ts
 *.pyc
 target
 *.so
+.pnpm-store
