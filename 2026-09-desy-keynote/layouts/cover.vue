@@ -4,6 +4,5 @@
     <div class="cover-content">
       <slot />
     </div>
-    <div class="package-piece" aria-hidden="true" />
   </div>
 </template>

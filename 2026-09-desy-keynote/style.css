@@ -127,6 +127,12 @@
   border: 16px solid var(--keynote-white);
 }
 
+.slidev-layout.intro-speaker + .keynote-image-panel {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
 
 .slidev-layout.intro-visual {
   display: grid;
@@ -501,9 +507,7 @@
   width: 138px;
 }
 .cover-content {
-  position: relative;
-  z-index: 1;
-  max-width: 760px;
+  width: 100%;
 }
 .slidev-layout .eyebrow {
   font-size: 14px;
@@ -512,7 +516,6 @@
   text-transform: uppercase;
 }
 .slidev-layout.keynote-cover h1 {
-  max-width: 740px;
   margin: 22px 0;
   font-size: 62px;
   line-height: 1.08;
@@ -522,35 +525,6 @@
   font-size: 18px;
 }
 
-.package-piece {
-  position: absolute;
-  right: -58px;
-  bottom: -64px;
-  width: 230px;
-  height: 215px;
-  border-radius: 28px;
-  background: var(--keynote-yellow);
-  transform: rotate(-12deg);
-}
-
-.package-piece::before,
-.package-piece::after {
-  content: '';
-  position: absolute;
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-}
-.package-piece::before {
-  top: -42px;
-  left: 70px;
-  background: var(--keynote-yellow);
-}
-.package-piece::after {
-  top: 62px;
-  left: -34px;
-  background: var(--keynote-paper);
-}
 
 .slidev-layout table {
   overflow: hidden;

@@ -14,7 +14,7 @@ themeConfig:
 title: Pixi for Scientific Workflows
 ---
 
-<p class="eyebrow">DESY · September 2026</p>
+<p class="eyebrow">NOBUGS 2026 · 23 September 2026</p>
 
 # Pixi for Scientific Workflows
 
@@ -25,13 +25,14 @@ title: Pixi for Scientific Workflows
 layout: image-right
 image: /julian.jpg
 backgroundSize: cover
+class: intro-speaker
 ---
 
 # Julian Hofer
 
-Physics.<br>
-Numerical water models.<br>
-Pixi at prefix.dev.
+I build **Pixi** at **prefix.dev**.
+
+My background is in physics and numerical water modelling at **Deltares**.
 
 <!--
 I will introduce myself and talk a bit about my studies in physics and how I encountered Mathematica to solve problems.
@@ -44,13 +45,14 @@ title: Physics and Mathematica
 
 <div class="intro-copy">
   <p class="eyebrow">Studying physics</p>
-  <h1>The notebooks were amazing</h1>
-  <p>Mathematica</p>
+  <h1>Before Jupyter</h1>
+  <p>Mathematica helped pave the way for Jupyter notebooks.</p>
+  <p>But after a Mathematica upgrade, my notebook no longer ran.</p>
 </div>
 
 <figure class="intro-figure">
-  <img src="/mathematica-notebook.png" alt="Mathematica notebook combining code and fluid-flow visualizations" />
-  <figcaption><a href="https://www.wolfram.com/mathematica/">Mathematica 15 example · Wolfram</a></figcaption>
+  <img src="/mathematica-notebook.png" alt="Light-mode Mathematica notebook with executable code and a sine plot" />
+  <figcaption><a href="https://www.wolfram.com/notebooks/">Wolfram notebook example · Wolfram</a></figcaption>
 </figure>
 
 <!--
@@ -191,127 +193,6 @@ Sources are linked from each project name on the slide and pinned to the inspect
 -->
 
 ---
-class: statement-slide
----
-
-<p class="eyebrow">HPC · the running example</p>
-
-# Make packages available.<br>Let projects choose.
-
-<div class="role-pair">
-  <div><h2>Infrastructure team</h2><p>Populate a shared cache with packages and metadata.</p></div>
-  <div><h2>Researchers</h2><p>Describe the dependencies their own projects need.</p></div>
-</div>
-
-<p class="slide-caption">Available does not mean approved. A cache is not a shared environment.</p>
-
-<!--
-Timing: 7:00 to 8:00.
-
-Use a cluster with a connected provisioning path and compute nodes without internet as the setting. The infrastructure team makes packages available. Researchers should not need an administrator to prepare every exact environment.
-
-The cache is a supply of available packages, not automatically an approval list. Each researcher still has a project and its own dependency requirements. We will return to the access and ownership problems that make this multi-user setup harder than simply choosing a cache directory.
-
-This is the workflow we want to support well across users, not a claim that all shared-cache integration is already solved.
-
-[HiPerGator's Pixi guidance](https://docs.rc.ufl.edu/software/pixi/) shows why cache placement matters on real shared infrastructure.
--->
-
----
-class: diagram-slide
----
-
-<p class="eyebrow">Offline resolution · shipped</p>
-
-# Start with what is available
-
-<img class="workflow-diagram" src="/hpc-cache.svg" alt="A shared cache contains Python, two NumPy versions and SciPy; the external package channel is disconnected" />
-
-<p class="slide-caption">Conda packages on the current platform. Package metadata is cached too.</p>
-
-<!--
-Timing: 8:00 to 9:00.
-
-Offline mode is already shipped. The important capability is not simply executing an environment that was installed before the network disappeared.
-
-For conda packages on the current platform, offline resolution restricts its candidates to packages already available locally. That includes the package cache and local file channels. Cached metadata is also needed.
-
-The diagram shows an illustrative package set. Transitive dependencies and build strings are omitted. We are not claiming to have benchmarked or solved these exact illustrated builds.
-
-[Offline configuration and solving behaviour](https://pixi.prefix.dev/latest/reference/pixi_configuration/#offline)
--->
-
----
-class: diagram-slide
----
-
-<p class="eyebrow">Offline resolution · shipped</p>
-
-# New requirements. No network.
-
-<img class="workflow-diagram" src="/hpc-resolve.svg" alt="Two research projects resolve different NumPy requirements against the same available package cache without accessing the external channel" />
-
-<p class="slide-caption">The solver chooses compatible cached packages for each project.</p>
-
-<!--
-Timing: 9:00 to 11:00.
-
-Now there are two projects. One needs NumPy below version 2. The other needs version 2 or newer. Both use Python 3.12 and SciPy 1.14 in this simplified example.
-
-Neither exact environment had to be prepared in advance. Pixi can solve each project's requirements using the available package set while offline. This is a new resolution, not merely the reuse of an installed environment.
-
-Keep the explanation on the successful path. There is no failure reveal or terminal demonstration.
-
-The guarantee being illustrated is specifically the conda solve for the current platform. PyPI resolution runs offline through uv but does not provide the same cache-constrained selection guarantee. Separate build backends are not network-sandboxed by offline mode.
-
-[Offline documentation](https://pixi.prefix.dev/latest/reference/pixi_configuration/#offline)
--->
-
----
-class: diagram-slide
----
-
-<p class="eyebrow">Offline resolution · shipped</p>
-
-# Two projects. Two environments.
-
-<img class="workflow-diagram" src="/hpc-environments.svg" alt="Project A gets a separate environment with NumPy 1.26 and Project B gets NumPy 2.1, both using packages from the shared cache" />
-
-<p class="slide-caption">Share package storage, not a mutable environment.</p>
-
-<!--
-Timing: 11:00 to 12:30.
-
-The output is a compatible environment for each project, with its own lockfile. Sharing a supply of packages does not require every researcher to agree on one set of versions.
-
-Changing one project's requirements should not update another project's environment. This distinction matters later when we discuss who may write into shared storage.
-
-Again, this is a schematic of package selection. A real environment also contains the selected package builds and their transitive dependencies.
--->
-
----
-class: statement-slide
----
-
-<p class="eyebrow">What offline mode enables today</p>
-
-# The cache becomes the<br>package universe.
-
-<p class="statement-lead">Resolve a new environment.<br>Not just rerun an old one.</p>
-
-<p class="slide-caption">For locally available conda packages on the current platform.</p>
-
-<!--
-Timing: 12:30 to 14:00.
-
-This is the central offline-mode takeaway. Researchers can change requirements and assemble new compatible environments from software that is already available to the machine.
-
-The infrastructure team supplies packages rather than anticipating every combination of packages. Offline mode does not itself establish a multi-user permission policy, approve software, preserve research data, or capture every external service and driver.
-
-Those boundaries do not diminish the shipped capability. They identify the separate infrastructure questions that we will return to.
--->
-
----
 class: build-story
 ---
 
@@ -331,9 +212,9 @@ class: build-story
 <p class="slide-caption">Runnable example: <code>snippets/reservoir-model/</code>. Illustrative model, not Deltares software.</p>
 
 <!--
-Timing: 14:00 to 15:30.
+Timing: 7:00 to 8:30.
 
-So far we have used software that is already packaged. A research group also has its own models, tools and analysis code.
+Scientific projects need more than third-party dependencies. A research group also has its own models, tools and analysis code.
 
 This small example contains a C++ linear reservoir model and a Python analysis script. CMake installs the executable into a conda package. The Python script invokes that installed executable by name, not a binary left in a local build directory.
 
@@ -383,7 +264,7 @@ version = "0.*"
 </div>
 
 <!--
-Timing: 15:30 to 17:30.
+Timing: 8:30 to 10:30.
 
 The path dependency is the important line. The workspace consumes its own source package. Pixi can build that package while preparing the environment, so the installed reservoir-model command is available to Python.
 
@@ -422,7 +303,7 @@ class: comparison-slide
 <p class="statement-lead">Use the build backend for the package.<br>Use a task for the workflow that consumes it.</p>
 
 <!--
-Timing: 17:30 to 18:45.
+Timing: 10:30 to 11:45.
 
 Tasks are useful and can absolutely invoke a compiler. The distinction is not that tasks are unable to build software.
 
@@ -448,7 +329,7 @@ class: statement-slide
 </div>
 
 <!--
-Timing: 18:45 to 20:00.
+Timing: 11:45 to 13:00.
 
 Pixi Build is available today behind the pixi-build preview flag. Do not present the entire source-to-package workflow as future work, or describe every backend as equally mature.
 
@@ -457,6 +338,127 @@ The current getting-started documentation explicitly lists limited backend cover
 Locking software and build environments does not guarantee bit-identical binaries or numerically identical results on arbitrary hardware. This is about describing and preparing the software workflow, not replacing scientific validation.
 
 [Current documented limitations](https://pixi.prefix.dev/latest/build/getting_started/)
+-->
+
+---
+class: statement-slide
+---
+
+<p class="eyebrow">HPC · the running example</p>
+
+# Make packages available.<br>Let projects choose.
+
+<div class="role-pair">
+  <div><h2>Infrastructure team</h2><p>Populate a shared cache with packages and metadata.</p></div>
+  <div><h2>Researchers</h2><p>Describe the dependencies their own projects need.</p></div>
+</div>
+
+<p class="slide-caption">Available does not mean approved. A cache is not a shared environment.</p>
+
+<!--
+Timing: 13:00 to 14:00.
+
+Use a cluster with a connected provisioning path and compute nodes without internet as the setting. The infrastructure team makes packages available. Researchers should not need an administrator to prepare every exact environment.
+
+The cache is a supply of available packages, not automatically an approval list. Each researcher still has a project and its own dependency requirements. We will return to the access and ownership problems that make this multi-user setup harder than simply choosing a cache directory.
+
+This is the workflow we want to support well across users, not a claim that all shared-cache integration is already solved.
+
+[HiPerGator's Pixi guidance](https://docs.rc.ufl.edu/software/pixi/) shows why cache placement matters on real shared infrastructure.
+-->
+
+---
+class: diagram-slide
+---
+
+<p class="eyebrow">Offline resolution · shipped</p>
+
+# Start with what is available
+
+<img class="workflow-diagram" src="/hpc-cache.svg" alt="A shared cache contains Python, two NumPy versions and SciPy; the external package channel is disconnected" />
+
+<p class="slide-caption">Conda packages on the current platform. Package metadata is cached too.</p>
+
+<!--
+Timing: 14:00 to 15:00.
+
+Offline mode is already shipped. The important capability is not simply executing an environment that was installed before the network disappeared.
+
+For conda packages on the current platform, offline resolution restricts its candidates to packages already available locally. That includes the package cache and local file channels. Cached metadata is also needed.
+
+The diagram shows an illustrative package set. Transitive dependencies and build strings are omitted. We are not claiming to have benchmarked or solved these exact illustrated builds.
+
+[Offline configuration and solving behaviour](https://pixi.prefix.dev/latest/reference/pixi_configuration/#offline)
+-->
+
+---
+class: diagram-slide
+---
+
+<p class="eyebrow">Offline resolution · shipped</p>
+
+# New requirements. No network.
+
+<img class="workflow-diagram" src="/hpc-resolve.svg" alt="Two research projects resolve different NumPy requirements against the same available package cache without accessing the external channel" />
+
+<p class="slide-caption">The solver chooses compatible cached packages for each project.</p>
+
+<!--
+Timing: 15:00 to 17:00.
+
+Now there are two projects. One needs NumPy below version 2. The other needs version 2 or newer. Both use Python 3.12 and SciPy 1.14 in this simplified example.
+
+Neither exact environment had to be prepared in advance. Pixi can solve each project's requirements using the available package set while offline. This is a new resolution, not merely the reuse of an installed environment.
+
+Keep the explanation on the successful path. There is no failure reveal or terminal demonstration.
+
+The guarantee being illustrated is specifically the conda solve for the current platform. PyPI resolution runs offline through uv but does not provide the same cache-constrained selection guarantee. Separate build backends are not network-sandboxed by offline mode.
+
+[Offline documentation](https://pixi.prefix.dev/latest/reference/pixi_configuration/#offline)
+-->
+
+---
+class: diagram-slide
+---
+
+<p class="eyebrow">Offline resolution · shipped</p>
+
+# Two projects. Two environments.
+
+<img class="workflow-diagram" src="/hpc-environments.svg" alt="Project A gets a separate environment with NumPy 1.26 and Project B gets NumPy 2.1, both using packages from the shared cache" />
+
+<p class="slide-caption">Share package storage, not a mutable environment.</p>
+
+<!--
+Timing: 17:00 to 18:30.
+
+The output is a compatible environment for each project, with its own lockfile. Sharing a supply of packages does not require every researcher to agree on one set of versions.
+
+Changing one project's requirements should not update another project's environment. This distinction matters later when we discuss who may write into shared storage.
+
+Again, this is a schematic of package selection. A real environment also contains the selected package builds and their transitive dependencies.
+-->
+
+---
+class: statement-slide
+---
+
+<p class="eyebrow">What offline mode enables today</p>
+
+# The cache becomes the<br>package universe.
+
+<p class="statement-lead">Resolve a new environment.<br>Not just rerun an old one.</p>
+
+<p class="slide-caption">For locally available conda packages on the current platform.</p>
+
+<!--
+Timing: 18:30 to 20:00.
+
+This is the central offline-mode takeaway. Researchers can change requirements and assemble new compatible environments from software that is already available to the machine.
+
+The infrastructure team supplies packages rather than anticipating every combination of packages. Offline mode does not itself establish a multi-user permission policy, approve software, preserve research data, or capture every external service and driver.
+
+Those boundaries do not diminish the shipped capability. They identify the separate infrastructure questions that we will return to.
 -->
 
 ---
@@ -586,8 +588,8 @@ class: statement-slide
 # Keep the workflow.<br>Reduce the bookkeeping.
 
 <div class="requirement-list">
-  <p><strong>Resolve from what is available.</strong> Offline mode is already useful.</p>
   <p><strong>Make your code a dependency.</strong> Pixi Build connects source and environment.</p>
+  <p><strong>Resolve from what is available.</strong> Offline mode is already useful.</p>
   <p><strong>Share packages, not mutable environments.</strong> Multi-user integration needs care.</p>
 </div>
 
@@ -596,7 +598,7 @@ Timing: 30:00 to 31:30.
 
 Return to the requirements from the beginning: keep software working, include dependencies across language boundaries, and describe the workflow someone else must repeat.
 
-Offline resolution and source builds address concrete parts of that problem today. Shared research infrastructure exposes additional requirements around access, ownership and operation.
+Source builds and offline resolution address concrete parts of that problem today. Shared research infrastructure exposes additional requirements around access, ownership and operation.
 
 The point is not that one tool removes every scientific or infrastructure constraint. It is that those constraints should inform which parts of the software workflow we make explicit and which engineering problems we work on next.
 -->
