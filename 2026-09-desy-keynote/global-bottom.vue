@@ -1,11 +1,13 @@
+<script setup lang="ts">
+import './style.css'
+</script>
+
 <template>
-  <footer v-if="$nav.currentLayout !== 'cover'">
-    <div class="absolute bottom-0 left-4 p-4 flex items-center">
-      <img src="./logo_light_no_text.svg" alt="Logo" class="h-8 w-8" />
-      <span class="ml-2 text-sm">Prefix.dev</span>
-    </div>
-    <div class="absolute bottom-0 right-4 p-4">
-      {{ $nav.currentPage }}
+  <footer v-if="$nav.currentLayout !== 'cover'" class="keynote-footer">
+    <img src="/prefix-logo.svg" alt="Prefix.dev" />
+    <div class="keynote-footer-meta">
+      <span>DESY · September 2026</span>
+      <span class="keynote-page">{{ $nav.currentPage }}</span>
     </div>
   </footer>
 </template>
