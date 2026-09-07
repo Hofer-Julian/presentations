@@ -11,14 +11,12 @@ fonts:
 colorSchema: light
 themeConfig:
   primary: "#001d38"
-title: How to Build Python & Rust Packages With Pixi
+title: Pixi for Scientific Workflows
 ---
 
 <p class="eyebrow">DESY · September 2026</p>
 
-# How to Build Python & Rust Packages
-
-<p class="cover-subtitle">With <span>Pixi</span></p>
+# Pixi for Scientific Workflows
 
 <p class="cover-speaker">Julian Hofer</p>
 

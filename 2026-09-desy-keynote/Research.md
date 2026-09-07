@@ -13,7 +13,7 @@ Keep three main achievements:
 For future work, focus on two topics:
 
 1. **Shared caches across Unix users:** a concrete problem for research groups and shared clusters.
-2. **Rattler VFS:** an ambitious way to reduce the cost of creating environments on shared infrastructure.
+2. **Rattler VFS:** reduce the cost of creating environments on shared infrastructure. Prototypes show large fresh-environment gains, but warm execution can be slower than native environments.
 
 Do not force four equally sized roadmap themes. ABI-correct development builds, environment matrices and dependency metadata are useful supporting examples, but too maintainer-focused to carry the general DESY talk.
 
@@ -109,11 +109,11 @@ Research groups should be able to reuse packages and metadata without duplicate 
 
 The reports are concrete:
 
-- **#3741:** shared-cache permissions, with later reports extending beyond trampolines to repodata.
-- **#6870:** shared sharded-repodata `.msgpack` files created with user-only permissions, causing another user's installation to fail.
-- **#949:** a broader federal-government bioinformatics request covering hundreds of HPC users and application-security constraints.
+- **[#3741](https://github.com/prefix-dev/pixi/issues/3741):** shared-cache permissions, with later reports extending beyond trampolines to repodata.
+- **[#6870](https://github.com/prefix-dev/pixi/issues/6870):** shared sharded-repodata `.msgpack` files created with user-only permissions, causing another user's installation to fail.
+- **[#949](https://github.com/prefix-dev/pixi/issues/949):** a broader federal-government bioinformatics request covering hundreds of HPC users and application-security constraints.
 
-**Important upstream progress:** rattler already gained layered package caches in October 2025 through PR #1003. It searches layers in the supplied order and writes to the first writable layer. Do not present the underlying layered-cache implementation as missing.
+**Important upstream progress:** rattler already gained layered package caches in October 2025 through [PR #1003](https://github.com/conda/rattler/pull/1003). It searches layers in the supplied order and writes to the first writable layer. Do not present the underlying layered-cache implementation as missing.
 
 Possible scope:
 
@@ -136,9 +136,9 @@ Sources:
 
 A package cache avoids repeated downloads, but creating an environment still requires a directory tree and installation transformations. This becomes noticeable with large native stacks, many environments, file-count quotas and shared filesystems with expensive metadata operations.
 
-Miles Cranmer's report in #4412 describes a one-million-file institutional quota and manually archiving environments, then unpacking them into `/dev/shm`.
+Miles Cranmer's report in [#4412](https://github.com/prefix-dev/pixi/issues/4412) describes a one-million-file institutional quota and manually archiving environments, then unpacking them into `/dev/shm`.
 
-Rattler VFS would present an environment directly from the package cache, applying transformations such as prefix replacement on demand rather than materializing every environment file separately.
+Rattler VFS would present an environment directly from the package cache, applying transformations such as prefix replacement on demand rather than materializing every environment file separately. The prototype supports FUSE on Linux/macOS, NFS on Linux/macOS and ProjFS on Windows; its defaults are FUSE on Linux, NFS on macOS and ProjFS on Windows. Here NFS is a local userspace server, not a measurement of a remote cluster filesystem.
 
 Why this is especially relevant to science:
 
@@ -149,13 +149,60 @@ Why this is especially relevant to science:
 
 It is useful outside science too. Scientific infrastructure makes these constraints particularly visible.
 
-**Status:** rattler PR #2566 and Pixi PR #6548 are open drafts, not shipped features. The older rattler PR #1182 was replaced by #2566.
+#### Current work
 
-The Pixi prototype reports roughly **5 seconds versus 63 seconds** for first use of one large environment on Linux with a hot package cache. Warm use was roughly equivalent. These are author-provided prototype measurements, not a general benchmark or a claim that calculations run faster.
+**Status checked on 7 September 2026:** [rattler PR #2566](https://github.com/conda/rattler/pull/2566), [Pixi PR #6548](https://github.com/prefix-dev/pixi/pull/6548) and [rattler exec PR #2618](https://github.com/conda/rattler/pull/2618) are open drafts, not shipped features.
 
-**Limits:** VFS does not eliminate the underlying package cache. Mount availability, permissions, source dependencies, writable overlays, concurrency and mount lifetime still need careful handling and validation on actual clusters.
+- **Core VFS:** Chris Burr's implementation serves cached packages through a mount, with installation transformations and writable overlays. The older [rattler PR #1182](https://github.com/conda/rattler/pull/1182) was replaced by [#2566](https://github.com/conda/rattler/pull/2566); the separate NFS prototype [#2543](https://github.com/conda/rattler/pull/2543) is closed.
+- **Persistent Pixi environments:** [PR #6548](https://github.com/prefix-dev/pixi/pull/6548) uses a sidecar and a grace period to keep mounts alive across invocations.
+- **Throwaway execution:** Dagmar Dinjens' [PR #2618](https://github.com/conda/rattler/pull/2618), opened on 23 July, builds on the core VFS PR to mount temporary environments for `rattler exec`. This makes ephemeral execution a concrete prototype, not just a suggested use case.
 
-A grounded starting point is ephemeral execution and build/host environments, as suggested in the PR discussion, before persistent workspace mounts and sidecar lifecycle management.
+#### Performance findings
+
+**Main takeaway: avoiding environment installation can save substantial time, but VFS is not uniformly faster once a native environment already exists.** Separate package-cache state, environment creation, mount lifetime and kernel filesystem-cache state.
+
+**1. Pixi workspace prototype, July 2026**
+
+[PR #6548](https://github.com/prefix-dev/pixi/pull/6548) measures `pixi run python -c 'import torch'` in a large ROOT/PyTorch/TensorFlow environment with an already-hot package cache. First use includes environment preparation and the import, not just mount time or Python execution.
+
+| Platform/backend | Scenario | VFS | Native |
+| --- | --- | --- | --- |
+| Linux/FUSE | First use | ~5 s | ~63 s |
+| Linux/FUSE | Warm repeat | ~1.8 s | ~1.7 s |
+| macOS/NFS | First use after first install | ~25 s | ~72 s |
+| macOS/NFS | First use after fresh reinstall | ~6.8 s | ~72 s |
+| macOS/NFS | Warm repeat after either install | ~1.1 s | ~0.9 s |
+
+The author attributes macOS's slower first use to binary-signature verification. Its signature cache survives NFS remounts in this experiment, explaining the faster reinstall result. Warm runs show a small absolute VFS overhead, not a computation speedup.
+
+**2. Newer temporary-execution prototype, 23 July 2026**
+
+[PR #2618](https://github.com/conda/rattler/pull/2618) reports `hyperfine` comparisons of VFS-backed `rattler exec` against native `pixi exec` on macOS arm64 using NFS:
+
+| Workload | Reported cold/fresh-environment advantage | Warm VFS | Warm native |
+| --- | --- | --- | --- |
+| ripgrep | ~4 to 9 times faster | ~57 ms | ~21 ms |
+| Python + NumPy | ~20 to 40 times faster | ~440 ms | ~90 ms |
+
+The PR groups its cold and fresh-environment speedup ranges; it does not provide a complete per-state timing table or cache-clearing recipe. Do not interpret these ranges as a verified empty-download-cache benchmark. These are also different CLI implementations, not an isolated filesystem comparison.
+
+For warm runs, VFS takes roughly **2.7 times as long for ripgrep and 4.9 times as long for Python + NumPy**. The author attributes this to userspace-NFS RPC overhead and identifies persistent/reused mounts as future work. This does not contradict the smaller warm overhead in the Pixi prototype: workloads and mount lifetimes differ.
+
+A measured startup improvement in this draft skips an unnecessary force-unmount subprocess when no mount exists. Reported warm ripgrep timing improves from **62.2 ± 3.5 ms to 56.9 ± 1.7 ms**. It reduces fixed startup cost but does not close the warm-run gap.
+
+**Evidence limits:** these are author-reported prototype measurements, not independently reproduced results or controlled HPC benchmarks. They do not establish performance on shared NFS/Lustre storage, under concurrent cluster load, or for numerical computation itself.
+
+#### Remaining performance work and deployment limits
+
+- **Mount-time scanning:** [#2584](https://github.com/conda/rattler/issues/2584) remains open. Packages without precomputed prefix offsets require full reads of prefix-bearing files to discover replacements. The report describes serial scans of libraries and executables, so a virtual mount is not automatically free of substantial startup I/O.
+- **Ranged reads:** [#2583](https://github.com/conda/rattler/issues/2583) reported quadratic work from restarting prefix-replacement scans at byte zero for every chunk. It was closed as completed on 27 August. The issue has no explanation or linked closing commit, so closure alone is not evidence of a measured speedup or a released fix.
+- **Writable-overlay metadata:** [#2585](https://github.com/conda/rattler/issues/2585) remains open. Full metadata-JSON rewrites and `fsync` under a mutex can make bulk changes quadratic and block concurrent lookups.
+- **Metadata caching and mount reuse:** [longer NFS attribute caching](https://github.com/conda/rattler/pull/2566#discussion_r3637541254) is proposed for immutable read-only mounts. Persistent mounts could preserve caches across invocations, but mount lifetime, concurrent users of an environment and sidecar ownership still need a clear design. These are optimization directions, not measured improvements in the tables above.
+- **Shared-cluster safety:** [#2579](https://github.com/conda/rattler/issues/2579) reports missing per-user access control in the local NFS server and remains open. Loopback binding alone does not isolate users on a shared machine. Do not recommend this prototype for a multi-user cluster without resolving that boundary.
+
+VFS still needs the underlying package cache; any few-kilobyte claim concerns additional environment state, not total package storage. Mount availability, source dependencies, writable-overlay correctness and lifecycle handling also need validation on actual clusters.
+
+**Keynote framing:** faster disposable environments are the strongest demonstrated use case. Build/host environments remain a promising application, not a benchmarked result here. Present warm-start overhead as an active engineering tradeoff, not an already-solved problem.
 
 Possible audience-facing question:
 
@@ -166,6 +213,12 @@ Sources:
 - [File-count quota report, #4412](https://github.com/prefix-dev/pixi/issues/4412)
 - [Rattler VFS implementation, draft PR #2566](https://github.com/conda/rattler/pull/2566)
 - [Pixi prototype, measurements and scope discussion, draft PR #6548](https://github.com/prefix-dev/pixi/pull/6548)
+- [Temporary execution, cold/fresh/warm benchmarks and unmount optimization, draft PR #2618](https://github.com/conda/rattler/pull/2618)
+- [Mount-time scanning, open issue #2584](https://github.com/conda/rattler/issues/2584)
+- [Quadratic ranged reads, closed issue #2583](https://github.com/conda/rattler/issues/2583)
+- [Writable-overlay metadata overhead, open issue #2585](https://github.com/conda/rattler/issues/2585)
+- [Read-only NFS metadata-cache proposal](https://github.com/conda/rattler/pull/2566#discussion_r3637541254)
+- [NFS per-user access control, open issue #2579](https://github.com/conda/rattler/issues/2579)
 
 ## Supporting material, not main roadmap themes
 
@@ -194,7 +247,7 @@ Sources:
 
 - **HPC is not entirely missing.** Rich platforms, cache controls, external-library workflows and run-only execution already exist.
 - **Offline is not immutable.** `--offline` controls network use. For a prepared batch environment, `pixi run --as-is` means no install plus a frozen lockfile. [Run reference](https://pixi.prefix.dev/latest/reference/cli/pixi/run/)
-- **An open issue can have a released fix.** The central CUDA override problem in #6653 was fixed by [PR #6826](https://github.com/prefix-dev/pixi/pull/6826); narrower platform-selection work remains.
+- **An open issue can have a released fix.** The central CUDA override problem in [#6653](https://github.com/prefix-dev/pixi/issues/6653) was fixed by [PR #6826](https://github.com/prefix-dev/pixi/pull/6826); narrower platform-selection work remains.
 - **Do not promise to rebuild Snakemake.** [#6621](https://github.com/prefix-dev/pixi/issues/6621) is a real bioinformatician's proposal for scheduling, resources, retries and wildcards, not an accepted roadmap. Site-reviewed Slurm/PBS examples and composition with existing workflow engines are a more defensible starting point.
 - **Separate shipped, preview and prototype work.** This matters particularly for Pixi Build, conda-script and Rattler VFS.
 - **Research evidence is not runtime verification.** Findings come from release notes, current documentation and issue/PR discussions. Open reports were not freshly reproduced against the latest release. Recheck status before presenting specific unresolved bugs.

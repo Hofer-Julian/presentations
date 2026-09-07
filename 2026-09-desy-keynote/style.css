@@ -236,16 +236,6 @@
   font-size: 62px;
   line-height: 1.08;
 }
-.slidev-layout .cover-subtitle {
-  margin: 0;
-  font-family: var(--slidev-font-serif);
-  font-size: 38px;
-}
-.cover-subtitle span {
-  padding: 2px 15px 5px;
-  background: var(--keynote-yellow);
-  border-radius: 14px;
-}
 .slidev-layout .cover-speaker {
   margin-top: 30px;
   font-size: 18px;
