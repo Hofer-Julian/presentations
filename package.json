@@ -2,7 +2,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "esno scripts/picker.ts build",
+    "build": "esno scripts/build.ts",
     "dev": "esno scripts/picker.ts --open",
     "export": "esno scripts/picker.ts export"
   },
@@ -19,7 +19,8 @@
     "execa": "^10.0.1",
     "playwright-chromium": "^1.63.0",
     "prompts": "^2.4.2",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "yaml": "^2.9.0"
   },
   "name": "slidev-presentations",
   "pnpm": {

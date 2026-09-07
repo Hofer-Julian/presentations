@@ -6,9 +6,10 @@ name = "slidev-presentations"
 platforms = ["linux-64", "linux-aarch64", "win-64", "osx-arm64"]
 
 [tasks]
+build = { cmd = "pnpm run build", depends-on = ["install"] }
 export = { cmd = "pnpm run export", depends-on = ["install"] }
 start = { cmd = "pnpm run dev", depends-on = ["install"] }
-install = "pnpm install"
+install = "pnpm install --frozen-lockfile"
 
 [dependencies]
 pnpm = ">=10.6.5,<11"

@@ -1,15 +1,11 @@
 // Adapted from https://github.com/antfu/talks/blob/a4a8fb23aacc316ccdb87ad1934f23ebeeb26d54/scripts/picker.ts
-import fs from 'node:fs/promises'
+import { listPresentationFolders } from './presentations'
 import process from 'node:process'
 import prompts from 'prompts'
 import { execa } from 'execa'
 
 async function startPicker(args: string[]) {
-  const folders = (await fs.readdir(new URL('..', import.meta.url), { withFileTypes: true }))
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name)
-    .filter(folder => folder.match(/^[0-9]{4}-/))
-    .sort((a, b) => -a.localeCompare(b))
+  const folders = await listPresentationFolders()
 
   const result = await prompts([
     {

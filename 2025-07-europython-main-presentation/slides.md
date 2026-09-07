@@ -1,6 +1,7 @@
 ---
 theme: seriph
 class: "text-center"
+background: "#111111"
 highlighter: shiki
 lineNumbers: false
 fonts:
@@ -45,9 +46,9 @@ layout: two-cols
 
 <div class="flex flex-col items-center w-full">
   <div class="relative w-[28rem] h-[22rem] mx-auto">
-    <img src="./conda.png" alt="conda logo" class="absolute left-0 top-0 w-44 h-44" style="transform: translate(0, 0);" />
-    <img src="./conda-forge-logo-dark.svg" alt="conda-forge logo" class="absolute right-0 top-0 w-44 h-44" style="transform: translate(0, 0);" />
-    <img src="./logo_light_no_text.svg" alt="Prefix.dev logo" class="absolute left-1/2 bottom-0 w-44 h-44" style="transform: translate(-50%, 0);" />
+    <img src="/conda.png" alt="conda logo" class="absolute left-0 top-0 w-44 h-44" style="transform: translate(0, 0);" />
+    <img src="/conda-forge-logo-dark.svg" alt="conda-forge logo" class="absolute right-0 top-0 w-44 h-44" style="transform: translate(0, 0);" />
+    <img src="/logo_light_no_text.svg" alt="Prefix.dev logo" class="absolute left-1/2 bottom-0 w-44 h-44" style="transform: translate(-50%, 0);" />
   </div>
   </div>
 
@@ -68,7 +69,7 @@ From the NumPy contributor docs:
 pip install numpy
 ```
 
-![NumPy logo](./numpylogo.svg)
+![NumPy logo](/numpylogo.svg)
 
 </div>
 
@@ -557,31 +558,31 @@ graph TB
 
 <div class="grid grid-cols-3 gap-4 mt-4">
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./holoviews-logo.png" alt="HoloViews" class="max-h-24 mx-auto object-contain" />
+    <img src="/holoviews-logo.png" alt="HoloViews" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
     <img src="/usgs-logo.png" alt="U.S. Geological Survey" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./onnx-logo.png" alt="Onnx" class="max-h-24 mx-auto object-contain" />
+    <img src="/onnx-logo.png" alt="Onnx" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./deltares-logo.jpg" alt="Deltares" class="max-h-24 mx-auto object-contain" />
+    <img src="/deltares-logo.jpg" alt="Deltares" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./jupyter-logo.png" alt="Jupyter" class="max-h-24 mx-auto object-contain" />
+    <img src="/jupyter-logo.png" alt="Jupyter" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./mojo-logo.png" alt="Modular (Mojo 🔥)" class="max-h-24 mx-auto object-contain" />
+    <img src="/mojo-logo.png" alt="Modular (Mojo 🔥)" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./rerun-io-logo.png" alt="Rerun" class="max-h-24 mx-auto object-contain" />
+    <img src="/rerun-io-logo.png" alt="Rerun" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./quantco-logo.png" alt="Quantco" class="max-h-24 mx-auto object-contain" />
+    <img src="/quantco-logo.png" alt="Quantco" class="max-h-24 mx-auto object-contain" />
   </div>
   <div class="bg-black rounded-xl p-4 flex items-center justify-center">
-    <img src="./freecad-logo.svg" alt="FreeCAD" class="max-h-24 mx-auto object-contain" />
+    <img src="/freecad-logo.svg" alt="FreeCAD" class="max-h-24 mx-auto object-contain" />
   </div>
 </div>
 

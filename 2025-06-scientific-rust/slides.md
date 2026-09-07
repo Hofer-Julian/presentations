@@ -1,6 +1,7 @@
 ---
 theme: seriph
 class: "text-center"
+background: "#111111"
 highlighter: shiki
 lineNumbers: false
 fonts:
