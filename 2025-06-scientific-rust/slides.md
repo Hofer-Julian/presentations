@@ -11,6 +11,7 @@ colorSchema: dark
 themeConfig:
   primary: "#facc15"
 title: Pixi, the Missing Companion to Cargo
+occasion: Scientific Rust 2025
 ---
 
 <h1 style="color: var(--slidev-theme-primary)">Pixi,</h1>

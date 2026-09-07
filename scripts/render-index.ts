@@ -7,16 +7,19 @@ function escapeHtml(value: string): string {
     .replaceAll("'", '&#39;')
 }
 
-export function renderIndex(presentations: readonly { slug: string; title: string; date: string }[]): string {
+export function renderIndex(presentations: readonly { slug: string; title: string; date: string; occasion?: string }[]): string {
   const dateFormat = new Intl.DateTimeFormat('en', {
     month: 'long',
     year: 'numeric',
     timeZone: 'UTC',
   })
-  const entries = presentations.map(({ slug, title, date }) => `
+  const entries = presentations.map(({ slug, title, date, occasion }) => `
         <li>
           <time datetime="${escapeHtml(date)}">${escapeHtml(dateFormat.format(new Date(`${date}-01T00:00:00Z`)))}</time>
-          <a href="./${escapeHtml(encodeURIComponent(slug))}/">${escapeHtml(title)}</a>
+          <div class="talk">
+            ${occasion ? `<p class="occasion">${escapeHtml(occasion)}</p>` : ''}
+            <a href="./${escapeHtml(encodeURIComponent(slug))}/">${escapeHtml(title)}</a>
+          </div>
         </li>`).join('')
 
   return `<!doctype html>
@@ -34,12 +37,14 @@ export function renderIndex(presentations: readonly { slug: string; title: strin
     header { padding-block: clamp(3rem, 9vw, 7rem) 3.5rem; }
     h1 { margin: 0; font-family: 'Trebuchet MS', 'Avenir Next', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 700; line-height: 1.08; letter-spacing: -.055em; }
     h1 span { display: table; padding: 0 .12em .08em; margin-left: -.12em; background: var(--yellow); }
-    header p { margin: 1.75rem 0 0; font-size: 1.125rem; line-height: 1.6; }
+    header p { max-width: 40rem; margin: 1.75rem 0 0; font-size: 1.125rem; line-height: 1.6; }
     ul { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
-    li { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; align-items: baseline; padding-block: 1.6rem; border-bottom: 1px solid var(--rule); }
-    time { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .875rem; line-height: 1.6; }
+    li { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; align-items: start; padding-block: 1.6rem; border-bottom: 1px solid var(--rule); }
+    time { padding-top: .3rem; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .875rem; line-height: 1.6; }
     a { color: inherit; text-decoration-thickness: .06em; text-underline-offset: .2em; }
-    li a { width: fit-content; font-size: clamp(1.25rem, 2.8vw, 1.75rem); line-height: 1.35; font-weight: 600; overflow-wrap: anywhere; }
+    .talk { min-width: 0; }
+    .occasion { margin: 0 0 .3rem; color: #555f68; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: .8rem; font-weight: 700; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; }
+    li a { display: inline; font-size: clamp(1.25rem, 2.8vw, 1.75rem); line-height: 1.35; font-weight: 600; overflow-wrap: anywhere; }
     a:hover { background: var(--yellow); }
     a:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; background: var(--yellow); }
     .empty { padding-block: 1.6rem; border-top: 2px solid var(--ink); line-height: 1.6; }
@@ -54,7 +59,7 @@ export function renderIndex(presentations: readonly { slug: string; title: strin
   <main>
     <header>
       <h1>Julian's <span>presentations</span></h1>
-      <p>Slides from my talks.</p>
+      <p>Talks about package management, scientific software, Python, and Rust, presented at conferences and community events.</p>
     </header>
     <section aria-label="Presentation archive">
       ${presentations.length ? `<ul role="list">${entries}

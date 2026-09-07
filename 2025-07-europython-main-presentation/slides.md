@@ -11,6 +11,7 @@ colorSchema: dark
 themeConfig:
   primary: "#facc15"
 title: Unlocking Hidden Power of Conda with Pixi
+occasion: EuroPython 2025
 ---
 
 <h1 style="color: var(--slidev-theme-primary)">Unlocking Hidden Power of Conda with Pixi</h1>

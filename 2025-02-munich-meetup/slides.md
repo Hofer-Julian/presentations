@@ -11,6 +11,7 @@ colorSchema: dark
 themeConfig:
   primary: "#facc15"
 title: Pixi, Conda, and the Future of Python Development
+occasion: Munich Python Meetup
 ---
 
 <h1 style="color: var(--slidev-theme-primary)">Pixi, Conda,</h1>

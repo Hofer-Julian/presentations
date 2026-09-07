@@ -1,0 +1,15 @@
+{
+  "name": "slidev-theme-prefix-keynote",
+  "private": true,
+  "version": "0.1.0",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "slidev": ">=52"
+  },
+  "slidev": {
+    "colorSchema": "light"
+  }
+}

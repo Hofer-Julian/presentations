@@ -11,6 +11,7 @@ colorSchema: dark
 themeConfig:
   primary: "#facc15"
 title: How to Build Python & Rust Packages With Pixi
+occasion: EuroPython 2025 Rust Summit
 ---
 
 <h1 style="color: var(--slidev-theme-primary)">How to Build Python & Rust Packages</h1>

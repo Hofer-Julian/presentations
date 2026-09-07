@@ -22,7 +22,7 @@ if (folders.length === 0)
 
 await fs.rm(output, { recursive: true, force: true })
 await fs.mkdir(output, { recursive: true })
-const presentations: { slug: string; title: string; date: string }[] = []
+const presentations: { slug: string; title: string; date: string; occasion?: string }[] = []
 
 for (const slug of folders) {
   const directory = path.join(root, slug)
@@ -33,6 +33,9 @@ for (const slug of folders) {
   const title = metadata?.title ?? body.match(/^#\s+(.+)$/m)?.[1] ?? slug
   if (typeof title !== 'string')
     throw new Error(`presentation title must be a string: ${slug}`)
+  const occasion = metadata?.occasion
+  if (occasion !== undefined && typeof occasion !== 'string')
+    throw new Error(`presentation occasion must be a string: ${slug}`)
 
   console.log(`\nBuilding ${slug}`)
   await execa('slidev', [
@@ -42,7 +45,7 @@ for (const slug of folders) {
     '--router-mode', 'hash',
   ], { cwd: directory, stdio: 'inherit' })
 
-  presentations.push({ slug, title, date: slug.slice(0, 7) })
+  presentations.push({ slug, title, date: slug.slice(0, 7), occasion })
 }
 
 await fs.writeFile(path.join(output, 'index.html'), renderIndex(presentations))

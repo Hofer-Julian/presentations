@@ -1,6 +1,3 @@
-<script setup lang="ts">
-import './style.css'
-</script>
 
 <template>
   <footer v-if="$nav.currentLayout !== 'cover'" class="keynote-footer">
