@@ -30,9 +30,9 @@ class: intro-speaker
 
 # Julian Hofer
 
-I build **Pixi** at **prefix.dev**.
-
-My background is in physics and numerical water modelling at **Deltares**.
+- Studied Physics
+- Worked on numerical water models
+- Build Pixi at prefix.dev
 
 <!--
 I will introduce myself and talk a bit about my studies in physics and how I encountered Mathematica to solve problems.
@@ -43,34 +43,17 @@ class: intro-visual
 title: Physics and Mathematica
 ---
 
-<div class="intro-copy">
-  <p class="eyebrow">Studying physics</p>
-  <h1>Before Jupyter</h1>
-  <p>Mathematica helped pave the way for Jupyter notebooks.</p>
-  <p>But after a Mathematica upgrade, my notebook no longer ran.</p>
-</div>
+- Started out with Mathematica notebooks
+- Visionary for Jupyter notebooks
+- Mathematica updates broke my software
 
 <figure class="intro-figure">
   <img src="/mathematica-notebook.png" alt="Light-mode Mathematica notebook with executable code and a sine plot" />
-  <figcaption><a href="https://www.wolfram.com/notebooks/">Wolfram notebook example · Wolfram</a></figcaption>
+  <figcaption><a href="https://www.wolfram.com/notebooks/">Source: wolfram.com</a></figcaption>
 </figure>
 
 <!--
 The notebooks were amazing, but after one release they broke the unit library and replaced it with a completely different API.
--->
-
----
-class: intro-motivation
----
-
-<p class="eyebrow">One release later</p>
-
-# I only wanted my old&nbsp;software to still work.
-
-Reproducible software.
-
-<!--
-I only wanted my old software to still work. This was when I first felt the need for reproducible software.
 -->
 
 ---
@@ -86,7 +69,7 @@ title: Numerical water models at Deltares
 
 <figure class="intro-figure">
   <img src="/deltares-water-model.png" alt="Delft3D Flexible Mesh displaying a coastal water model and its computational grid" />
-  <figcaption><a href="https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite">Delft3D FM example · Deltares</a></figcaption>
+  <figcaption><a href="https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite">Source deltares.nl</a></figcaption>
 </figure>
 
 <!--
@@ -101,7 +84,8 @@ class: intro-conda
 
 # Conda
 
-<p class="intro-lead">Cross-language.<br>Cross-platform.</p>
+- Cross-language
+- Cross-platform
 
 <p class="eyebrow">What I was missing</p>
 
@@ -120,42 +104,40 @@ image: /paxton-text-in-circle.svg
 
 # Then came Pixi
 
-<div class="intro-milestones">
-  <p><span class="eyebrow">Public alpha</span><br>I started using Pixi.</p>
-  <p><span class="eyebrow">Later</span><br>I joined prefix.dev to work on Pixi.</p>
-</div>
+- I started using Pixi
+- Later, I joined prefix.dev to work on Pixi
 
 <!--
 That's why I started using Pixi the second the public alpha came out and later joined Prefix to work on Pixi.
 -->
 
 ---
-class: statement-slide
+layout: image-right
+image: /paxton-text-in-circle.svg
 ---
 
-<p class="eyebrow">Scientific requirements</p>
+# Introducing Pixi
 
-# More than installing packages
-
-<div class="requirement-list">
-  <p><strong>Keep software working.</strong> Record the environment.</p>
-  <p><strong>Cross language boundaries.</strong> Include native dependencies.</p>
-  <p><strong>Repeat the workflow.</strong> Describe the commands too.</p>
-</div>
+- Fast
+- Open source
+- Workflow management
+- Multiple environments
+- Reproducible thanks to lock files
+- Supports conda and PyPI ecosystems
 
 <!--
 Timing: 5:00 to 5:45. The cover and personal introduction together have five minutes.
 
-These were not only my own requirements. Scientific work combines software from different languages, needs to survive changes in its dependencies, and involves commands that someone else must be able to repeat.
+Pixi is a fast, open-source package and workflow manager. It supports conda and PyPI packages, manages multiple environments, and records dependencies in lock files.
 
-A package list is part of that description, not the whole workflow. This is the bridge from my experience to the scientific projects in the abstract.
+These features address the requirements I ran into myself: native dependencies across languages, environments that remain reproducible, and commands that someone else can repeat.
 -->
 
 ---
 class: evidence-slide
 ---
 
-# Not just my requirements
+# How are major software projects using Pixi
 
 <p class="eyebrow">Evidence from project manifests</p>
 
