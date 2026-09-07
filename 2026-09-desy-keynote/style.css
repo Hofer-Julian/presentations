@@ -169,10 +169,6 @@
   line-height: 1.14;
 }
 
-.intro-motivation h1 span {
-  background: var(--keynote-paper);
-  white-space: nowrap;
-}
 
 .slidev-layout .intro-lead {
   margin: 24px 0 34px;
@@ -306,7 +302,7 @@
 }
 .slidev-layout th,
 .slidev-layout td {
-  padding: 12px 18px;
+  padding: 8px 18px;
 }
 .slidev-layout td:not(:first-child),
 .slidev-layout th:not(:first-child) {
@@ -322,22 +318,6 @@
   font-size: 38px;
 }
 
-.slidev-layout.demo-slide {
-  background: var(--keynote-yellow);
-  padding: 64px 76px 80px;
-}
-.slidev-layout.demo-slide h1 {
-  font-size: 64px;
-  margin-bottom: 32px;
-}
-.slidev-layout.demo-slide ul {
-  padding: 20px 28px 20px 44px;
-  border-radius: 20px;
-  background: var(--keynote-white);
-}
-.slidev-layout.demo-slide li {
-  line-height: 1.85;
-}
 
 .slidev-layout.keynote-end {
   padding-top: 65px;

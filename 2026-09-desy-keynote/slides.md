@@ -65,7 +65,7 @@ class: intro-motivation
 
 <p class="eyebrow">One release later</p>
 
-# I only wanted my <span>old software</span> to still work.
+# I only wanted my old&nbsp;software to still work.
 
 Reproducible software.
 
@@ -256,20 +256,6 @@ pixi run python -c "import matplotlib; import numpy"
 # or
 uv run python -c "import matplotlib; import numpy"
 ```
----
-class: demo-slide
----
-# Demo Time
-
-- Interactive Python
-- Put code into a file
-- Manage dependencies & tasks with Pixi manifest
-- Organize code as package
-- Add Rust to the mix
-
-
-
-
 ---
 layout: image-right
 image: /paxton-text-in-circle.svg
