@@ -29,28 +29,105 @@ image: /julian.jpg
 backgroundSize: cover
 ---
 
-# About Me
+# Julian Hofer
 
-- 👤 Julian Hofer
-- ⚛️ Background in Physics
-- 💬 Thinks that languages are cool
-- 🤓 Loves to talk about dependency management
+Physics.<br>
+Numerical water models.<br>
+Pixi at prefix.dev.
+
+<!--
+I will introduce myself and talk a bit about my studies in physics and how I encountered Mathematica to solve problems.
+-->
+
+---
+class: intro-visual
+title: Physics and Mathematica
+---
+
+<div class="intro-copy">
+  <p class="eyebrow">Studying physics</p>
+  <h1>The notebooks were amazing</h1>
+  <p>Mathematica</p>
+</div>
+
+<figure class="intro-figure">
+  <img src="/mathematica-notebook.png" alt="Mathematica notebook combining code and fluid-flow visualizations" />
+  <figcaption><a href="https://www.wolfram.com/mathematica/">Mathematica 15 example · Wolfram</a></figcaption>
+</figure>
+
+<!--
+The notebooks were amazing, but after one release they broke the unit library and replaced it with a completely different API.
+-->
+
+---
+class: intro-motivation
+---
+
+<p class="eyebrow">One release later</p>
+
+# I only wanted my <span>old software</span> to still work.
+
+Reproducible software.
+
+<!--
+I only wanted my old software to still work. This was when I first felt the need for reproducible software.
+-->
+
+---
+class: intro-visual
+title: Numerical water models at Deltares
+---
+
+<div class="intro-copy">
+  <p class="eyebrow">Deltares</p>
+  <h1>Numerical water models</h1>
+  <p>All open source.</p>
+</div>
+
+<figure class="intro-figure">
+  <img src="/deltares-water-model.png" alt="Delft3D Flexible Mesh displaying a coastal water model and its computational grid" />
+  <figcaption><a href="https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite">Delft3D FM example · Deltares</a></figcaption>
+</figure>
+
+<!--
+Then I joined Deltares, where I worked on numerical water models, all open source.
+-->
 
 ---
 layout: image-right
 image: /conda.png
+class: intro-conda
 ---
 
-# What is Conda?
+# Conda
 
-- 📦 Package ecosystem:
-  - Cross-platform
-  - Cross-language
-- 🔬 Commonly used for scientific Python
-- 🌐 Decentralized channels like:
-  - conda-forge
-  - bioconda
-  - fastai
+<p class="intro-lead">Cross-language.<br>Cross-platform.</p>
+
+<p class="eyebrow">What I was missing</p>
+
+- Speed
+- Lock files
+- Tasks
+
+<!--
+There I learnt the convenience of cross-language and cross-platform package management via conda, but also how conda is lagging behind modern package managers. It was slow and had no concept of lock files or tasks.
+-->
+
+---
+layout: image-right
+image: /paxton-text-in-circle.svg
+---
+
+# Then came Pixi
+
+<div class="intro-milestones">
+  <p><span class="eyebrow">Public alpha</span><br>I started using Pixi.</p>
+  <p><span class="eyebrow">Later</span><br>I joined prefix.dev to work on Pixi.</p>
+</div>
+
+<!--
+That's why I started using Pixi the second the public alpha came out and later joined Prefix to work on Pixi.
+-->
 
 ---
 layout: image-right

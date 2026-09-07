@@ -127,6 +127,67 @@
   border: 16px solid var(--keynote-white);
 }
 
+
+.slidev-layout.intro-visual {
+  display: grid;
+  grid-template-columns: 36% 1fr;
+  align-items: center;
+  gap: 32px;
+}
+
+.intro-copy .eyebrow {
+  margin-top: 0;
+}
+
+.intro-figure {
+  margin: 0;
+}
+
+.intro-figure img {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.intro-figure figcaption {
+  margin-top: 12px;
+  color: var(--keynote-muted);
+  font-size: 12px;
+  text-align: right;
+}
+
+.slidev-layout.intro-motivation {
+  padding: 64px 68px 86px;
+  background: var(--keynote-yellow);
+}
+
+.slidev-layout.intro-motivation h1 {
+  margin: 34px 0;
+  font-size: 64px;
+  line-height: 1.14;
+}
+
+.intro-motivation h1 span {
+  background: var(--keynote-paper);
+  white-space: nowrap;
+}
+
+.slidev-layout .intro-lead {
+  margin: 24px 0 34px;
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+.slidev-layout.intro-conda .eyebrow {
+  margin-bottom: 8px;
+}
+
+.slidev-layout .intro-milestones p {
+  margin: 32px 0;
+  font-size: 24px;
+}
 .code-slide {
   --slidev-code-font-size: 12px;
   --slidev-code-line-height: 1.4;
