@@ -1,0 +1,21 @@
+[workspace]
+name = "reservoir-workflow"
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["linux-64"]
+preview = ["pixi-build"]
+
+[tasks]
+analyse = "python analyse.py"
+
+[dependencies]
+python = "3.13.*"
+reservoir-model = { path = "." }
+
+[package]
+name = "reservoir-model"
+version = "0.1.0"
+description = "Illustrative linear reservoir for a Pixi source-build example"
+
+[package.build.backend]
+name = "pixi-build-cmake"
+version = "0.*"

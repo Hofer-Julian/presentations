@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" role="img" aria-labelledby="title desc">
+  <title id="title">Locally available conda packages on an offline system</title>
+  <desc id="desc">A centrally maintained shared cache contains Python 3.12, NumPy 1.26, NumPy 2.1 and SciPy 1.14 packages for the current platform. The external channel is disconnected. Availability in this cache does not mean approval. Space to the right is reserved for two projects in the following diagrams. Package versions are illustrative and transitive dependencies are omitted.</desc>
+  <rect width="880" height="340" fill="#f8f6f2"/>
+  <g font-family="Inter, Arial, sans-serif" fill="#001d38">
+    <g fill="#62656a">
+      <text x="24" y="146" font-size="18">External</text>
+      <text x="24" y="169" font-size="18">channel</text>
+      <path d="M113 181H145 M173 181H200" fill="none" stroke="#62656a" stroke-width="1.5" stroke-dasharray="4 5"/>
+      <path d="M151 189L158 173 M162 189L169 173" fill="none" stroke="#62656a" stroke-width="1.5"/>
+      <text x="24" y="209" font-size="14">Disconnected</text>
+    </g>
+    <text x="212" y="40" font-size="20" font-weight="600">Shared package cache</text>
+    <text x="212" y="61" font-size="14" fill="#62656a">Centrally maintained</text>
+    <rect x="212" y="79" width="244" height="164" fill="#ffffff" stroke="#001d38" stroke-width="1.5"/>
+    <path d="M212 120H456 M212 161H456 M212 202H456" stroke="#e4dfd5" stroke-width="1"/>
+    <path d="M212 79V243" stroke="#ffd432" stroke-width="5"/>
+    <g font-size="18">
+      <text x="231" y="106">Python</text><text x="437" y="106" text-anchor="end">3.12</text>
+      <text x="231" y="147">NumPy</text><text x="437" y="147" text-anchor="end">1.26</text>
+      <text x="231" y="188">NumPy</text><text x="437" y="188" text-anchor="end">2.1</text>
+      <text x="231" y="229">SciPy</text><text x="437" y="229" text-anchor="end">1.14</text>
+    </g>
+    <text x="212" y="268" font-size="16">Available, not approved</text>
+    <text x="212" y="289" font-size="14" fill="#62656a">Conda packages · current platform</text>
+    <text x="212" y="326" font-size="13" fill="#62656a">Illustrative package versions; transitive dependencies omitted</text>
+  </g>
+</svg>

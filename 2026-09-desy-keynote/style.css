@@ -184,24 +184,305 @@
   margin: 32px 0;
   font-size: 24px;
 }
-.code-slide {
+
+.slidev-layout:is(.statement-slide, .diagram-slide, .build-story, .cache-problem-slide, .layer-slide, .priorities-slide, .backup-slide) > .eyebrow:first-child {
+  margin: 0 0 14px;
+}
+
+.slidev-layout .slide-caption {
+  margin: 14px 0 0;
+  color: var(--keynote-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.slidev-layout .statement-lead {
+  margin-top: 28px;
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+.statement-slide h1 {
+  font-size: 46px;
+}
+
+.requirement-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.slidev-layout .requirement-list p {
+  margin: 0;
+  font-size: 22px;
+}
+
+.role-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin-top: 28px;
+}
+
+.role-pair > div {
+  border-left: 4px solid var(--keynote-yellow);
+  padding-left: 20px;
+}
+
+.role-pair h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.slidev-layout .role-pair p {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px 36px;
+  margin-top: 24px;
+}
+
+.evidence-grid article {
+  border-top: 1px solid var(--keynote-border);
+  padding-top: 16px;
+}
+
+.evidence-grid h2 {
+  margin: 0;
+  font-size: 29px;
+}
+
+.slidev-layout .evidence-grid p {
+  margin: 10px 0;
+  font-size: 19px;
+}
+
+.slidev-layout .evidence-grid code {
+  font-size: 14px;
+}
+
+.slidev-layout.diagram-slide {
+  padding-top: 34px;
+}
+
+.diagram-slide h1 {
+  margin-bottom: 14px;
+  font-size: 40px;
+}
+
+.workflow-diagram {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+}
+
+.slidev-layout.diagram-slide .slide-caption {
+  margin-top: 8px;
+}
+
+.package-flow {
+  display: grid;
+  grid-template-columns: 1fr 24px 1fr 24px 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.package-flow > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 168px;
+  padding: 18px 14px;
+  border: 1px solid var(--keynote-border);
+  border-radius: 16px;
+  background: var(--keynote-white);
+}
+
+.package-flow h2 {
+  margin: 8px 0;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.slidev-layout .package-flow p {
+  margin: 4px 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.package-flow .eyebrow {
+  font-size: 12px;
+}
+
+.flow-arrow {
+  font-size: 28px;
+  text-align: center;
+}
+
+.build-story h1,
+.build-manifest-slide h1 {
+  font-size: 38px;
+}
+
+.manifest-columns {
+  display: grid;
+  grid-template-columns: 57% 1fr;
+  gap: 28px;
+}
+
+.build-manifest-slide {
   --slidev-code-font-size: 12px;
-  --slidev-code-line-height: 1.4;
+  --slidev-code-line-height: 1.45;
 }
-.code-slide h1 {
-  margin-bottom: 16px;
+
+.build-manifest-slide pre {
+  padding: 12px;
 }
-.code-slide p,
-.code-slide h1 + p {
+
+.slidev-layout .manifest-explanation p {
+  margin: 0 0 22px;
+  font-size: 19px;
+}
+
+.slidev-layout .manifest-explanation .slide-caption {
+  margin-top: 22px;
+  font-size: 13px;
+}
+
+.permission-example {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--keynote-white);
+  border: 1px solid var(--keynote-border);
+  border-radius: 16px;
+}
+
+.slidev-layout .permission-example > .eyebrow {
+  margin: 0 0 16px;
+}
+
+.slidev-layout .permission-example > code {
+  display: block;
+  padding: 0;
+  font-size: 22px;
+}
+
+.permission-roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.slidev-layout .permission-roles p {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.cache-layers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-top: 24px;
+}
+
+.private-layer {
+  padding: 16px 20px;
+  border: 1px solid var(--keynote-border);
+  border-radius: 16px;
+  background: var(--keynote-white);
+}
+
+.private-layer h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.slidev-layout .private-layer p {
   margin: 6px 0;
   font-size: 18px;
 }
-.code-slide pre {
-  padding: 8px 12px;
+
+.layer-connector,
+.shared-layer {
+  grid-column: 1 / -1;
 }
-.code-slide li {
+
+.layer-connector {
+  text-align: center;
   font-size: 18px;
-  line-height: 1.5;
+}
+
+.shared-layer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: var(--keynote-yellow);
+  border-radius: 16px;
+}
+
+.shared-layer span {
+  font-size: 18px;
+}
+
+.priority-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.priority-list > div {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 24px;
+  align-items: start;
+  border-top: 1px solid var(--keynote-border);
+  padding-top: 16px;
+}
+
+.priority-list h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.slidev-layout .priority-list p {
+  margin: 0;
+  font-size: 20px;
+}
+
+.closing-invitation {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 18px 24px;
+  font-size: 20px;
+}
+
+.closing-invitation span {
+  border-bottom: 3px solid var(--keynote-yellow);
+  padding-bottom: 8px;
+}
+
+.slidev-layout .backup-link {
+  margin: 14px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.backup-slide h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.backup-slide table {
+  width: 100%;
 }
 
 .slidev-layout.keynote-cover {
@@ -271,9 +552,6 @@
   background: var(--keynote-paper);
 }
 
-.comparison-table {
-  width: 820px;
-}
 .slidev-layout table {
   overflow: hidden;
   border-collapse: separate;
@@ -299,14 +577,6 @@
   text-align: center;
 }
 
-.slidev-layout.two-cols {
-  gap: 30px;
-  font-size: 18px;
-  --slidev-code-font-size: 12px;
-}
-.slidev-layout.two-cols h1 {
-  font-size: 38px;
-}
 
 
 .slidev-layout.keynote-end {
@@ -315,8 +585,8 @@
 }
 .slidev-layout.keynote-end h1 {
   max-width: 760px;
-  margin: 0 auto 38px;
-  font-size: 52px;
+  margin: 0 auto 24px;
+  font-size: 48px;
 }
 .contact-grid {
   display: grid;
@@ -324,7 +594,7 @@
   gap: 24px;
 }
 .contact-grid > div {
-  padding: 24px 16px 14px;
+  padding: 16px 16px 12px;
   background: var(--keynote-white);
   border: 1px solid var(--keynote-border);
   border-radius: 20px;
@@ -339,8 +609,8 @@
   background: var(--keynote-yellow);
 }
 .contact-grid img {
-  width: 128px;
-  height: 128px;
+  width: 104px;
+  height: 104px;
 }
 .slidev-layout .contact-grid p {
   margin: 8px 0;

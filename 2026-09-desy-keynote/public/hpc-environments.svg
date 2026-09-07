@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" role="img" aria-labelledby="title desc">
+  <title id="title">New separate environments from locally available conda packages</title>
+  <desc id="desc">With the external channel still disconnected, two new environments are created using the shared package cache on the current platform. Project A has Python 3.12, NumPy 1.26 and SciPy 1.14, satisfying its NumPy below 2 requirement. Project B has Python 3.12, NumPy 2.1 and SciPy 1.14, satisfying its NumPy at least 2 requirement. Python and SciPy versions are common, while NumPy differs. Arrows show local environment creation, not network downloads or reuse of an installed environment. Cache availability is not approval. Versions are illustrative, not a claim that specific builds were empirically solved; transitive dependencies are omitted.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L7 3.5L0 7Z" fill="#001d38"/></marker>
+  </defs>
+  <rect width="880" height="340" fill="#f8f6f2"/>
+  <g font-family="Inter, Arial, sans-serif" fill="#001d38">
+    <g fill="#62656a">
+      <text x="24" y="146" font-size="18">External</text>
+      <text x="24" y="169" font-size="18">channel</text>
+      <path d="M113 181H145 M173 181H200" fill="none" stroke="#62656a" stroke-width="1.5" stroke-dasharray="4 5"/>
+      <path d="M151 189L158 173 M162 189L169 173" fill="none" stroke="#62656a" stroke-width="1.5"/>
+      <text x="24" y="209" font-size="14">Disconnected</text>
+    </g>
+    <text x="212" y="40" font-size="20" font-weight="600">Shared package cache</text>
+    <text x="212" y="61" font-size="14" fill="#62656a">Centrally maintained</text>
+    <rect x="212" y="79" width="244" height="164" fill="#ffffff" stroke="#001d38" stroke-width="1.5"/>
+    <path d="M212 120H456 M212 161H456 M212 202H456" stroke="#e4dfd5" stroke-width="1"/>
+    <path d="M212 79V243" stroke="#ffd432" stroke-width="5"/>
+    <g font-size="18">
+      <text x="231" y="106">Python</text><text x="437" y="106" text-anchor="end">3.12</text>
+      <text x="231" y="147">NumPy</text><text x="437" y="147" text-anchor="end">1.26</text>
+      <text x="231" y="188">NumPy</text><text x="437" y="188" text-anchor="end">2.1</text>
+      <text x="231" y="229">SciPy</text><text x="437" y="229" text-anchor="end">1.14</text>
+    </g>
+    <text x="212" y="268" font-size="16">Available, not approved</text>
+    <text x="212" y="289" font-size="14" fill="#62656a">Conda packages · current platform</text>
+    <g fill="none" stroke="#001d38" stroke-width="1.5" marker-end="url(#arrow)">
+      <path d="M457 120C516 120 518 112 607 112"/>
+      <path d="M457 202C516 202 518 259 607 259"/>
+    </g>
+    <text x="479" y="94" font-size="16">Create locally</text>
+    <text x="479" y="284" font-size="16">Create locally</text>
+    <g>
+      <text x="640" y="40" font-size="20" font-weight="600">Project A</text>
+      <text x="640" y="61" font-size="14" fill="#62656a">New environment</text>
+      <path d="M630 74H621V147H630 M819 74H828V147H819" fill="none" stroke="#001d38" stroke-width="1.5"/>
+      <rect x="633" y="95" width="152" height="25" fill="#ffd432"/>
+      <g font-size="18">
+        <text x="640" y="88">Python 3.12</text>
+        <text x="640" y="114" font-weight="600">NumPy 1.26</text>
+        <text x="640" y="140">SciPy 1.14</text>
+      </g>
+    </g>
+    <g>
+      <text x="640" y="187" font-size="20" font-weight="600">Project B</text>
+      <text x="640" y="208" font-size="14" fill="#62656a">New environment</text>
+      <path d="M630 221H621V294H630 M819 221H828V294H819" fill="none" stroke="#001d38" stroke-width="1.5"/>
+      <rect x="633" y="242" width="152" height="25" fill="#ffd432"/>
+      <g font-size="18">
+        <text x="640" y="235">Python 3.12</text>
+        <text x="640" y="261" font-weight="600">NumPy 2.1</text>
+        <text x="640" y="287">SciPy 1.14</text>
+      </g>
+    </g>
+    <text x="212" y="326" font-size="13" fill="#62656a">Illustrative package versions; transitive dependencies omitted</text>
+  </g>
+</svg>
