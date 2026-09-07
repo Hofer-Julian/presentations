@@ -23,7 +23,7 @@ This repository contains Julian Hofer's Slidev presentations, organized by date 
 ### Starting Development Server
 ```bash
 # Interactive picker to choose presentation
-pixi run show
+pixi run start
 ```
 
 ### Building/Exporting Presentations
