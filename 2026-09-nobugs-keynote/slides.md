@@ -399,22 +399,29 @@ eyebrow: Shipped
 
 # Package cache reuse
 
-<div class="single-user-cache" role="img" aria-label="One researcher reuses NumPy, SciPy and ROOT from one package cache across three environments">
+<div class="single-user-cache" role="img" aria-label="One researcher reuses Python, NumPy and SciPy from one package cache across environments in two Pixi workspaces">
   <p class="single-user-label">Researcher A</p>
   <div class="single-user-flow">
     <div class="package-inventory">
       <span>User package cache</span>
-      <div><strong>NumPy</strong><strong>SciPy</strong><strong>ROOT</strong></div>
+      <div><strong>Python</strong><strong>NumPy</strong><strong>SciPy</strong></div>
     </div>
-    <div class="reuse-arrows" aria-hidden="true"><span>→</span><span>→</span><span>→</span></div>
-    <div class="linked-environments">
-      <div><strong>analysis</strong><span>environment</span></div>
-      <div><strong>simulation</strong><span>environment</span></div>
-      <div><strong>development</strong><span>environment</span></div>
+    <div class="reuse-arrows" aria-hidden="true"><span>→</span><span>→</span></div>
+    <div class="pixi-workspaces">
+      <div class="cache-workspace">
+        <div class="cache-workspace-heading"><strong>Workspace A</strong><span>pixi.toml</span></div>
+        <div class="cache-environments"><span>default env</span><span>analysis env</span></div>
+      </div>
+      <div class="cache-workspace">
+        <div class="cache-workspace-heading"><strong>Workspace B</strong><span>pixi.toml</span></div>
+        <div class="cache-environments"><span>default env</span><span>simulation env</span></div>
+      </div>
     </div>
   </div>
-  <p class="reuse-result"><strong>Download and extract once.</strong> Reuse packages across environments.</p>
+  <p class="reuse-result"><strong>One cache</strong> serves multiple Pixi workspaces and all of their environments.</p>
 </div>
+
+<p class="cache-user-limit"><strong>User boundary:</strong> another user has a separate package cache.</p>
 
 ---
 layout: keynote
