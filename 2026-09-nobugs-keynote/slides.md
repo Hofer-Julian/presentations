@@ -173,6 +173,7 @@ layout: image-right
 image: /conda.png
 alt: Conda package manager logo
 eyebrow: Conda
+class: conda-slide
 ---
 
 # Cross-platform and cross-language
@@ -443,27 +444,15 @@ The scale changes from a notebook to a cluster, but the principle stays the same
 layout: end
 ---
 
-# Which part resonated with you?
+# Talk with me in person
 
-<p class="closing-question">What workaround do you currently need with Pixi?</p>
+<p class="closing-question">Tell me about your workflow, infrastructure and workarounds.</p>
 
-<div class="contact-grid">
-  <div>
-    <a href="https://www.linkedin.com/company/prefix-dev/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><img src="/linkedin-qr-code.png" alt="Prefix LinkedIn QR code" /></a>
-    <p>Write to us</p>
-  </div>
-  <div>
-    <a href="https://discord.gg/mJfRpHJ9" target="_blank" rel="noopener noreferrer"><img src="/discord-qr-code.png" alt="Prefix Discord QR code" /></a>
-    <p>Talk with us</p>
-  </div>
-  <div>
-    <a href="https://pixi.sh/latest/" target="_blank" rel="noopener noreferrer"><img src="/pixi-qr-code.png" alt="Pixi documentation QR code" /></a>
-    <p>Try Pixi</p>
-  </div>
+<div class="closing-contact">
+  <a href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/" target="_blank" rel="noopener noreferrer"><img src="/slides-qr-code.png" alt="QR code for the hosted slides" /></a>
+  <p class="closing-email"><a href="mailto:julianhofer@gnome.org">julianhofer@gnome.org</a></p>
 </div>
 
-<p class="closing-invitation"><span>Your workflow</span><span>Your infrastructure</span><span>Your workaround</span></p>
-
 <!--
-I want to hear which point matched your experience and which workaround you currently maintain. A concrete workflow and infrastructure constraint give us something useful to investigate together.
+Please come and talk with me after the session. You can also email me, and the QR code opens the hosted slides.
 -->

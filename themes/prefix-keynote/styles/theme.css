@@ -229,9 +229,9 @@
 
 .toc-slide ol {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 17px 38px;
-  margin: 20px 0 0;
+  grid-template-columns: minmax(0, 760px);
+  gap: 10px;
+  margin: 14px 0 0;
   padding: 0;
   counter-reset: chapter;
   list-style: none;
@@ -239,19 +239,19 @@
 
 .toc-slide li {
   position: relative;
-  min-height: 100px;
+  min-height: 68px;
   margin: 0;
-  padding: 17px 18px 15px 66px;
+  padding: 10px 18px 10px 66px;
   background: var(--keynote-white);
   border: 1px solid var(--keynote-border);
   border-radius: 13px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .toc-slide li::before {
   content: counter(chapter, decimal-leading-zero);
   position: absolute;
-  top: 15px;
+  top: 11px;
   left: 17px;
   color: var(--keynote-muted);
   font-family: var(--slidev-font-mono);
@@ -261,8 +261,8 @@
 
 .toc-slide li strong {
   display: block;
-  margin-bottom: 4px;
-  font-size: 20px;
+  margin-bottom: 2px;
+  font-size: 18px;
 }
 
 .keynote-section {
@@ -339,9 +339,14 @@
 }
 
 .keynote-image-layout .intro-speaker + .keynote-image-panel {
-  margin: 0 0 0 8px;
+  margin: 32px 36px 82px 8px;
   border: 0;
-  border-radius: 0;
+  border-radius: 20px;
+}
+
+.keynote-image-layout .conda-slide + .keynote-image-panel img {
+  box-sizing: border-box;
+  padding: 58px;
 }
 
 /* Narrative components */
@@ -423,15 +428,27 @@
   font-size: 25px;
 }
 
+.code-right-layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .code-right-grid {
   display: grid;
   grid-template-columns: 0.82fr 1.18fr;
+  flex: 1;
   gap: 30px;
-  align-items: start;
+  align-items: stretch;
+  min-height: 0;
 }
 
 .code-right-copy {
   padding-top: 4px;
+}
+
+.code-right-copy h1 {
+  margin-bottom: 18px;
+  font-size: 36px;
 }
 
 .code-right-copy ul {
@@ -440,11 +457,16 @@
 }
 
 .code-right-copy li {
-  margin: 0 0 13px;
-  font-size: 17px;
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.code-right-code .slidev-code-wrapper {
+  height: 100%;
 }
 
 .code-right-code pre {
+  height: 100%;
   font-size: 11.5px;
 }
 
@@ -567,57 +589,35 @@
 }
 
 .keynote-end .closing-question {
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   color: var(--keynote-muted);
   font-size: 21px;
 }
 
-.contact-grid {
+.closing-contact {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 650px;
-  margin: 0 auto;
+  justify-items: center;
+  gap: 12px;
 }
 
-.contact-grid > div {
-  padding: 10px 12px 7px;
+.closing-contact a {
+  border: 0;
+}
+
+.closing-contact img {
+  display: block;
+  width: 190px;
+  height: 190px;
+  padding: 10px;
   background: var(--keynote-white);
   border: 1px solid var(--keynote-border);
   border-radius: 15px;
 }
 
-.contact-grid a {
-  display: inline-block;
-  padding: 5px;
-  border: 0;
-}
-
-.contact-grid a:hover {
-  background: var(--keynote-yellow);
-}
-
-.contact-grid img {
-  width: 92px;
-  height: 92px;
-}
-
-.contact-grid p {
-  margin: 2px 0 !important;
-  font-size: 15px;
-}
-
-.keynote-end .closing-invitation {
-  display: flex;
-  justify-content: center;
-  gap: 34px;
-  margin: 17px 0 0;
-  font-size: 14px;
-}
-
-.closing-invitation span {
-  padding-bottom: 5px;
-  border-bottom: 3px solid var(--keynote-yellow);
+.closing-email {
+  margin: 0 !important;
+  font-family: var(--slidev-font-mono);
+  font-size: 18px;
 }
 
 /* Footer */
