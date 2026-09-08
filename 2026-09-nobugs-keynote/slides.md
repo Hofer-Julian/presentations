@@ -34,7 +34,7 @@ class: toc-slide
 
 - **How I got into reproducible software**
 - **Packages from source with Pixi Build**
-- **How Pixi can serve HPC better**
+- **Ideas for better HPC support**
 - **Tell me about your workflows and workarounds**
 
 
@@ -280,7 +280,7 @@ layout: section
 label: Part 3
 ---
 
-# How Pixi can serve HPC better
+# Ideas for better HPC support
 
 ---
 layout: keynote
@@ -430,7 +430,7 @@ eyebrow: "Shipped in Rattler · Not exposed in Pixi"
 ---
 layout: keynote
 class: vfs-slide
-eyebrow: Draft prototype
+eyebrow: Prototype
 ---
 
 # Rattler VFS
