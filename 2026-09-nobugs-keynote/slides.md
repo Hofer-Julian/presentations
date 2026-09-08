@@ -399,17 +399,22 @@ eyebrow: Shipped
 
 # Package cache reuse
 
-<div class="storage-fanout" role="img" aria-label="One user's package cache supplies packages to three project environments">
-  <div class="cache-source"><span>One user cache</span><strong>downloaded and extracted once</strong></div>
-  <div class="fanout-line" aria-hidden="true"></div>
-  <div class="environment-trees">
-    <div><strong>Project A</strong><span>packages linked from cache</span></div>
-    <div><strong>Project B</strong><span>packages linked from cache</span></div>
-    <div><strong>Project C</strong><span>packages linked from cache</span></div>
+<div class="single-user-cache" role="img" aria-label="One researcher reuses NumPy, SciPy and ROOT from one package cache across three environments">
+  <p class="single-user-label">Researcher A</p>
+  <div class="single-user-flow">
+    <div class="package-inventory">
+      <span>User package cache</span>
+      <div><strong>NumPy</strong><strong>SciPy</strong><strong>ROOT</strong></div>
+    </div>
+    <div class="reuse-arrows" aria-hidden="true"><span>→</span><span>→</span><span>→</span></div>
+    <div class="linked-environments">
+      <div><strong>analysis</strong><span>environment</span></div>
+      <div><strong>simulation</strong><span>environment</span></div>
+      <div><strong>development</strong><span>environment</span></div>
+    </div>
   </div>
+  <p class="reuse-result"><strong>Download and extract once.</strong> Reuse packages across environments.</p>
 </div>
-
-<p class="storage-footnote"><strong>Current boundary:</strong> each user still maintains a separate cache.</p>
 
 ---
 layout: keynote
@@ -418,6 +423,8 @@ eyebrow: "Shipped in Rattler · Not exposed in Pixi"
 ---
 
 # Layered package caches
+<p class="layer-intro">Today, each user has a separate cache. A shared read-only layer could cross that boundary.</p>
+
 <div class="cache-layers" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environments">
   <div class="private-layer"><h2>Researcher A</h2><p>Private writable cache</p><p>Project environments</p></div>
   <div class="private-layer"><h2>Researcher B</h2><p>Private writable cache</p><p>Project environments</p></div>
@@ -433,7 +440,7 @@ class: vfs-slide
 eyebrow: Prototype
 ---
 
-# Rattler VFS
+# Virtual file system
 
 <div class="vfs-stack" role="img" aria-label="A package cache and writable overlay feed a virtual mount that presents a complete environment to a process">
   <div class="vfs-storage">
