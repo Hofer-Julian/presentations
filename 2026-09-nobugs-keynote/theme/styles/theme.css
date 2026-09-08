@@ -1193,6 +1193,10 @@
 }
 
 .state.preview {
+  background: rgb(0 29 56 / 8%);
+}
+
+.state.prototype {
   background: var(--keynote-yellow);
 }
 

@@ -287,7 +287,7 @@ layout: keynote
 class: hpc-constraints
 ---
 
-# HPC software has to work with<br>the machine and the facility.
+# HPC software has specific needs
 
 <div class="constraint-rails">
   <div class="compute-rail">
@@ -457,7 +457,7 @@ eyebrow: Where Pixi stands
 <div class="readiness-rows">
   <div><span class="state shipped">Shipped</span><p><strong>Rich platforms, offline mode and pixi-pack</strong><br>Describe nodes and cross network boundaries.</p></div>
   <div><span class="state preview">Preview</span><p><strong>Pixi Build</strong><br>Build explicitly declared source packages for the target.</p></div>
-  <div><span class="state prototype">Gap + prototype</span><p><strong>Pixi cache layering and Rattler VFS</strong><br>Make Pixi work better on shared clusters.</p></div>
+  <div><span class="state prototype">Prototype</span><p><strong>Pixi cache layering and Rattler VFS</strong><br>Make Pixi work better on shared clusters.</p></div>
 </div>
 
 
