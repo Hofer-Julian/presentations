@@ -7,6 +7,7 @@ const props = defineProps<{
 <template>
   <div class="slidev-layout code-right-layout">
     <p v-if="props.eyebrow" class="eyebrow">{{ props.eyebrow }}</p>
+    <slot name="title" />
     <div class="code-right-grid">
       <div class="code-right-copy">
         <slot />

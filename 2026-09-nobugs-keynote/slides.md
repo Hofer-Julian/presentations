@@ -1,5 +1,5 @@
 ---
-theme: ../themes/prefix-keynote
+theme: ./theme
 layout: cover
 class: cover-beamline
 highlighter: shiki
@@ -17,38 +17,26 @@ occasion: NOBUGS 2026
 
 <div class="beamline-cover">
   <p class="eyebrow">NOBUGS 2026 · 23 September 2026</p>
-  <div class="beamline-track" aria-hidden="true">
-    <span class="beamline-source"></span>
-    <span class="beamline-node beamline-node-a">environment</span>
-    <span class="beamline-node beamline-node-b">software</span>
-    <span class="beamline-node beamline-node-c">results</span>
-  </div>
   <h1><span>Pixi for</span> Scientific Workflows</h1>
   <p class="cover-speaker">Julian Hofer</p>
+  <a class="cover-slides-qr" href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/" target="_blank" rel="noopener noreferrer">
+    <img src="/slides-qr-code.png" alt="QR code for the hosted slides" />
+    <span>link to the slides</span>
+  </a>
 </div>
 
-<!--
-Scientific software connects environments, compiled software and results. This talk follows that line from my own first reproducibility problem to the constraints of shared research infrastructure.
--->
 
 ---
 class: toc-slide
 ---
 
-# Today
+# Contents
 
-1. **Why reproducibility became personal**
-   Physics, notebooks and numerical models
-2. **From environments to packages**
-   Pixi Build and compiled research software
-3. **Designing for shared infrastructure**
-   Multi-user caches on HPC systems
-4. **Your constraints**
-   What should Pixi solve next?
+- **How I got into reproducible software**
+- **From environments to packages**
+- **How Pixi can serve HPC better**
+- **Tell me about your workflows and workarounds**
 
-<!--
-The story starts with a script that stopped working, then grows from one workstation to a shared cluster. Pixi Build and layered package caches address different parts of that same problem.
--->
 
 ---
 layout: image-right
@@ -65,18 +53,13 @@ class: intro-speaker
 - Builds Pixi at prefix.dev
 - Likes tools that make complex work boring
 
-<!--
-I came to package management through scientific software rather than through package management itself. Each step in this talk is a problem I have encountered or now work on directly.
--->
 
 ---
 layout: section
 label: Part 1
 ---
 
-# Reproducibility became personal
-
-A script should outlive the machine that created it.
+# How I got into reproducible software
 
 ---
 layout: image-right
@@ -85,6 +68,7 @@ alt: Light-mode Mathematica notebook with executable code and a sine plot
 source: Source · wolfram.com
 sourceHref: https://www.wolfram.com/notebooks/
 eyebrow: Physics and Mathematica
+class: notebook-slide
 ---
 
 # Notebooks felt like magic
@@ -95,27 +79,6 @@ eyebrow: Physics and Mathematica
 
 **Until an upgrade broke my script.**
 
-<!--
-Mathematica notebooks already had many ideas we now associate with computational notebooks. The document felt self-contained, but the software environment was not. A release changed the units API and an existing script stopped working.
--->
-
----
-layout: keynote
-class: statement-slide reproducibility-slide
-eyebrow: The missing part
----
-
-# The notebook was saved.<br>The environment was not.
-
-<div class="reproducibility-equation">
-  <span>code</span><b>+</b><span>dependencies</span><b>+</b><span>tools</span><b>=</b><strong>reproducible work</strong>
-</div>
-
-<p class="statement-lead">“It worked last year” is not enough.</p>
-
-<!--
-Saving the source is necessary, but it does not preserve the interpreter, libraries, system tools or commands needed to run it. Reproducibility starts when those inputs become explicit.
--->
 
 ---
 layout: image-right
@@ -124,6 +87,7 @@ alt: Delft3D Flexible Mesh displaying a coastal water model and its computationa
 source: Source · deltares.nl
 sourceHref: https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite
 eyebrow: Deltares
+class: water-model-slide
 ---
 
 # Open source numerical water models
@@ -133,9 +97,6 @@ eyebrow: Deltares
 - Shared by researchers and engineers
 - Expected to work for years
 
-<!--
-At Deltares I worked with open source numerical water models. The Python interpreter was only one piece. Compilers, native libraries and platform-specific binaries were just as important and much harder to manage consistently.
--->
 
 ---
 layout: two-cards
@@ -164,16 +125,13 @@ Often installed through separate instructions.
 
 <p class="statement-lead">The result depended on both.</p>
 
-<!--
-A requirements file could describe Python packages, but not the complete native stack around the model. The setup became a chain of package managers and undocumented machine state.
--->
 
 ---
 layout: image-right
 image: /conda.png
 alt: Conda package manager logo
 eyebrow: Conda
-class: conda-slide
+class: conda-slide logo-slide
 ---
 
 # Cross-platform and cross-language
@@ -186,31 +144,27 @@ class: conda-slide
 **What was still missing**
 
 - Fast environment creation
-- A first-class lock file
+- A lock file
 - Reusable project tasks
 
-<!--
-Conda solved the language boundary better than Python-only tools. It gave us binaries across platforms. But the workflow still lacked speed, deterministic lock files and a task model that teammates could run consistently.
--->
 
 ---
 layout: image-right
 image: /paxton-text-in-circle.svg
 alt: Paxton, the Pixi mascot
 eyebrow: Pixi
+class: pixi-slide logo-slide
 ---
 
-# One project, one workflow
+# Introducing Pixi
 
-- Conda and PyPI dependencies
-- A cross-platform `pixi.lock`
-- Named tasks with `pixi run`
-- Multiple environments in one manifest
-- Fast, written in Rust
+- ⚡ Fast
+- 🆓 Open-Source
+- 🛠️ Workflow management
+- 🌐 Multi-environments
+- 🔒 Reproducible thanks to lock-files
+- 🐍 Supports conda and PyPI ecosystem
 
-<!--
-Pixi keeps the cross-language package ecosystem and makes the project itself the unit of work. The manifest, lock file and task names can be committed together.
--->
 
 ---
 layout: section
@@ -219,46 +173,90 @@ label: Part 2
 
 # From environments to packages
 
-Your own compiled code belongs in the dependency graph too.
-
 ---
 layout: keynote
-class: build-story
-eyebrow: Pixi Build
+class: source-build-story
+eyebrow: Pixi Build · Preview
 ---
 
-# Your model belongs in the environment
+# Pixi can build software from source
 
-<div class="package-flow" role="img" aria-label="C++ reservoir source is built into a conda package and used by a Python analysis">
-  <div><span class="eyebrow">Source</span><h2>Reservoir model</h2><p>C++ + CMake</p></div>
-  <span class="flow-arrow" aria-hidden="true">→</span>
-  <div><span class="eyebrow">Build</span><h2>Conda package</h2><p>Executable + dependencies</p></div>
-  <span class="flow-arrow" aria-hidden="true">→</span>
-  <div><span class="eyebrow">Use</span><h2>Python analysis</h2><p>Runs the installed model</p></div>
+<p class="build-backend-definition">Build backends are executable adapters for languages and build tools.</p>
+
+<div class="source-build-flow" role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
+  <div><strong>source + project files</strong></div>
+  <b aria-hidden="true">→</b>
+  <div class="flow-backend"><strong>Pixi Build backend</strong></div>
+  <b aria-hidden="true">→</b>
+  <div><strong><code>.conda</code> package</strong></div>
+  <b aria-hidden="true">→</b>
+  <div><strong>environment</strong></div>
 </div>
 
-<p class="statement-lead">A colleague clones the project, not your machine.</p>
+<div class="backend-ecosystem" aria-label="Supported build ecosystems">
+  <span>Python</span><span>CMake</span><span>Rust</span><span>R</span><span>ROS</span><span>Mojo</span><span>raw recipes</span>
+</div>
 
-<!--
-This follows the same pattern used by scientific Python projects such as CPython and NumPy in the SciPy 2026 talk: source code becomes a package with explicit build and runtime dependencies. The example here uses a small CMake reservoir model and a Python analysis.
--->
+<p class="source-dependency-note"><code>path</code>, <code>git</code>, or <code>url</code> dependencies build automatically during normal Pixi use.</p>
+
 
 ---
 layout: code-right
-eyebrow: A local source package
+class: scipy-manifest
 ---
 
-# Keep the build system.<br>Describe the package.
+# SciPy already<br>describes its build
 
 ::left::
 
-- `reservoir-model` is a project dependency
-- `pixi-build-cmake` calls the existing CMake build
-- Build and runtime dependencies become explicit
-- `pixi run analyse` uses the installed executable
-- Example: `snippets/reservoir-model/`
+<div class="backend-layers">
+  <div>
+    <span>Conda package layer</span>
+    <strong><code>pixi-build-python</code></strong>
+    <p>adapts the Python project for Pixi</p>
+  </div>
+  <div>
+    <span>Python build layer</span>
+    <strong><code>mesonpy</code></strong>
+    <p>remains SciPy's PEP 517 backend</p>
+  </div>
+</div>
 
 ::right::
+<p class="code-filename">pixi.toml</p>
+
+
+```toml
+preview = ["pixi-build"]
+
+[package.build.backend]
+name = "pixi-build-python"
+version = "*"
+
+[package.build.config]
+compilers = ["c", "cxx"]
+
+[package.host-dependencies]
+ninja = "*"
+meson = "*"
+meson-python = "*"
+cython = "*"
+pythran = "*"
+pybind11 = "*"
+numpy = "*"
+blas-devel = "*"
+```
+
+
+---
+layout: keynote
+class: consume-scipy
+eyebrow: A downstream pixi.toml
+---
+
+# Now consume SciPy from source
+<p class="code-filename">pixi.toml</p>
+
 
 ```toml
 [workspace]
@@ -267,120 +265,150 @@ platforms = ["linux-64"]
 preview = ["pixi-build"]
 
 [dependencies]
-python = "3.13.*"
-reservoir-model = { path = "." }
-
-[package]
-name = "reservoir-model"
-version = "0.1.0"
-
-[package.build.backend]
-name = "pixi-build-cmake"
-version = "0.*"
+scipy = { git = "https://github.com/scipy/scipy.git" }
 ```
 
-<!--
-The path dependency is the key line. Pixi prepares the environment by building the local package through its declared backend. CMake remains the build system. Pixi connects it to package metadata and dependency resolution.
+<div class="install-action">
+  <code>pixi install</code>
+  <span aria-hidden="true">→</span>
+  <p>follow Git · read SciPy's manifest · build a <code>.conda</code> package · install it</p>
+</div>
 
-From the repository root, run `pixi run --manifest-path 2026-09-nobugs-keynote/snippets/reservoir-model/pixi.toml analyse`.
--->
-
----
-layout: two-cards
-eyebrow: Two complementary tools
----
-
-# Package the software.<br>Task the workflow.
-
-::left::
-
-## Source package
-
-Build an installable artifact.
-
-Declare build, host and runtime dependencies.
-
-::right::
-
-## Task
-
-Run analysis, tests or a compiler.
-
-Connect the workflow's steps.
-
-::after::
-
-<p class="statement-lead">Pixi Build prepares it. <code>pixi run</code> uses it.</p>
-
-<!--
-A task can invoke a compiler, but it does not make the output a dependency with package metadata. The source package and the analysis task solve different problems and work together.
--->
 
 ---
 layout: section
 label: Part 3
 ---
 
-# Designing for shared infrastructure
-
-A cluster turns one reproducible project into a multi-user systems problem.
+# How Pixi can serve HPC better
 
 ---
 layout: keynote
-class: hpc-requirements
-eyebrow: HPC needs
+class: hpc-constraints
 ---
 
-# One package supply. Many independent projects.
+# HPC software has to work with<br>the machine and the facility.
 
-- **Available without internet** on compute nodes
-- **Readable by many users** without copying every package
-- **Writable through a controlled path**
-- **Isolated project environments** for different requirements
-- **Safe under concurrency** on shared filesystems
-- **Owned and maintained** with an explicit lifecycle
+<div class="constraint-rails">
+  <div class="compute-rail">
+    <span>Compute</span>
+    <h2>Use the hardware you have</h2>
+    <p>CPU architecture, GPU capability, drivers and system libraries determine which binary belongs on a node.</p>
+  </div>
+  <div class="facility-rail">
+    <span>Infrastructure</span>
+    <h2>Assume storage and networks are constrained</h2>
+    <p>Compute nodes may be offline. Shared filesystems make millions of small files expensive.</p>
+  </div>
+</div>
 
-<p class="slide-caption">Share package storage, not one mutable environment.</p>
-
-<!--
-The goal is not one centrally managed environment for everyone. Infrastructure teams should make packages available while researchers keep independent project requirements and lock files. Access, concurrency and lifecycle are part of the deployment contract.
--->
 
 ---
-layout: two-cards
-eyebrow: The trust boundary
+layout: code-right
+class: rich-platform-demo
 ---
 
-# Readable is not the same as writable
+::title::
+
+# Rich platforms
 
 ::left::
 
-## Shared reads
+<p class="code-filename">pixi.toml</p>
 
-Researchers reuse packages maintained by the site.
-
-No duplicate download or extraction for every user.
+```toml
+[workspace]
+platforms = [
+  { name = "gpu", platform = "linux-64", cuda = "12.0" },
+  { name = "cpu", platform = "linux-64", archspec = "x86_64_v3" },
+  "linux-64",
+]
+```
 
 ::right::
 
-## Controlled writes
+<div class="platform-selection">
+  <p class="platform-selection-title">Pixi picks the first platform that matches this system</p>
+  <div class="concrete-system"><span>This system</span><strong>CUDA 12 · x86_64_v3</strong></div>
+  <ol>
+    <li class="selected"><span>1</span><strong>gpu</strong><small>CUDA 12</small></li>
+    <li><span>2</span><strong>cpu</strong><small>x86_64_v3</small></li>
+    <li><span>3</span><strong>linux-64</strong><small>fallback</small></li>
+  </ol>
+</div>
 
-Unrelated users cannot alter software that others execute.
 
-Private work does not pollute the shared base.
+---
+layout: keynote
+class: hardware-fallback
+eyebrow: Shipped, but experimental
+---
+
+# No existing package?
+## Build it yourself with Pixi Build!
+
+
+
+<div class="fallback-path">
+  <div><span>1</span><p><strong>Declare the target</strong><br>Rich platform and build variants</p></div>
+  <div><span>2</span><p><strong>Declare the build</strong><br>Compilers, host tools and libraries</p></div>
+  <div><span>3</span><p><strong>Consume the result</strong><br>A normal <code>.conda</code> dependency</p></div>
+</div>
+
+
+
+---
+layout: two-cards
+class: disconnected-solutions
+eyebrow: Shipped
+---
+
+# Limited connectivity
+
+::left::
+
+## The cache is already there
+
+<code class="solution-command">pixi install --offline</code>
+
+Great for limited or no internet connection. When solving, only considers packages that are already in the cache.
+
+::right::
+
+## The packages need transport
+
+<code class="solution-command">pixi-pack --platform gpu pixi.toml</code>
+
+Move a complete environment archive across the network boundary, then unpack it without Pixi.
 
 ::after::
 
-<p class="statement-lead">A world-writable cache is not the answer.</p>
 
-<!--
-The cache contains executable software and metadata used by the solver. Making all of it writable to every user crosses a security boundary. A useful design shares reads while keeping writes controlled.
--->
+---
+layout: keynote
+class: materialization-cost
+eyebrow: The remaining disk problem
+---
+
+# One package cache.<br>Many environment trees.
+
+<div class="storage-fanout" role="img" aria-label="One package cache feeds three separately materialized project environments">
+  <div class="cache-source"><span>Package cache</span><strong>download and extraction reused</strong></div>
+  <div class="fanout-line" aria-hidden="true"></div>
+  <div class="environment-trees">
+    <div><strong>Project A</strong><span>bin · lib · include</span></div>
+    <div><strong>Project B</strong><span>bin · lib · include</span></div>
+    <div><strong>Project C</strong><span>bin · lib · include</span></div>
+  </div>
+</div>
+
+<p class="storage-footnote">Pixi can redirect transient state to node-local scratch. Shared project environments still create separate directory trees, metadata operations and inode entries.</p>
+
 
 ---
 layout: keynote
 class: layer-slide
-eyebrow: Rattler layered package caches
+eyebrow: Layered package caches · Not exposed by Pixi
 ---
 
 # Share the base. Keep writes private.
@@ -392,67 +420,67 @@ eyebrow: Rattler layered package caches
   <div class="shared-layer"><strong>Site-owned package cache</strong><span>Read-only for researchers</span></div>
 </div>
 
-<p class="slide-caption">Rattler already supports ordered package cache layers. Pixi still needs a complete user-facing integration.</p>
+<p class="slide-caption"><strong>Today:</strong> Rattler supports ordered cache layers. Pixi does not yet expose a complete user-facing configuration.</p>
 
-<!--
-Rattler's layered package cache can search several cache locations and choose a writable layer for additions. That provides the mechanism for a maintained read-only base and private writable overlays.
-
-This is not a claim that the complete Pixi configuration and metadata policy already ship. Repodata, permissions, cleanup and filesystem behaviour still need a coherent integration.
-
-Source: https://github.com/conda/rattler/pull/1003
--->
 
 ---
 layout: keynote
-class: priorities-slide
-eyebrow: Mechanism plus policy
+class: vfs-slide
+eyebrow: Rattler VFS · Draft prototype
 ---
 
-# Layering solves the shape.<br>Operations complete the design.
+# What if another environment did not require installing another environment?
 
-<div class="priority-list">
-  <div><h2>Access</h2><p>Ownership and permissions cover packages and metadata.</p></div>
-  <div><h2>Concurrency</h2><p>Readers and writers behave predictably on real cluster filesystems.</p></div>
-  <div><h2>Lifecycle</h2><p>Storage, cleanup and running jobs have a clear owner.</p></div>
+<div class="vfs-path" role="img" aria-label="Cached packages are presented through a virtual filesystem as an environment, with only changes stored in a writable overlay">
+  <div><span>Existing</span><strong>package cache</strong></div>
+  <b aria-hidden="true">→</b>
+  <div class="vfs-mount"><span>On demand</span><strong>virtual mount</strong></div>
+  <b aria-hidden="true">→</b>
+  <div><span>Visible</span><strong>environment tree</strong></div>
+  <div class="vfs-overlay"><span>Only changes</span><strong>writable overlay</strong></div>
 </div>
 
-<p class="slide-caption">The requirements must be validated with the people operating real clusters.</p>
+<div class="prototype-caveats">
+  <p><strong>Promising:</strong> much faster fresh environments in prototype measurements.</p>
+  <p><strong>Unresolved:</strong> warm overhead, mount lifecycle and multi-user access control.</p>
+</div>
 
-<!--
-A library capability is not yet an operational contract. The integration has to include every cache component, concurrent use and cleanup rules. This is where experience from real facilities matters most.
--->
 
 ---
 layout: keynote
-class: statement-slide
-eyebrow: The thread through all of this
+class: readiness-map
+eyebrow: Where Pixi stands
 ---
 
-# Keep the workflow.<br>Make its inputs explicit.
+# Strong on hardware.<br>Still open on shared storage.
 
-<div class="requirement-list">
-  <p><strong>Reproduce the environment.</strong> Commit dependencies, platforms and tasks.</p>
-  <p><strong>Package your own software.</strong> Connect source builds to the dependency graph.</p>
-  <p><strong>Share packages safely.</strong> Separate a common base from private writes.</p>
+<div class="readiness-rows">
+  <div><span class="state shipped">Shipped</span><p><strong>Rich platforms, offline mode and pixi-pack</strong><br>Describe nodes and cross network boundaries.</p></div>
+  <div><span class="state preview">Preview</span><p><strong>Pixi Build</strong><br>Build explicitly declared source packages for the target.</p></div>
+  <div><span class="state prototype">Gap + prototype</span><p><strong>Pixi cache layering and Rattler VFS</strong><br>Make Pixi work better on shared clusters.</p></div>
 </div>
 
-<!--
-The scale changes from a notebook to a cluster, but the principle stays the same: make hidden inputs and responsibilities explicit. Pixi can already cover much of the project workflow. Shared infrastructure shows where the design still needs work.
--->
 
 ---
 layout: end
 ---
 
-# Tell me about your workflow, infrastructure and workarounds
+# Let's keep talking
+<p class="closing-subtitle">about your workflows, infrastructure and workarounds</p>
 
-<p class="closing-question">Tell me about your workflow, infrastructure and workarounds.</p>
 
-<div class="closing-contact">
-  <a href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/" target="_blank" rel="noopener noreferrer"><img src="/slides-qr-code.png" alt="QR code for the hosted slides" /></a>
-  <p class="closing-email"><a href="mailto:julianhofer@gnome.org">julianhofer@gnome.org</a></p>
+<div class="closing-options">
+  <div class="closing-option">
+    <span class="closing-option-label">Talk to me today</span>
+    <span class="closing-point">🫵</span>
+  </div>
+  <a class="closing-option closing-email" href="mailto:julianhofer@gnome.org">
+    <span class="closing-option-label">Send me an email</span>
+    <strong>julianhofer@gnome.org</strong>
+  </a>
+  <a class="closing-option closing-slides" href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/" target="_blank" rel="noopener noreferrer">
+    <img src="/slides-qr-code.png" alt="QR code for the hosted slides" />
+    <span>link to the slides</span>
+  </a>
 </div>
 
-<!--
-Please come and talk with me after the session. You can also email me, and the QR code opens the hosted slides.
--->
