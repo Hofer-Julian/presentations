@@ -444,7 +444,7 @@ The scale changes from a notebook to a cluster, but the principle stays the same
 layout: end
 ---
 
-# Talk with me in person
+# Tell me about your workflow, infrastructure and workarounds
 
 <p class="closing-question">Tell me about your workflow, infrastructure and workarounds.</p>
 
