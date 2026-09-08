@@ -15,5 +15,6 @@ const props = defineProps<{
       </div>
       <div class="code-right-code"><slot name="right" /></div>
     </div>
+    <slot name="after" />
   </div>
 </template>

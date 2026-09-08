@@ -33,7 +33,7 @@ class: toc-slide
 # Contents
 
 - **How I got into reproducible software**
-- **From environments to packages**
+- **Packages from source with Pixi Build**
 - **How Pixi can serve HPC better**
 - **Tell me about your workflows and workarounds**
 
@@ -171,7 +171,7 @@ layout: section
 label: Part 2
 ---
 
-# From environments to packages
+# Packages from source with Pixi Build
 
 ---
 layout: keynote
@@ -306,6 +306,7 @@ class: hpc-constraints
 ---
 layout: code-right
 class: rich-platform-demo
+eyebrow: Shipped
 ---
 
 ::title::
@@ -313,6 +314,17 @@ class: rich-platform-demo
 # Rich platforms
 
 ::left::
+
+<div class="rich-platform-explanation">
+  <p>Rich platforms add hardware constraints to a normal Conda platform.</p>
+  <dl>
+    <div><dt><code>archspec</code></dt><dd>CPU architecture</dd></div>
+    <div><dt><code>cuda</code></dt><dd>driver capability</dd></div>
+    <div><dt><code>linux-64</code></dt><dd>generic fallback</dd></div>
+  </dl>
+</div>
+
+::right::
 
 <p class="code-filename">pixi.toml</p>
 
@@ -325,27 +337,22 @@ platforms = [
 ]
 ```
 
-::right::
+::after::
 
-<div class="platform-selection">
-  <p class="platform-selection-title">Pixi picks the first platform that matches this system</p>
-  <div class="concrete-system"><span>This system</span><strong>CUDA 12 · x86_64_v3</strong></div>
-  <ol>
-    <li class="selected"><span>1</span><strong>gpu</strong><small>CUDA 12</small></li>
-    <li><span>2</span><strong>cpu</strong><small>x86_64_v3</small></li>
-    <li><span>3</span><strong>linux-64</strong><small>fallback</small></li>
-  </ol>
+<div class="architecture-selection" role="img" aria-label="A system with CUDA 12 and x86-64-v3 selects the first compatible rich platform, gpu">
+  <div><span>Current system</span><strong>CUDA 12 · x86_64_v3</strong></div>
+  <p><span>first match</span>→</p>
+  <div class="selected-architecture"><span>Selected platform</span><strong>gpu · linux-64 + CUDA 12</strong></div>
 </div>
 
 
 ---
 layout: keynote
 class: hardware-fallback
-eyebrow: Shipped, but experimental
+eyebrow: Preview
 ---
 
-# No existing package?
-## Build it yourself with Pixi Build!
+# Pixi Build
 
 
 
@@ -363,7 +370,7 @@ class: disconnected-solutions
 eyebrow: Shipped
 ---
 
-# Limited connectivity
+# Offline mode and pixi-pack
 
 ::left::
 
@@ -387,62 +394,62 @@ Move a complete environment archive across the network boundary, then unpack it 
 ---
 layout: keynote
 class: materialization-cost
-eyebrow: The remaining disk problem
+eyebrow: Shipped
 ---
 
-# One package cache.<br>Many environment trees.
+# Package cache reuse
 
-<div class="storage-fanout" role="img" aria-label="One package cache feeds three separately materialized project environments">
-  <div class="cache-source"><span>Package cache</span><strong>download and extraction reused</strong></div>
+<div class="storage-fanout" role="img" aria-label="One user's package cache supplies packages to three project environments">
+  <div class="cache-source"><span>One user cache</span><strong>downloaded and extracted once</strong></div>
   <div class="fanout-line" aria-hidden="true"></div>
   <div class="environment-trees">
-    <div><strong>Project A</strong><span>bin · lib · include</span></div>
-    <div><strong>Project B</strong><span>bin · lib · include</span></div>
-    <div><strong>Project C</strong><span>bin · lib · include</span></div>
+    <div><strong>Project A</strong><span>packages linked from cache</span></div>
+    <div><strong>Project B</strong><span>packages linked from cache</span></div>
+    <div><strong>Project C</strong><span>packages linked from cache</span></div>
   </div>
 </div>
 
-<p class="storage-footnote">Pixi can redirect transient state to node-local scratch. Shared project environments still create separate directory trees, metadata operations and inode entries.</p>
-
+<p class="storage-footnote"><strong>Current boundary:</strong> each user still maintains a separate cache.</p>
 
 ---
 layout: keynote
 class: layer-slide
-eyebrow: Layered package caches · Not exposed by Pixi
+eyebrow: "Shipped in Rattler · Not exposed in Pixi"
 ---
 
-# Share the base. Keep writes private.
-
-<div class="cache-layers" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environment">
-  <div class="private-layer"><h2>Researcher A</h2><p>Private writable cache</p><p>Project A environment</p></div>
-  <div class="private-layer"><h2>Researcher B</h2><p>Private writable cache</p><p>Project B environment</p></div>
-  <div class="layer-connector" aria-hidden="true">↑ shared reads ↑</div>
+# Layered package caches
+<div class="cache-layers" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environments">
+  <div class="private-layer"><h2>Researcher A</h2><p>Private writable cache</p><p>Project environments</p></div>
+  <div class="private-layer"><h2>Researcher B</h2><p>Private writable cache</p><p>Project environments</p></div>
+  <div class="layer-connector" aria-hidden="true">read shared packages · write privately</div>
   <div class="shared-layer"><strong>Site-owned package cache</strong><span>Read-only for researchers</span></div>
 </div>
 
-<p class="slide-caption"><strong>Today:</strong> Rattler supports ordered cache layers. Pixi does not yet expose a complete user-facing configuration.</p>
-
+<p class="slide-caption">Rattler supports ordered cache layers. Pixi does not yet expose and document this multi-user setup.</p>
 
 ---
 layout: keynote
 class: vfs-slide
-eyebrow: Rattler VFS · Draft prototype
+eyebrow: Draft prototype
 ---
 
-# What if another environment did not require installing another environment?
+# Rattler VFS
 
-<div class="vfs-path" role="img" aria-label="Cached packages are presented through a virtual filesystem as an environment, with only changes stored in a writable overlay">
-  <div><span>Existing</span><strong>package cache</strong></div>
-  <b aria-hidden="true">→</b>
-  <div class="vfs-mount"><span>On demand</span><strong>virtual mount</strong></div>
-  <b aria-hidden="true">→</b>
-  <div><span>Visible</span><strong>environment tree</strong></div>
-  <div class="vfs-overlay"><span>Only changes</span><strong>writable overlay</strong></div>
+<div class="vfs-stack" role="img" aria-label="A package cache and writable overlay feed a virtual mount that presents a complete environment to a process">
+  <div class="vfs-storage">
+    <div><span>Already stored</span><strong>package cache</strong></div>
+    <b aria-hidden="true">+</b>
+    <div><span>Only changes</span><strong>writable overlay</strong></div>
+  </div>
+  <b class="vfs-stack-arrow" aria-hidden="true">↓</b>
+  <div class="vfs-transform"><span>Virtual mount</span><strong>prefix replacement and entry points on demand</strong></div>
+  <b class="vfs-stack-arrow" aria-hidden="true">↓</b>
+  <div class="vfs-view"><span>Process sees</span><strong>bin · lib · include</strong><small>complete environment tree</small></div>
 </div>
 
-<div class="prototype-caveats">
-  <p><strong>Promising:</strong> much faster fresh environments in prototype measurements.</p>
-  <p><strong>Unresolved:</strong> warm overhead, mount lifecycle and multi-user access control.</p>
+<div class="vfs-summary">
+  <p><strong>Best demonstrated use:</strong> faster fresh, disposable environments.</p>
+  <p><strong>Still open:</strong> warm overhead, mount lifecycle and NFS user isolation.</p>
 </div>
 
 
@@ -455,9 +462,9 @@ eyebrow: Where Pixi stands
 # Strong on hardware.<br>Still open on shared storage.
 
 <div class="readiness-rows">
-  <div><span class="state shipped">Shipped</span><p><strong>Rich platforms, offline mode and pixi-pack</strong><br>Describe nodes and cross network boundaries.</p></div>
-  <div><span class="state preview">Preview</span><p><strong>Pixi Build</strong><br>Build explicitly declared source packages for the target.</p></div>
-  <div><span class="state prototype">Prototype</span><p><strong>Pixi cache layering and Rattler VFS</strong><br>Make Pixi work better on shared clusters.</p></div>
+  <div><span class="state shipped">Shipped</span><strong>Rich platforms, offline mode and pixi-pack</strong></div>
+  <div><span class="state preview">Preview</span><strong>Pixi Build</strong></div>
+  <div><span class="state prototype">Prototype</span><strong>Pixi cache layering and Rattler VFS</strong></div>
 </div>
 
 
