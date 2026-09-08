@@ -1,13 +1,12 @@
 <script setup lang="ts">
-const props = defineProps<{
-  class?: string
+defineProps<{
   eyebrow?: string
 }>()
 </script>
 
 <template>
-  <div class="slidev-layout default" :class="props.class">
-    <p v-if="props.eyebrow" class="eyebrow">{{ props.eyebrow }}</p>
+  <div class="slidev-layout default">
+    <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
     <slot />
   </div>
 </template>

@@ -1,7 +1,11 @@
 ---
 theme: ./theme
 layout: cover
-class: cover-beamline
+eyebrow: NOBUGS 2026 · 23 September 2026
+speaker: Julian Hofer
+qr: /slides-qr-code.png
+qrLabel: link to the slides
+qrHref: https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/
 highlighter: shiki
 lineNumbers: false
 fonts:
@@ -15,19 +19,11 @@ title: Pixi for Scientific Workflows
 occasion: NOBUGS 2026
 ---
 
-<div class="beamline-cover">
-  <p class="eyebrow">NOBUGS 2026 · 23 September 2026</p>
-  <h1><span>Pixi for</span> Scientific Workflows</h1>
-  <p class="cover-speaker">Julian Hofer</p>
-  <a class="cover-slides-qr" href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/" target="_blank" rel="noopener noreferrer">
-    <img src="/slides-qr-code.png" alt="QR code for the hosted slides" />
-    <span>link to the slides</span>
-  </a>
-</div>
+# <span class="block font-light">Pixi for</span> Scientific Workflows
 
 
 ---
-class: toc-slide
+layout: toc
 ---
 
 # Contents
@@ -43,7 +39,7 @@ layout: image-right
 image: /julian.jpg
 alt: Julian Hofer
 backgroundSize: cover
-class: intro-speaker
+frame: false
 ---
 
 # Julian Hofer
@@ -68,7 +64,9 @@ alt: Light-mode Mathematica notebook with executable code and a sine plot
 source: Source · wolfram.com
 sourceHref: https://www.wolfram.com/notebooks/
 eyebrow: Physics and Mathematica
-class: notebook-slide
+frame: false
+imageClass: mix-blend-multiply
+split: 54% 46%
 ---
 
 # Notebooks felt like magic
@@ -87,7 +85,7 @@ alt: Delft3D Flexible Mesh displaying a coastal water model and its computationa
 source: Source · deltares.nl
 sourceHref: https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite
 eyebrow: Deltares
-class: water-model-slide
+frame: false
 ---
 
 # Open source numerical water models
@@ -123,7 +121,7 @@ Often installed through separate instructions.
 
 ::after::
 
-<p class="statement-lead">The result depended on both.</p>
+<p class="statement">The result depended on both.</p>
 
 
 ---
@@ -131,7 +129,8 @@ layout: image-right
 image: /conda.png
 alt: Conda package manager logo
 eyebrow: Conda
-class: conda-slide logo-slide
+frame: false
+imageClass: box-border p-14
 ---
 
 # Cross-platform and cross-language
@@ -153,7 +152,9 @@ layout: image-right
 image: /paxton-text-in-circle.svg
 alt: Paxton, the Pixi mascot
 eyebrow: Pixi
-class: pixi-slide logo-slide
+frame: false
+imageClass: scale-160
+class: emoji-list
 ---
 
 # Introducing Pixi
@@ -175,48 +176,50 @@ label: Part 2
 
 ---
 layout: keynote
-class: source-build-story
 eyebrow: Pixi Build · Preview
 ---
 
 # Pixi can build software from source
 
-<p class="build-backend-definition">Build backends are executable adapters for languages and build tools.</p>
+<p class="lead">Build backends are executable adapters for languages and build tools.</p>
 
-<div class="source-build-flow" role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
+<Flow class="mb-4" role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
   <div><strong>source + project files</strong></div>
-  <b aria-hidden="true">→</b>
-  <div class="flow-backend"><strong>Pixi Build backend</strong></div>
-  <b aria-hidden="true">→</b>
+  <div class="flow-highlight"><strong>Pixi Build backend</strong></div>
   <div><strong><code>.conda</code> package</strong></div>
-  <b aria-hidden="true">→</b>
   <div><strong>environment</strong></div>
+</Flow>
+
+<div class="pill-row mb-4" aria-label="Supported build ecosystems">
+  <span>Python</span>
+  <span>CMake</span>
+  <span>Rust</span>
+  <span>R</span>
+  <span>ROS</span>
+  <span>Mojo</span>
+  <span>raw recipes</span>
 </div>
 
-<div class="backend-ecosystem" aria-label="Supported build ecosystems">
-  <span>Python</span><span>CMake</span><span>Rust</span><span>R</span><span>ROS</span><span>Mojo</span><span>raw recipes</span>
-</div>
-
-<p class="source-dependency-note"><code>path</code>, <code>git</code>, or <code>url</code> dependencies build automatically during normal Pixi use.</p>
+<Note><code>path</code>, <code>git</code>, or <code>url</code> dependencies build automatically during normal Pixi use.</Note>
 
 
 ---
 layout: code-right
-class: scipy-manifest
+gridClass: "grid-cols-[0.77fr_1.23fr] gap-7"
 ---
 
 # SciPy already<br>describes its build
 
 ::left::
 
-<div class="backend-layers">
-  <div>
-    <span>Conda package layer</span>
+<div class="layers">
+  <div class="card p-4 border-l-4 border-l-accent rounded-l-none">
+    <span class="label mb-2">Conda package layer</span>
     <strong><code>pixi-build-python</code></strong>
     <p>adapts the Python project for Pixi</p>
   </div>
-  <div>
-    <span>Python build layer</span>
+  <div class="card p-4 border-l-4 border-l-line rounded-l-none">
+    <span class="label mb-2">Python build layer</span>
     <strong><code>mesonpy</code></strong>
     <p>remains SciPy's PEP 517 backend</p>
   </div>
@@ -250,12 +253,11 @@ blas-devel = "*"
 
 ---
 layout: keynote
-class: consume-scipy
 eyebrow: A downstream pixi.toml
 ---
 
 # Now consume SciPy from source
-<p class="code-filename">pixi.toml</p>
+<p class="code-filename code-accent">pixi.toml</p>
 
 
 ```toml
@@ -268,9 +270,9 @@ preview = ["pixi-build"]
 scipy = { git = "https://github.com/scipy/scipy.git" }
 ```
 
-<div class="install-action">
-  <code>pixi install</code>
-  <span aria-hidden="true">→</span>
+<div class="command-row mt-5">
+  <code class="command">pixi install</code>
+  <span class="flow-arrow" aria-hidden="true">→</span>
   <p>follow Git · read SciPy's manifest · build a <code>.conda</code> package · install it</p>
 </div>
 
@@ -284,29 +286,28 @@ label: Part 3
 
 ---
 layout: keynote
-class: hpc-constraints
 ---
 
 # HPC software has specific needs
 
-<div class="constraint-rails">
-  <div class="compute-rail">
-    <span>Compute</span>
+<div class="relative grid grid-cols-2 gap-7 mt-8 before:content-empty before:absolute before:-top-3.5 before:-bottom-3.5 before:left-1/2 before:w-px before:bg-line">
+  <div class="card min-h-52 p-6 border-t-8 border-t-ink rounded-t-none">
+    <span class="label">Compute</span>
     <h2>Use the hardware you have</h2>
-    <p>CPU architecture, GPU capability, drivers and system libraries determine which binary belongs on a node.</p>
+    <p class="text-muted text-base">CPU architecture, GPU capability, drivers and system libraries determine which binary belongs on a node.</p>
   </div>
-  <div class="facility-rail">
-    <span>Infrastructure</span>
+  <div class="card min-h-52 p-6 border-t-8 border-t-accent rounded-t-none">
+    <span class="label">Infrastructure</span>
     <h2>Assume storage and networks are constrained</h2>
-    <p>Compute nodes may be offline. Shared filesystems make millions of small files expensive.</p>
+    <p class="text-muted text-base">Compute nodes may be offline. Shared filesystems make millions of small files expensive.</p>
   </div>
 </div>
 
 
 ---
 layout: code-right
-class: rich-platform-demo
 eyebrow: Shipped
+gridClass: "grid-cols-[0.88fr_1.12fr] gap-7 flex-none"
 ---
 
 ::title::
@@ -315,9 +316,9 @@ eyebrow: Shipped
 
 ::left::
 
-<div class="rich-platform-explanation">
-  <p>Rich platforms add hardware constraints to a normal Conda platform.</p>
-  <dl>
+<div class="card box-border h-full p-4">
+  <p class="text-muted text-base">Rich platforms add hardware constraints to a normal Conda platform.</p>
+  <dl class="definitions">
     <div><dt><code>archspec</code></dt><dd>CPU architecture</dd></div>
     <div><dt><code>cuda</code></dt><dd>driver capability</dd></div>
     <div><dt><code>linux-64</code></dt><dd>generic fallback</dd></div>
@@ -339,34 +340,37 @@ platforms = [
 
 ::after::
 
-<div class="architecture-selection" role="img" aria-label="A system with CUDA 12 and x86-64-v3 selects the first compatible rich platform, gpu">
-  <div><span>Current system</span><strong>CUDA 12 · x86_64_v3</strong></div>
-  <p><span>first match</span>→</p>
-  <div class="selected-architecture"><span>Selected platform</span><strong>gpu · linux-64 + CUDA 12</strong></div>
+<div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-stretch mt-5" role="img" aria-label="A system with CUDA 12 and x86-64-v3 selects the first compatible rich platform, gpu">
+  <div class="card py-3 px-4">
+    <span class="label mb-1">Current system</span>
+    <strong class="text-base">CUDA 12 · x86_64_v3</strong>
+  </div>
+  <p class="flow-arrow">
+    <span class="label mb-px">first match</span>→
+  </p>
+  <div class="py-3 px-4 bg-accent rounded-xl">
+    <span class="label mb-1">Selected platform</span>
+    <strong class="text-base">gpu · linux-64 + CUDA 12</strong>
+  </div>
 </div>
 
 
 ---
 layout: keynote
-class: hardware-fallback
 eyebrow: Preview
 ---
 
 # Pixi Build
 
-
-
-<div class="fallback-path">
-  <div><span>1</span><p><strong>Declare the target</strong><br>Rich platform and build variants</p></div>
-  <div><span>2</span><p><strong>Declare the build</strong><br>Compilers, host tools and libraries</p></div>
-  <div><span>3</span><p><strong>Consume the result</strong><br>A normal <code>.conda</code> dependency</p></div>
-</div>
-
+<Steps class="mt-10 mb-6">
+  <Step number="1" title="Declare the target">Rich platform and build variants</Step>
+  <Step number="2" title="Declare the build">Compilers, host tools and libraries</Step>
+  <Step number="3" title="Consume the result">A normal <code>.conda</code> dependency</Step>
+</Steps>
 
 
 ---
 layout: two-cards
-class: disconnected-solutions
 eyebrow: Shipped
 ---
 
@@ -376,7 +380,7 @@ eyebrow: Shipped
 
 ## The cache is already there
 
-<code class="solution-command">pixi install --offline</code>
+<code>pixi install --offline</code>
 
 Great for limited or no internet connection. When solving, only considers packages that are already in the cache.
 
@@ -384,84 +388,122 @@ Great for limited or no internet connection. When solving, only considers packag
 
 ## The packages need transport
 
-<code class="solution-command">pixi-pack --platform gpu pixi.toml</code>
+<code>pixi-pack --platform gpu pixi.toml</code>
 
 Move a complete environment archive across the network boundary, then unpack it without Pixi.
-
-::after::
 
 
 ---
 layout: keynote
-class: materialization-cost
 eyebrow: Shipped
 ---
 
 # Package cache reuse
 
-<div class="single-user-cache" role="img" aria-label="One researcher reuses Python, NumPy and SciPy from one package cache across environments in two Pixi workspaces">
-  <p class="single-user-label">Researcher A</p>
-  <div class="single-user-flow">
-    <div class="package-inventory">
-      <span>User package cache</span>
-      <div><strong>Python</strong><strong>NumPy</strong><strong>SciPy</strong></div>
-    </div>
-    <div class="reuse-arrows" aria-hidden="true"><span>→</span><span>→</span></div>
-    <div class="pixi-workspaces">
-      <div class="cache-workspace">
-        <div class="cache-workspace-heading"><strong>Workspace A</strong><span>pixi.toml</span></div>
-        <div class="cache-environments"><span>default env</span><span>analysis env</span></div>
+<div class="panel mt-4 p-4" role="img" aria-label="One researcher reuses Python, NumPy and SciPy from one package cache across environments in two Pixi workspaces">
+  <span class="label mb-2.5">Researcher A</span>
+  <div class="grid grid-cols-[0.9fr_3.5rem_1.1fr] gap-3 items-stretch">
+    <div class="flex flex-col justify-center p-4 bg-accent rounded-xl text-center">
+      <span class="label mb-3">User package cache</span>
+      <div class="flex gap-2 justify-center">
+        <strong class="py-1.5 px-2.5 bg-white rounded-full text-sm">Python</strong>
+        <strong class="py-1.5 px-2.5 bg-white rounded-full text-sm">NumPy</strong>
+        <strong class="py-1.5 px-2.5 bg-white rounded-full text-sm">SciPy</strong>
       </div>
-      <div class="cache-workspace">
-        <div class="cache-workspace-heading"><strong>Workspace B</strong><span>pixi.toml</span></div>
-        <div class="cache-environments"><span>default env</span><span>simulation env</span></div>
+    </div>
+    <div class="grid grid-rows-2 gap-2.5" aria-hidden="true">
+      <span class="flow-arrow">→</span>
+      <span class="flow-arrow">→</span>
+    </div>
+    <div class="grid grid-rows-2 gap-2.5">
+      <div class="card py-2.5 px-3.5">
+        <div class="flex items-center justify-between">
+          <strong class="text-sm">Workspace A</strong>
+          <span class="text-muted text-2xs">pixi.toml</span>
+        </div>
+        <div class="flex gap-2 mt-2">
+          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">default env</span>
+          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">analysis env</span>
+        </div>
+      </div>
+      <div class="card py-2.5 px-3.5">
+        <div class="flex items-center justify-between">
+          <strong class="text-sm">Workspace B</strong>
+          <span class="text-muted text-2xs">pixi.toml</span>
+        </div>
+        <div class="flex gap-2 mt-2">
+          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">default env</span>
+          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">simulation env</span>
+        </div>
       </div>
     </div>
   </div>
-  <p class="reuse-result"><strong>One cache</strong> serves multiple Pixi workspaces and all of their environments.</p>
+  <p class="mt-3 text-muted text-sm text-center"><strong class="text-ink">One cache</strong> serves multiple Pixi workspaces and all of their environments.</p>
 </div>
 
-<p class="cache-user-limit"><strong>User boundary:</strong> another user has a separate package cache.</p>
+<Note class="text-sm text-center"><strong>User boundary:</strong> another user has a separate package cache.</Note>
 
 ---
 layout: keynote
-class: layer-slide
 eyebrow: "Shipped in Rattler · Not exposed in Pixi"
 ---
 
 # Layered package caches
-<p class="layer-intro">Today, each user has a separate cache. A shared read-only layer could cross that boundary.</p>
+<p class="lead">Today, each user has a separate cache. A shared read-only layer could cross that boundary.</p>
 
-<div class="cache-layers" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environments">
-  <div class="private-layer"><h2>Researcher A</h2><p>Private writable cache</p><p>Project environments</p></div>
-  <div class="private-layer"><h2>Researcher B</h2><p>Private writable cache</p><p>Project environments</p></div>
-  <div class="layer-connector" aria-hidden="true">read shared packages · write privately</div>
-  <div class="shared-layer"><strong>Site-owned package cache</strong><span>Read-only for researchers</span></div>
+<div class="grid grid-cols-2 gap-x-6 gap-y-3 max-w-3xl mx-auto mt-6 mb-4" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environments">
+  <div class="card card-outlined card-compact p-4">
+    <h2>Researcher A</h2>
+    <p>Private writable cache</p>
+    <p>Project environments</p>
+  </div>
+  <div class="card card-outlined card-compact p-4">
+    <h2>Researcher B</h2>
+    <p>Private writable cache</p>
+    <p>Project environments</p>
+  </div>
+  <span class="label col-span-full text-center" aria-hidden="true">read shared packages · write privately</span>
+  <div class="col-span-full flex justify-between py-4 px-5 bg-accent rounded-xl">
+    <strong>Site-owned package cache</strong>
+    <span class="text-sm">Read-only for researchers</span>
+  </div>
 </div>
 
-<p class="slide-caption">Rattler supports ordered cache layers. Pixi does not yet expose and document this multi-user setup.</p>
+<p class="text-muted text-xs">Rattler supports ordered cache layers. Pixi does not yet expose and document this multi-user setup.</p>
 
 ---
 layout: keynote
-class: vfs-slide
 eyebrow: Prototype
 ---
 
 # Virtual file system
 
-<div class="vfs-stack" role="img" aria-label="A package cache and writable overlay feed a virtual mount that presents a complete environment to a process">
-  <div class="vfs-storage">
-    <div><span>Already stored</span><strong>package cache</strong></div>
-    <b aria-hidden="true">+</b>
-    <div><span>Only changes</span><strong>writable overlay</strong></div>
+<div class="grid justify-items-center max-w-3xl mx-auto mt-4 mb-3.5" role="img" aria-label="A package cache and writable overlay feed a virtual mount that presents a complete environment to a process">
+  <div class="grid grid-cols-[1fr_auto_1fr] gap-3 items-center w-full">
+    <div class="card py-3 px-4 text-center">
+      <span class="label mb-1">Already stored</span>
+      <strong class="text-base">package cache</strong>
+    </div>
+    <b class="flow-arrow font-normal" aria-hidden="true">+</b>
+    <div class="card py-3 px-4 text-center">
+      <span class="label mb-1">Only changes</span>
+      <strong class="text-base">writable overlay</strong>
+    </div>
   </div>
-  <b class="vfs-stack-arrow" aria-hidden="true">↓</b>
-  <div class="vfs-transform"><span>Virtual mount</span><strong>prefix replacement and entry points on demand</strong></div>
-  <b class="vfs-stack-arrow" aria-hidden="true">↓</b>
-  <div class="vfs-view"><span>Process sees</span><strong>bin · lib · include</strong><small>complete environment tree</small></div>
+  <b class="flow-arrow h-6 leading-6 font-normal" aria-hidden="true">↓</b>
+  <div class="w-[74%] py-3 px-4 bg-accent rounded-xl text-center">
+    <span class="label mb-1">Virtual mount</span>
+    <strong class="text-base">prefix replacement and entry points on demand</strong>
+  </div>
+  <b class="flow-arrow h-6 leading-6 font-normal" aria-hidden="true">↓</b>
+  <div class="w-[58%] py-3 px-4 bg-ink text-white rounded-xl text-center">
+    <span class="label label-inverse mb-1">Process sees</span>
+    <strong class="text-base">bin · lib · include</strong>
+    <small class="block mt-1 text-white/70 text-2xs">complete environment tree</small>
+  </div>
 </div>
 
-<div class="vfs-summary">
+<div class="summary">
   <p><strong>Best demonstrated use:</strong> faster fresh, disposable environments.</p>
   <p><strong>Still open:</strong> warm overhead, mount lifecycle and NFS user isolation.</p>
 </div>
@@ -469,39 +511,32 @@ eyebrow: Prototype
 
 ---
 layout: keynote
-class: readiness-map
 eyebrow: Where Pixi stands
 ---
 
 # Strong on hardware.<br>Still open on shared storage.
 
-<div class="readiness-rows">
-  <div><span class="state shipped">Shipped</span><strong>Rich platforms, offline mode and pixi-pack</strong></div>
-  <div><span class="state preview">Preview</span><strong>Pixi Build</strong></div>
-  <div><span class="state prototype">Prototype</span><strong>Pixi cache layering and Rattler VFS</strong></div>
+<div class="grid gap-3.5 mt-8">
+  <StatusRow state="shipped">Rich platforms, offline mode and pixi-pack</StatusRow>
+  <StatusRow state="preview">Pixi Build</StatusRow>
+  <StatusRow state="prototype">Pixi cache layering and Rattler VFS</StatusRow>
 </div>
 
 
 ---
 layout: end
+subtitle: about your workflows, infrastructure and workarounds
+email: julianhofer@gnome.org
+qr: /slides-qr-code.png
+qrLabel: link to the slides
+qrHref: https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/
 ---
 
 # Let's keep talking
-<p class="closing-subtitle">about your workflows, infrastructure and workarounds</p>
 
+::options::
 
-<div class="closing-options">
-  <div class="closing-option">
-    <span class="closing-option-label">Talk to me today</span>
-    <span class="closing-point">🫵</span>
-  </div>
-  <a class="closing-option closing-email" href="mailto:julianhofer@gnome.org">
-    <span class="closing-option-label">Send me an email</span>
-    <strong>julianhofer@gnome.org</strong>
-  </a>
-  <a class="closing-option closing-slides" href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/" target="_blank" rel="noopener noreferrer">
-    <img src="/slides-qr-code.png" alt="QR code for the hosted slides" />
-    <span>link to the slides</span>
-  </a>
+<div class="closing-option">
+  <span class="closing-label">Talk to me today</span>
+  <span class="text-6xl leading-none">🫵</span>
 </div>
-
