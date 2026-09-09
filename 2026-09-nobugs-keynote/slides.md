@@ -423,25 +423,27 @@ eyebrow: Prototype
 
 # Virtual file system
 
-<div class="grid justify-items-center max-w-3xl mx-auto mt-4 mb-3.5" role="img" aria-label="A package cache and writable overlay feed a virtual mount that presents a complete environment to a process">
+<p class="lead">One researcher hit a million-file quota and now archives environments by hand.</p>
+
+<div class="grid justify-items-center max-w-3xl mx-auto mt-2 mb-2" role="img" aria-label="A package cache and writable overlay feed a virtual mount that presents a complete environment to a process">
   <div class="grid grid-cols-[1fr_auto_1fr] gap-3 items-center w-full">
-    <div class="card py-3 px-4 text-center">
+    <div class="card py-2 px-4 text-center">
       <span class="label mb-1">Already stored</span>
       <strong class="text-base">package cache</strong>
     </div>
     <b class="flow-arrow font-normal" aria-hidden="true">+</b>
-    <div class="card py-3 px-4 text-center">
+    <div class="card py-2 px-4 text-center">
       <span class="label mb-1">Only changes</span>
       <strong class="text-base">writable overlay</strong>
     </div>
   </div>
-  <b class="flow-arrow h-6 leading-6 font-normal" aria-hidden="true">↓</b>
-  <div class="w-[74%] py-3 px-4 bg-accent rounded-xl text-center">
+  <b class="flow-arrow h-5 leading-5 font-normal" aria-hidden="true">↓</b>
+  <div class="w-[74%] py-2 px-4 bg-accent rounded-xl text-center">
     <span class="label mb-1">Virtual mount</span>
     <strong class="text-base">prefix replacement and entry points on demand</strong>
   </div>
-  <b class="flow-arrow h-6 leading-6 font-normal" aria-hidden="true">↓</b>
-  <div class="w-[58%] py-3 px-4 bg-ink text-white rounded-xl text-center">
+  <b class="flow-arrow h-5 leading-5 font-normal" aria-hidden="true">↓</b>
+  <div class="w-[58%] py-2 px-4 bg-ink text-white rounded-xl text-center">
     <span class="label label-inverse mb-1">Process sees</span>
     <strong class="text-base">bin · lib · include</strong>
     <small class="block mt-1 text-white/70 text-2xs">complete environment tree</small>
