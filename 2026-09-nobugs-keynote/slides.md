@@ -480,7 +480,7 @@ layout: end
 
 <div class="bubbles">
   <Bubble label="In the Q&A">right now</Bubble>
-  <Bubble label="In the hallway">for the rest of NOBUGS</Bubble>
+  <Bubble label="In the hallway">for the rest of the day</Bubble>
   <Bubble label="By email" href="mailto:julianhofer@gnome.org">julianhofer@gnome.org</Bubble>
 </div>
 
