@@ -205,27 +205,21 @@ eyebrow: Pixi Build · Preview
 layout: code-right
 ---
 
-# Pixi Build wraps a<br>Python build backend
+# Showcasing SciPy
 
 ::left::
 
-<div class="layers">
-  <div class="card p-4 border-l-4 border-l-accent rounded-l-none">
-    <span class="label mb-2">Conda package layer</span>
-    <strong><code>pixi-build-python</code></strong>
-    <p>adapts the Python project for Pixi</p>
-  </div>
-  <div class="card p-4 border-l-4 border-l-line rounded-l-none">
-    <span class="label mb-2">Python build layer</span>
-    <strong><code>mesonpy</code></strong>
-    <p>remains SciPy's PEP 517 backend</p>
-  </div>
-</div>
+- Still in preview
+- Backend takes care of building a conda package
+- C and C++ compilers are automatically set up
+- `host-dependencies` specify libraries necessary during both build- and run-time
+
 
 ::right::
 <CodeFile name="pixi.toml">
 
 ```toml
+[workspace]
 preview = ["pixi-build"]
 
 [package.build.backend]
@@ -302,17 +296,17 @@ label: Part 3
 layout: keynote
 ---
 
-# HPC software has specific needs
+# My understanding of HPC requirements
 
-<div class="relative grid grid-cols-2 gap-7 mt-8 before:content-empty before:absolute before:-top-3.5 before:-bottom-3.5 before:left-1/2 before:w-px before:bg-line">
-  <div class="card min-h-52 p-6 border-t-8 border-t-ink rounded-t-none">
+<div class="relative grid grid-cols-2 gap-7 mt-20 before:content-empty before:absolute before:-top-3.5 before:-bottom-3.5 before:left-1/2 before:w-px before:bg-line">
+  <div class="card p-6 border-t-8 border-t-ink rounded-t-none">
     <span class="label">Compute</span>
-    <h2>Use the hardware you have</h2>
-    <p class="text-muted text-base">Nodes differ in CPU architecture, GPU and system libraries. A binary built for one node is the wrong one for the next.</p>
+    <h2 class="min-h-[2lh]">Optimized for your hardware</h2>
+    <p class="text-muted text-base">The software needs to fully utilize the CPU, GPU and system libraries on the machine.</p>
   </div>
-  <div class="card min-h-52 p-6 border-t-8 border-t-accent rounded-t-none">
+  <div class="card p-6 border-t-8 border-t-accent rounded-t-none">
     <span class="label">Infrastructure</span>
-    <h2>Assume storage and networks are constrained</h2>
+    <h2 class="min-h-[2lh]">Able to deal with constrained storage and network</h2>
     <p class="text-muted text-base">Compute nodes may be offline. Shared filesystems make millions of small files expensive.</p>
   </div>
 </div>
@@ -320,28 +314,21 @@ layout: keynote
 
 ---
 layout: code-right
-eyebrow: Rich platforms · Shipped
+eyebrow: Shipped
 ---
 
 ::title::
 
-# Dependencies follow the machine
+# Rich platforms
 
 ::left::
 
-<div class="box-border h-full flex flex-col">
-  <h2>One workspace, the whole cluster</h2>
-  <ul class="text-base text-muted">
-    <li>Login nodes, GPU nodes and workstations share one manifest</li>
-    <li>One lock file records every platform</li>
-    <li>No wrapper script picking a package set</li>
-  </ul>
-  <div class="pill-row mt-auto" aria-label="Hardware a platform can require">
-    <span>cuda</span>
-    <span>glibc</span>
-    <span>archspec</span>
-  </div>
-</div>
+- Best of both worlds:
+  - Lock file describing all platforms
+  - Platforms can be as specific as needed to fit your machine
+- The first platform that matches your machine will be used
+- You can still use one environment for everything
+
 
 ::right::
 
@@ -365,7 +352,6 @@ pytorch-cpu = "*"
 
 ::after::
 
-<Note class="text-base">A GPU machine satisfies both entries. The first match wins.</Note>
 
 
 ---
