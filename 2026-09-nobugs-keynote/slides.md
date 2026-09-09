@@ -65,7 +65,7 @@ source: Source · wolfram.com
 sourceHref: https://www.wolfram.com/notebooks/
 eyebrow: Physics and Mathematica
 frame: false
-imageClass: mix-blend-multiply
+blend: true
 split: 54% 46%
 ---
 
@@ -130,7 +130,7 @@ image: /conda.png
 alt: Conda package manager logo
 eyebrow: Conda
 frame: false
-imageClass: box-border p-14
+scale: 0.7
 ---
 
 # Cross-platform and cross-language
@@ -153,7 +153,7 @@ image: /paxton-text-in-circle.svg
 alt: Paxton, the Pixi mascot
 eyebrow: Pixi
 frame: false
-imageClass: scale-160
+scale: 1.6
 class: emoji-list
 ---
 
@@ -205,7 +205,6 @@ eyebrow: Pixi Build · Preview
 
 ---
 layout: code-right
-gridClass: "grid-cols-[0.77fr_1.23fr] gap-7"
 ---
 
 # SciPy already<br>describes its build
@@ -307,7 +306,6 @@ layout: keynote
 ---
 layout: code-right
 eyebrow: Shipped
-gridClass: "grid-cols-[0.88fr_1.12fr] gap-7 flex-none"
 ---
 
 ::title::

@@ -623,6 +623,11 @@
   height: 100%;
 }
 
+/* Merges a screenshot's white background into the paper */
+.keynote-image-blend {
+  mix-blend-mode: multiply;
+}
+
 .keynote-image-panel figcaption {
   position: absolute;
   right: 0.5rem;
@@ -645,13 +650,18 @@
   flex-direction: column;
 }
 
-:where(.code-right-grid) {
+.code-right-grid {
   display: grid;
   grid-template-columns: 0.82fr 1.18fr;
   flex: 1;
   gap: 2rem;
   align-items: stretch;
   min-height: 0;
+}
+
+/* A grid followed by more content keeps its own height */
+.code-right-grid:not(:last-child) {
+  flex: none;
 }
 
 .code-right-copy {

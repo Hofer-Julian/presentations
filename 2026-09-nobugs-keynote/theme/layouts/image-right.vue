@@ -1,19 +1,29 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const props = withDefaults(defineProps<{
   alt?: string
   backgroundSize?: 'contain' | 'cover'
+  blend?: boolean
   eyebrow?: string
   frame?: boolean
   image: string
-  imageClass?: string
   source?: string
   sourceHref?: string
   split?: string
+  scale?: number
 }>(), {
   alt: '',
   backgroundSize: 'contain',
+  blend: false,
   frame: true,
+  scale: 1,
 })
+
+const imageStyle = computed(() => ({
+  objectFit: props.backgroundSize,
+  transform: props.scale === 1 ? undefined : `scale(${props.scale})`,
+}))
 </script>
 
 <template>
@@ -26,8 +36,8 @@ const props = withDefaults(defineProps<{
       <img
         :src="props.image"
         :alt="props.alt"
-        :class="props.imageClass"
-        :style="{ objectFit: props.backgroundSize }"
+        :class="{ 'keynote-image-blend': props.blend }"
+        :style="imageStyle"
       />
       <figcaption v-if="props.source">
         <a v-if="props.sourceHref" :href="props.sourceHref">{{ props.source }}</a>
