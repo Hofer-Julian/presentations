@@ -472,23 +472,21 @@ eyebrow: Where Pixi stands
 
 ---
 layout: end
-subtitle: about your workflows, infrastructure and workarounds
-email: julianhofer@gnome.org
-qr: /slides-qr-code.png
-qrLabel: link to the slides
-qrHref: https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/
 ---
 
 # Let's keep talking
 
-::options::
+<p class="closing-subtitle">about your workflows, infrastructure and workarounds</p>
 
-<div class="closing-option">
-  <span class="closing-label">In the Q&A</span>
-  <strong class="closing-detail">right now</strong>
+<div class="bubbles">
+  <Bubble label="In the Q&A">right now</Bubble>
+  <Bubble label="In the hallway">for the rest of NOBUGS</Bubble>
+  <Bubble label="By email" href="mailto:julianhofer@gnome.org">julianhofer@gnome.org</Bubble>
 </div>
 
-<div class="closing-option">
-  <span class="closing-label">In the hallway</span>
-  <strong class="closing-detail">for the rest of NOBUGS</strong>
-</div>
+<SlidesQr
+  class="end-slides-qr"
+  src="/slides-qr-code.png"
+  label="link to the slides"
+  href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/"
+/>
