@@ -124,11 +124,11 @@ Often installed through separate instructions.
 
 ---
 layout: image-right
-image: /conda.png
+image: /conda-logo.svg
 alt: Conda package manager logo
 eyebrow: Conda
 frame: false
-scale: 0.7
+scale: 0.9
 ---
 
 # Cross-platform and cross-language
@@ -223,8 +223,7 @@ layout: code-right
 </div>
 
 ::right::
-<p class="code-filename">pixi.toml</p>
-
+<CodeFile name="pixi.toml">
 
 ```toml
 preview = ["pixi-build"]
@@ -247,6 +246,8 @@ numpy = "*"
 blas-devel = "*"
 ```
 
+</CodeFile>
+
 
 ---
 layout: compare
@@ -259,12 +260,14 @@ eyebrow: Pixi Build · Preview
 
 ## Work on SciPy
 
-<p class="code-filename">pixi.toml</p>
+<CodeFile name="pixi.toml">
 
 ```toml
 [dev]
 scipy = { path = "." }
 ```
+
+</CodeFile>
 
 SciPy itself is not built. Its build, host and run dependencies land in your environment, so you compile and test it yourself.
 
@@ -272,12 +275,14 @@ SciPy itself is not built. Its build, host and run dependencies land in your env
 
 ## Depend on SciPy
 
-<p class="code-filename">pixi.toml</p>
+<CodeFile name="pixi.toml">
 
 ```toml
 [dependencies]
 scipy = { git = "https://github.com/scipy/scipy.git" }
 ```
+
+</CodeFile>
 
 Pixi follows Git, builds SciPy in an isolated environment and installs the resulting <code>.conda</code> package.
 
@@ -303,7 +308,7 @@ layout: keynote
   <div class="card min-h-52 p-6 border-t-8 border-t-ink rounded-t-none">
     <span class="label">Compute</span>
     <h2>Use the hardware you have</h2>
-    <p class="text-muted text-base">CPU architecture, GPU capability, drivers and system libraries determine which binary belongs on a node.</p>
+    <p class="text-muted text-base">Nodes differ in CPU architecture, GPU and system libraries. A binary built for one node is the wrong one for the next.</p>
   </div>
   <div class="card min-h-52 p-6 border-t-8 border-t-accent rounded-t-none">
     <span class="label">Infrastructure</span>
@@ -315,52 +320,52 @@ layout: keynote
 
 ---
 layout: code-right
-eyebrow: Shipped
+eyebrow: Rich platforms · Shipped
 ---
 
 ::title::
 
-# Rich platforms
+# Dependencies follow the machine
 
 ::left::
 
-<div class="card box-border h-full p-4">
-  <p class="text-muted text-base">Rich platforms add hardware constraints to a normal Conda platform.</p>
-  <dl class="definitions">
-    <div><dt><code>archspec</code></dt><dd>CPU architecture</dd></div>
-    <div><dt><code>cuda</code></dt><dd>driver capability</dd></div>
-    <div><dt><code>linux-64</code></dt><dd>generic fallback</dd></div>
-  </dl>
+<div class="box-border h-full flex flex-col">
+  <h2>One workspace, the whole cluster</h2>
+  <ul class="text-base text-muted">
+    <li>Login nodes, GPU nodes and workstations share one manifest</li>
+    <li>One lock file records every platform</li>
+    <li>No wrapper script picking a package set</li>
+  </ul>
+  <div class="pill-row mt-auto" aria-label="Hardware a platform can require">
+    <span>cuda</span>
+    <span>glibc</span>
+    <span>archspec</span>
+  </div>
 </div>
 
 ::right::
 
-<p class="code-filename">pixi.toml</p>
+<CodeFile name="pixi.toml">
 
 ```toml
 [workspace]
 platforms = [
   { name = "gpu", platform = "linux-64", cuda = "12.0" },
-  { name = "cpu", platform = "linux-64", archspec = "x86_64_v3" },
-  "linux-64",
+  { name = "cpu", platform = "linux-64" },
 ]
+
+[target."*gpu*".dependencies]
+pytorch-gpu = "*"
+
+[target."*cpu*".dependencies]
+pytorch-cpu = "*"
 ```
+
+</CodeFile>
 
 ::after::
 
-<div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-stretch mt-5" role="img" aria-label="A system with CUDA 12 and x86-64-v3 selects the first compatible rich platform, gpu">
-  <div class="card py-3 px-4">
-    <span class="label mb-1">Current system</span>
-    <strong class="text-base">CUDA 12 · x86_64_v3</strong>
-  </div>
-  <p class="flow-arrow">
-    <span class="label mb-px">first match</span>→
-  </p>
-  <div class="py-3 px-4 bg-accent rounded-xl">
-    <span class="label mb-1">Selected platform</span>
-    <strong class="text-base">gpu · linux-64 + CUDA 12</strong>
-  </div>
-</div>
+<Note class="text-base">A GPU machine satisfies both entries. The first match wins.</Note>
 
 
 ---
@@ -389,71 +394,27 @@ Move a complete environment archive across the network boundary, then unpack it 
 
 ---
 layout: keynote
-eyebrow: "Shipped in Rattler · Not exposed in Pixi"
+eyebrow: "Shipped in Rattler · Not yet integrated in Pixi"
 ---
 
-# Every user downloads and stores the same package again
-<p class="lead">One cache already serves all of a researcher's workspaces and environments. Nothing is shared across users.</p>
+# Layered package caches
 
-<div class="grid grid-cols-2 gap-x-6 gap-y-3 max-w-3xl mx-auto mt-6 mb-4" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environments">
-  <div class="card card-outlined card-compact p-4">
-    <h2>Researcher A</h2>
-    <p>Private writable cache</p>
-    <p>Project environments</p>
-  </div>
-  <div class="card card-outlined card-compact p-4">
-    <h2>Researcher B</h2>
-    <p>Private writable cache</p>
-    <p>Project environments</p>
-  </div>
-  <b class="flow-arrow" aria-hidden="true">↑</b>
-  <b class="flow-arrow" aria-hidden="true">↑</b>
-  <div class="col-span-full flex justify-between py-4 px-5 bg-accent rounded-xl">
-    <strong>Site-owned package cache</strong>
-    <span class="text-sm">Read-only, searched first</span>
-  </div>
-</div>
+<p class="lead">Environments of one user already share packages. This would add another cache layer, that is read-only and shared across users.</p>
 
-<p class="text-muted text-xs">Rattler supports ordered cache layers. Pixi does not yet expose and document this multi-user setup.</p>
+<CacheMap />
 
 ---
 layout: keynote
 eyebrow: Prototype
 ---
 
-# Virtual file system
+# Virtual filesystem
 
-<p class="lead">One researcher hit a million-file quota and now archives environments by hand.</p>
+<p class="lead">No environment files are written. The mount serves them from the package cache.</p>
 
-<div class="grid justify-items-center max-w-3xl mx-auto mt-2 mb-2" role="img" aria-label="A package cache and writable overlay feed a virtual mount that presents a complete environment to a process">
-  <div class="grid grid-cols-[1fr_auto_1fr] gap-3 items-center w-full">
-    <div class="card py-2 px-4 text-center">
-      <span class="label mb-1">Already stored</span>
-      <strong class="text-base">package cache</strong>
-    </div>
-    <b class="flow-arrow font-normal" aria-hidden="true">+</b>
-    <div class="card py-2 px-4 text-center">
-      <span class="label mb-1">Only changes</span>
-      <strong class="text-base">writable overlay</strong>
-    </div>
-  </div>
-  <b class="flow-arrow h-5 leading-5 font-normal" aria-hidden="true">↓</b>
-  <div class="w-[74%] py-2 px-4 bg-accent rounded-xl text-center">
-    <span class="label mb-1">Virtual mount</span>
-    <strong class="text-base">prefix replacement and entry points on demand</strong>
-  </div>
-  <b class="flow-arrow h-5 leading-5 font-normal" aria-hidden="true">↓</b>
-  <div class="w-[58%] py-2 px-4 bg-ink text-white rounded-xl text-center">
-    <span class="label label-inverse mb-1">Process sees</span>
-    <strong class="text-base">bin · lib · include</strong>
-    <small class="block mt-1 text-white/70 text-2xs">complete environment tree</small>
-  </div>
-</div>
+<MountMap />
 
-<div class="summary">
-  <p><strong>Measured so far:</strong> faster fresh, disposable environments.</p>
-  <p><strong>Still open:</strong> warm overhead, mount lifecycle and NFS user isolation.</p>
-</div>
+<p class="text-muted text-xs">Fresh environments get much faster. Warm runs, mount lifecycle and user isolation still need work.</p>
 
 
 ---
@@ -465,7 +426,7 @@ layout: keynote
 <div class="grid gap-3.5 mt-8">
   <StatusRow state="shipped">Rich platforms, offline mode and pixi-pack</StatusRow>
   <StatusRow state="preview">Pixi Build</StatusRow>
-  <StatusRow state="prototype">Pixi cache layering and Rattler VFS</StatusRow>
+  <StatusRow state="prototype">Cache layering and the virtual filesystem</StatusRow>
 </div>
 
 

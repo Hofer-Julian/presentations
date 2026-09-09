@@ -99,7 +99,17 @@
   border: 1px solid var(--keynote-border);
 }
 
-.code-filename {
+/* CodeFile: a filename bar sitting flush on top of its code block.
+   Selectors carry the layout class so the generic paragraph rules further
+   down cannot reclaim the bar's colour, size or margins. */
+.slidev-layout .code-file {
+  display: flex;
+  flex-direction: column;
+  /* Slidev applies this variable to the code wrapper with !important */
+  --slidev-code-margin: 0;
+}
+
+.slidev-layout .code-file .code-file-name {
   margin: 0;
   padding: 0.5rem 0.75rem;
   background: var(--keynote-ink);
@@ -110,12 +120,14 @@
   letter-spacing: 0.025em;
 }
 
-.code-filename + .slidev-code-wrapper pre {
+.slidev-layout .code-file pre {
   border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
-/* Marks the code block below a filename as the point of the slide */
-.code-accent + .slidev-code-wrapper pre {
+/* Marks the code block as the point of the slide */
+.slidev-layout .code-file-accent pre {
   border-left: 0.25rem solid var(--keynote-yellow);
 }
 
@@ -229,6 +241,131 @@
 
 .summary p + p {
   border-left: 1px solid var(--keynote-border);
+}
+
+/* Map of which cache each environment takes a package from */
+.cache-map {
+  display: block;
+  width: 100%;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.cache-map-env rect,
+.cache-map-store rect {
+  fill: var(--keynote-white);
+  stroke: var(--keynote-border);
+}
+
+.cache-map-site {
+  fill: var(--keynote-yellow);
+}
+
+.cache-map-chip rect {
+  fill: var(--keynote-paper);
+}
+
+.cache-map-chip-site rect {
+  fill: var(--keynote-white);
+}
+
+.cache-map-group text,
+.cache-map-label,
+.cache-map-label text {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cache-map-label-site {
+  fill: var(--keynote-ink);
+}
+
+.cache-map-name text {
+  fill: var(--keynote-ink);
+  font-family: var(--slidev-font-mono, monospace);
+  font-size: 14px;
+  text-anchor: middle;
+}
+
+.cache-map-line path {
+  fill: none;
+  stroke: var(--keynote-ink);
+  stroke-width: 1.5;
+  opacity: 0.3;
+}
+
+/* Files an environment holds, with and without a virtual filesystem */
+.mount-map {
+  display: block;
+  width: 100%;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.mount-map-row-label text {
+  fill: var(--keynote-ink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mount-map-box rect {
+  fill: var(--keynote-white);
+  stroke: var(--keynote-border);
+}
+
+.mount-map-box-empty rect {
+  fill: none;
+  stroke: var(--keynote-ink);
+  stroke-dasharray: 5 5;
+  opacity: 0.45;
+}
+
+.mount-map-label text {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mount-map-bar rect {
+  fill: var(--keynote-ink);
+  opacity: 0.18;
+}
+
+.mount-map-flow path {
+  fill: none;
+  stroke: var(--keynote-ink);
+  stroke-width: 2;
+  opacity: 0.4;
+}
+
+.mount-map-flow .mount-map-head {
+  fill: var(--keynote-ink);
+  stroke: none;
+  opacity: 0.4;
+}
+
+.mount-map-flow-accent path {
+  stroke: var(--keynote-ink);
+  opacity: 0.75;
+}
+
+.mount-map-flow-accent .mount-map-head {
+  fill: var(--keynote-ink);
+  opacity: 0.75;
+}
+
+.mount-map-flow-label {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-anchor: middle;
+  text-transform: uppercase;
 }
 
 /* Shell command shown as a chip */
