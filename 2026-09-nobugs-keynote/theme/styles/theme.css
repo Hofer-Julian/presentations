@@ -359,44 +359,6 @@
   font-size: inherit;
 }
 
-/* Numbered cards, rendered by <Steps> and <Step> */
-.steps {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 1rem;
-}
-
-.step {
-  min-height: 9rem;
-  padding: 1.25rem;
-  background: var(--keynote-white);
-  border-bottom: 0.25rem solid var(--keynote-yellow);
-  border-radius: 0.75rem 0.75rem 0 0;
-}
-
-.step-number {
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  background: var(--keynote-ink);
-  color: var(--keynote-white);
-  border-radius: 50%;
-  font-size: 0.75rem;
-}
-
-.step p {
-  margin: 1rem 0 0;
-  color: var(--keynote-muted);
-  font-size: 0.875rem;
-}
-
-.step strong {
-  color: var(--keynote-ink);
-  font-size: 1.125rem;
-}
-
 /* Readiness row, rendered by <StatusRow> */
 .status-row {
   display: grid;
@@ -677,7 +639,31 @@
   font-size: 2.25rem;
 }
 
+/* Compare layout */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.25rem;
+}
+
+.compare-grid h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.compare-grid p {
+  margin: 0.75rem 0 0;
+  color: var(--keynote-muted);
+  font-size: 1rem;
+}
+
 /* Two-cards layout */
+.two-cards-layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .role-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -685,8 +671,16 @@
   margin-top: 1.75rem;
 }
 
+/* A card row with nothing after it fills the slide */
+.role-pair:last-child {
+  flex: 1;
+}
+
 .role-pair > div {
+  display: flex;
   min-height: 9rem;
+  flex-direction: column;
+  justify-content: center;
   padding: 1rem 1.25rem;
   background: var(--keynote-white);
   border-left: 0.25rem solid var(--keynote-yellow);
@@ -695,7 +689,7 @@
 
 .role-pair p {
   margin: 0.5rem 0;
-  font-size: 1rem;
+  font-size: 1.125rem;
 }
 
 .slidev-layout .role-pair code {
@@ -706,6 +700,11 @@
 .slidev-layout.keynote-end {
   padding: 3rem 4rem 4rem;
   text-align: center;
+}
+
+.end-slides-qr {
+  width: max-content;
+  margin: 1.5rem auto 0;
 }
 
 .keynote-end h1 {
@@ -729,7 +728,7 @@
 .closing-option {
   display: flex;
   min-width: 0;
-  min-height: 18rem;
+  min-height: 9rem;
   padding: 1.5rem;
   flex-direction: column;
   align-items: center;
@@ -753,10 +752,13 @@
   text-transform: uppercase;
 }
 
-.closing-email {
+.closing-option-accent {
+  background: var(--keynote-yellow);
+}
+
+.closing-detail {
   font-size: 1.125rem;
   font-weight: 500;
-  line-height: 2;
 }
 
 /* Footer */

@@ -207,7 +207,7 @@ eyebrow: Pixi Build · Preview
 layout: code-right
 ---
 
-# SciPy already<br>describes its build
+# Pixi Build wraps a<br>Python build backend
 
 ::left::
 
@@ -251,29 +251,41 @@ blas-devel = "*"
 
 
 ---
-layout: keynote
-eyebrow: A downstream pixi.toml
+layout: compare
+eyebrow: Pixi Build · Preview
 ---
 
-# Now consume SciPy from source
-<p class="code-filename code-accent">pixi.toml</p>
+# Work on it, or depend on it
 
+::left::
+
+## Work on SciPy
+
+<p class="code-filename">pixi.toml</p>
 
 ```toml
-[workspace]
-channels = ["conda-forge"]
-platforms = ["linux-64"]
-preview = ["pixi-build"]
+[dev]
+scipy = { path = "." }
+```
 
+SciPy itself is not built. Its build, host and run dependencies land in your environment, so you compile and test it yourself.
+
+::right::
+
+## Depend on SciPy
+
+<p class="code-filename">pixi.toml</p>
+
+```toml
 [dependencies]
 scipy = { git = "https://github.com/scipy/scipy.git" }
 ```
 
-<div class="command-row mt-5">
-  <code class="command">pixi install</code>
-  <span class="flow-arrow" aria-hidden="true">→</span>
-  <p>follow Git · read SciPy's manifest · build a <code>.conda</code> package · install it</p>
-</div>
+Pixi follows Git, builds SciPy in an isolated environment and installs the resulting <code>.conda</code> package.
+
+::after::
+
+<Note class="text-base">Both need <code>preview = ["pixi-build"]</code> in the workspace.</Note>
 
 
 ---
@@ -354,20 +366,6 @@ platforms = [
 
 
 ---
-layout: keynote
-eyebrow: Preview
----
-
-# Pixi Build
-
-<Steps class="mt-10 mb-6">
-  <Step number="1" title="Declare the target">Rich platform and build variants</Step>
-  <Step number="2" title="Declare the build">Compilers, host tools and libraries</Step>
-  <Step number="3" title="Consume the result">A normal <code>.conda</code> dependency</Step>
-</Steps>
-
-
----
 layout: two-cards
 eyebrow: Shipped
 ---
@@ -393,61 +391,11 @@ Move a complete environment archive across the network boundary, then unpack it 
 
 ---
 layout: keynote
-eyebrow: Shipped
----
-
-# Package cache reuse
-
-<div class="panel mt-4 p-4" role="img" aria-label="One researcher reuses Python, NumPy and SciPy from one package cache across environments in two Pixi workspaces">
-  <span class="label mb-2.5">Researcher A</span>
-  <div class="grid grid-cols-[0.9fr_3.5rem_1.1fr] gap-3 items-stretch">
-    <div class="flex flex-col justify-center p-4 bg-accent rounded-xl text-center">
-      <span class="label mb-3">User package cache</span>
-      <div class="flex gap-2 justify-center">
-        <strong class="py-1.5 px-2.5 bg-white rounded-full text-sm">Python</strong>
-        <strong class="py-1.5 px-2.5 bg-white rounded-full text-sm">NumPy</strong>
-        <strong class="py-1.5 px-2.5 bg-white rounded-full text-sm">SciPy</strong>
-      </div>
-    </div>
-    <div class="grid grid-rows-2 gap-2.5" aria-hidden="true">
-      <span class="flow-arrow">→</span>
-      <span class="flow-arrow">→</span>
-    </div>
-    <div class="grid grid-rows-2 gap-2.5">
-      <div class="card py-2.5 px-3.5">
-        <div class="flex items-center justify-between">
-          <strong class="text-sm">Workspace A</strong>
-          <span class="text-muted text-2xs">pixi.toml</span>
-        </div>
-        <div class="flex gap-2 mt-2">
-          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">default env</span>
-          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">analysis env</span>
-        </div>
-      </div>
-      <div class="card py-2.5 px-3.5">
-        <div class="flex items-center justify-between">
-          <strong class="text-sm">Workspace B</strong>
-          <span class="text-muted text-2xs">pixi.toml</span>
-        </div>
-        <div class="flex gap-2 mt-2">
-          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">default env</span>
-          <span class="py-1 px-2 bg-paper rounded-full text-muted text-2xs">simulation env</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p class="mt-3 text-muted text-sm text-center"><strong class="text-ink">One cache</strong> serves multiple Pixi workspaces and all of their environments.</p>
-</div>
-
-<Note class="text-sm text-center"><strong>User boundary:</strong> another user has a separate package cache.</Note>
-
----
-layout: keynote
 eyebrow: "Shipped in Rattler · Not exposed in Pixi"
 ---
 
-# Layered package caches
-<p class="lead">Today, each user has a separate cache. A shared read-only layer could cross that boundary.</p>
+# Caches stop at the user boundary
+<p class="lead">One cache already serves all of a researcher's workspaces and environments. Nothing is shared across users.</p>
 
 <div class="grid grid-cols-2 gap-x-6 gap-y-3 max-w-3xl mx-auto mt-6 mb-4" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environments">
   <div class="card card-outlined card-compact p-4">
@@ -460,10 +408,11 @@ eyebrow: "Shipped in Rattler · Not exposed in Pixi"
     <p>Private writable cache</p>
     <p>Project environments</p>
   </div>
-  <span class="label col-span-full text-center" aria-hidden="true">read shared packages · write privately</span>
+  <b class="flow-arrow" aria-hidden="true">↑</b>
+  <b class="flow-arrow" aria-hidden="true">↑</b>
   <div class="col-span-full flex justify-between py-4 px-5 bg-accent rounded-xl">
     <strong>Site-owned package cache</strong>
-    <span class="text-sm">Read-only for researchers</span>
+    <span class="text-sm">Read-only, searched first</span>
   </div>
 </div>
 
@@ -535,6 +484,11 @@ qrHref: https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/
 ::options::
 
 <div class="closing-option">
-  <span class="closing-label">Talk to me today</span>
-  <span class="text-6xl leading-none">🫵</span>
+  <span class="closing-label">In the Q&A</span>
+  <strong class="closing-detail">right now</strong>
+</div>
+
+<div class="closing-option">
+  <span class="closing-label">In the hallway</span>
+  <strong class="closing-detail">for the rest of NOBUGS</strong>
 </div>

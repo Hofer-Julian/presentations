@@ -14,11 +14,11 @@ defineProps<{
     <p v-if="subtitle" class="closing-subtitle">{{ subtitle }}</p>
     <div class="closing-options">
       <slot name="options" />
-      <a v-if="email" class="closing-option" :href="`mailto:${email}`">
-        <span class="closing-label">Send me an email</span>
-        <strong class="closing-email">{{ email }}</strong>
+      <a v-if="email" class="closing-option closing-option-accent" :href="`mailto:${email}`">
+        <span class="closing-label">By email</span>
+        <strong class="closing-detail">{{ email }}</strong>
       </a>
-      <SlidesQr v-if="qr" class="closing-option" :src="qr" :href="qrHref" :label="qrLabel" />
     </div>
+    <SlidesQr v-if="qr" class="end-slides-qr" :src="qr" :href="qrHref" :label="qrLabel" />
   </div>
 </template>
