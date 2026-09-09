@@ -47,7 +47,6 @@ frame: false
 - Studied physics
 - Built numerical water models at Deltares
 - Builds Pixi at prefix.dev
-- Likes tools that make complex work boring
 
 
 ---
@@ -73,7 +72,6 @@ split: 54% 46%
 
 - Equations, code and results in one place
 - Immediate visual feedback
-- A complete scientific thought in one document
 
 **Until an upgrade broke my script.**
 
@@ -121,7 +119,7 @@ Often installed through separate instructions.
 
 ::after::
 
-<p class="statement">The result depended on both.</p>
+<p class="statement">I needed both, in one environment.</p>
 
 
 ---
@@ -181,7 +179,7 @@ eyebrow: Pixi Build · Preview
 
 # Pixi can build software from source
 
-<p class="lead">Build backends are executable adapters for languages and build tools.</p>
+<p class="lead">A build backend knows how to build one kind of project.</p>
 
 <Flow class="mb-4" role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
   <div><strong>source + project files</strong></div>
@@ -370,11 +368,11 @@ layout: two-cards
 eyebrow: Shipped
 ---
 
-# Offline mode and pixi-pack
+# Working with limited connectivity
 
 ::left::
 
-## The cache is already there
+## Offline mode
 
 <code>pixi install --offline</code>
 
@@ -382,7 +380,7 @@ Great for limited or no internet connection. When solving, only considers packag
 
 ::right::
 
-## The packages need transport
+## pixi-pack
 
 <code>pixi-pack --platform gpu pixi.toml</code>
 
@@ -394,7 +392,7 @@ layout: keynote
 eyebrow: "Shipped in Rattler · Not exposed in Pixi"
 ---
 
-# Caches stop at the user boundary
+# Every user downloads and stores the same package again
 <p class="lead">One cache already serves all of a researcher's workspaces and environments. Nothing is shared across users.</p>
 
 <div class="grid grid-cols-2 gap-x-6 gap-y-3 max-w-3xl mx-auto mt-6 mb-4" role="img" aria-label="A site-owned read-only package cache is shared by two researchers, each with a private writable cache and project environments">
@@ -451,17 +449,16 @@ eyebrow: Prototype
 </div>
 
 <div class="summary">
-  <p><strong>Best demonstrated use:</strong> faster fresh, disposable environments.</p>
+  <p><strong>Measured so far:</strong> faster fresh, disposable environments.</p>
   <p><strong>Still open:</strong> warm overhead, mount lifecycle and NFS user isolation.</p>
 </div>
 
 
 ---
 layout: keynote
-eyebrow: Where Pixi stands
 ---
 
-# Strong on hardware.<br>Still open on shared storage.
+# What Pixi does today, and what it doesn't
 
 <div class="grid gap-3.5 mt-8">
   <StatusRow state="shipped">Rich platforms, offline mode and pixi-pack</StatusRow>
