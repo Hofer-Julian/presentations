@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { assetUrl } from '../utils/asset'
 
 const props = withDefaults(defineProps<{
   alt?: string
@@ -20,6 +21,8 @@ const props = withDefaults(defineProps<{
   scale: 1,
 })
 
+const imageSrc = computed(() => assetUrl(props.image))
+
 const imageStyle = computed(() => ({
   objectFit: props.backgroundSize,
   transform: props.scale === 1 ? undefined : `scale(${props.scale})`,
@@ -34,7 +37,7 @@ const imageStyle = computed(() => ({
     </div>
     <figure class="keynote-image-panel" :class="{ 'keynote-image-panel-plain': !props.frame }">
       <img
-        :src="props.image"
+        :src="imageSrc"
         :alt="props.alt"
         :class="{ 'keynote-image-blend': props.blend }"
         :style="imageStyle"
