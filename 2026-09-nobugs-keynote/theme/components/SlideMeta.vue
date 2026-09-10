@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <header v-if="eyebrow || link" class="slide-meta">
+  <header class="slide-meta">
     <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
     <Ref v-if="link" :to="link" />
   </header>

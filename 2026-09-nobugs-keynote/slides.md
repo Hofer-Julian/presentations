@@ -41,6 +41,7 @@ image: /julian.jpg
 alt: Julian Hofer
 backgroundSize: cover
 frame: false
+split: 66% 34%
 ---
 
 # Julian Hofer
@@ -61,12 +62,12 @@ label: Part 1
 layout: image-right
 image: /mathematica-notebook.png
 alt: Light-mode Mathematica notebook with executable code and a sine plot
-source: Source: wolfram.com
+source: "Source: wolfram.com"
 sourceHref: https://www.wolfram.com/notebooks/
 eyebrow: Physics and Mathematica
 frame: false
 blend: true
-split: 54% 46%
+split: 60% 40%
 ---
 
 # Notebooks felt like magic
@@ -81,10 +82,12 @@ split: 54% 46%
 layout: image-right
 image: /deltares-water-model.png
 alt: Delft3D Flexible Mesh displaying a coastal water model and its computational grid
-source: Source: deltares.nl
+source: "Source: deltares.nl"
 sourceHref: https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite
 eyebrow: Deltares
 frame: false
+split: 62% 38%
+class: title-one-line
 ---
 
 # Open source numerical water models
@@ -120,7 +123,7 @@ Often installed through separate instructions.
 
 ::after::
 
-<p class="statement">I needed both, in one environment.</p>
+<p class="statement statement-centered">I needed both, in one environment.</p>
 
 
 ---
@@ -130,6 +133,7 @@ alt: Conda package manager logo
 eyebrow: Conda
 frame: false
 scale: 0.9
+class: title-one-line
 ---
 
 # Cross-platform and cross-language
@@ -162,7 +166,7 @@ class: emoji-list
 - 🆓 Open-Source
 - 🛠️ Workflow management
 - 🌐 Multi-environments
-- 🔒 Reproducible thanks to lock-files
+- 🔒 Reproducible thanks to lock files
 - 🐍 Supports conda and PyPI ecosystem
 
 
@@ -217,7 +221,7 @@ label: Part 2
 
 ---
 layout: image-right
-image: /conda-forge.png
+image: /conda-forge.svg
 alt: conda-forge logo
 eyebrow: Openness
 link: conda-forge.org/docs/maintainer/adding_pkgs
@@ -249,9 +253,9 @@ link: conda-forge.org/docs/maintainer/understanding_conda_forge/life_cycle
 
 ---
 layout: code-right
-eyebrow: conda Enhancement Proposals
 link: "ceps#146"
 split: 1fr 1fr
+class: code-dense
 ---
 
 ::title::
@@ -377,7 +381,10 @@ link: pixi.sh/latest/build/getting_started
 ---
 layout: code-right
 link: pixi.sh/latest/build/dependency_types
+class: code-dense
 ---
+
+::title::
 
 # Showcasing SciPy
 
@@ -534,6 +541,7 @@ pytorch-cpu = "*"
 layout: code-right
 eyebrow: Preview
 link: pixi.sh/latest/build/package_source
+split: 1fr 1fr
 ---
 
 ::title::

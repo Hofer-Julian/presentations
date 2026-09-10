@@ -142,8 +142,12 @@
 .slidev-layout .code-file {
   display: flex;
   flex-direction: column;
-  /* Slidev applies this variable to the code wrapper with !important */
+  overflow: hidden;
+  border-radius: 0.5rem;
+  /* Slidev applies these variables with !important, so the block is rounded
+     by this container instead and the bar meets the code on a straight edge */
   --slidev-code-margin: 0;
+  --slidev-code-radius: 0;
 }
 
 .slidev-layout .code-file .code-file-name {
@@ -151,7 +155,6 @@
   padding: 0.5rem 0.75rem;
   background: var(--keynote-ink);
   color: var(--keynote-white);
-  border-radius: 0.5rem 0.5rem 0 0;
   font-size: 0.625rem;
   font-weight: 600;
   letter-spacing: 0.025em;
@@ -159,8 +162,12 @@
 
 .slidev-layout .code-file pre {
   border-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+}
+
+/* Listings long enough to need more room than a slide gives them */
+.code-dense {
+  --slidev-code-font-size: 11px;
+  --slidev-code-line-height: 1.3;
 }
 
 /* Marks the code block as the point of the slide */
@@ -175,6 +182,7 @@
   display: flex;
   gap: 1rem;
   align-items: baseline;
+  min-height: 1.75rem;
   margin: 0 0 0.75rem;
 }
 
@@ -260,6 +268,10 @@
   margin: 1.5rem 0 0;
   font-size: 1.5rem;
   line-height: 1.25;
+}
+
+.slidev-layout .statement-centered {
+  text-align: center;
 }
 
 /* A heading introduced by a .label sits closer to it */
@@ -760,6 +772,11 @@
   content: none;
 }
 
+/* Titles long enough to wrap, held on a single line */
+.title-one-line h1 {
+  font-size: 2rem;
+}
+
 /* Cover layout */
 .slidev-layout.keynote-cover {
   position: relative;
@@ -811,7 +828,7 @@
 
 /* Contents layout */
 .toc-slide {
-  padding: 3rem 5rem 5rem;
+  padding: 2.75rem 3rem 5rem;
 }
 
 .toc-slide ul {
@@ -826,7 +843,7 @@
 .toc-slide li {
   display: flex;
   align-items: center;
-  min-height: 4rem;
+  min-height: 3.5rem;
   margin: 0;
   padding: 0.625rem 1.25rem;
   background: var(--keynote-white);
@@ -878,6 +895,8 @@
 /* The meta row spans both columns so the reference pill reaches the slide edge */
 .keynote-image-layout > .slide-meta {
   grid-column: 1 / -1;
+  /* The row's own padding sits inside min-height, so it carries the slide's top padding too */
+  min-height: 4.5rem;
   padding: 2.75rem 3rem 0;
 }
 
