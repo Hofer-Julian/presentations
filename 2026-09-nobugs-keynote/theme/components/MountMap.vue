@@ -71,3 +71,77 @@ const CACHE_COLUMNS = [10, 60, 110, 160]
     <text class="mount-map-flow-label" x="265" y="177">reads</text>
   </svg>
 </template>
+
+<style>
+/* Files an environment holds, with and without a virtual filesystem */
+.mount-map {
+  display: block;
+  width: 100%;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.mount-map-row-label text {
+  fill: var(--keynote-ink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--keynote-tracking-wide);
+  text-transform: uppercase;
+}
+
+.mount-map-box rect {
+  fill: var(--keynote-white);
+  stroke: var(--keynote-border);
+}
+
+.mount-map-box-empty rect {
+  fill: none;
+  stroke: var(--keynote-ink);
+  stroke-dasharray: 5 5;
+  opacity: 0.45;
+}
+
+.mount-map-label text {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--keynote-tracking-wide);
+  text-transform: uppercase;
+}
+
+.mount-map-bar rect {
+  fill: var(--keynote-ink);
+  opacity: 0.18;
+}
+
+.mount-map-flow path {
+  fill: none;
+  stroke: var(--keynote-ink);
+  stroke-width: 2;
+  opacity: 0.4;
+}
+
+.mount-map-flow .mount-map-head {
+  fill: var(--keynote-ink);
+  stroke: none;
+  opacity: 0.4;
+}
+
+.mount-map-flow-accent path {
+  stroke: var(--keynote-ink);
+  opacity: 0.75;
+}
+
+.mount-map-flow-accent .mount-map-head {
+  fill: var(--keynote-ink);
+  opacity: 0.75;
+}
+
+.mount-map-flow-label {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--keynote-tracking-wide);
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+</style>

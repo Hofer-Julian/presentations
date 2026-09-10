@@ -19,7 +19,7 @@ title: Pixi for Scientific Workflows
 occasion: NOBUGS 2026
 ---
 
-# <span class="block font-light">Pixi for</span> Scientific Workflows
+# <span class="cover-title-lead">Pixi for</span> Scientific Workflows
 
 
 ---
@@ -186,7 +186,7 @@ split: 1fr 1fr
 - **Platforms** are all locked in one `pixi.lock`
 - **Tasks** are the commands of your project and run inside the environment
 
-<Note class="text-base"><code>pixi run fit</code> creates the environment if needed, then runs the task</Note>
+<Note small><code>pixi run fit</code> creates the environment if needed, then runs the task</Note>
 
 ::right::
 
@@ -270,7 +270,7 @@ class: code-dense
 - **CEP 45** simplified variant selection
 - **CEP 48** rolls them out as repodata `v3` without breaking older clients
 
-<Note class="text-base">Written together by conda, Anaconda and prefix.dev. Pixi speaks <code>v3</code>, conda-forge does not yet.</Note>
+<Note small>Written together by conda, Anaconda and prefix.dev. Pixi speaks <code>v3</code>, conda-forge does not yet.</Note>
 
 ::right::
 
@@ -308,38 +308,11 @@ link: conda-forge.org/packages
 
 <p class="lead">Each of these is a feedstock. Someone opened the pull request, and now keeps it building.</p>
 
-<div class="package-columns">
-  <div>
-    <span class="label">Acquisition and control</span>
-    <ul>
-      <li>bluesky</li>
-      <li>ophyd</li>
-      <li>databroker</li>
-      <li>pyepics</li>
-      <li>pytango</li>
-    </ul>
-  </div>
-  <div>
-    <span class="label">Reduction and analysis</span>
-    <ul>
-      <li>pyfai</li>
-      <li>silx</li>
-      <li>dials</li>
-      <li>tomopy</li>
-      <li>sasview</li>
-    </ul>
-  </div>
-  <div>
-    <span class="label">Formats and compression</span>
-    <ul>
-      <li>nexusformat</li>
-      <li>h5py</li>
-      <li>hdf5plugin</li>
-      <li>zarr</li>
-      <li>blosc</li>
-    </ul>
-  </div>
-</div>
+<PackageColumns :groups="[
+  { label: 'Acquisition and control', packages: ['bluesky', 'ophyd', 'databroker', 'pyepics', 'pytango'] },
+  { label: 'Reduction and analysis', packages: ['pyfai', 'silx', 'dials', 'tomopy', 'sasview'] },
+  { label: 'Formats and compression', packages: ['nexusformat', 'h5py', 'hdf5plugin', 'zarr', 'blosc'] },
+]" />
 
 ---
 layout: section
@@ -358,22 +331,17 @@ link: pixi.sh/latest/build/getting_started
 
 <p class="lead">A build backend knows how to build one kind of project.</p>
 
-<Flow class="mb-4" role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
+<Flow role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
   <div><strong>source + project files</strong></div>
   <div class="flow-highlight"><strong>Pixi Build backend</strong></div>
   <div><strong><code>.conda</code> package</strong></div>
   <div><strong>environment</strong></div>
 </Flow>
 
-<div class="pill-row mb-4" aria-label="Supported build ecosystems">
-  <span>Python</span>
-  <span>CMake</span>
-  <span>Rust</span>
-  <span>R</span>
-  <span>ROS</span>
-  <span>Mojo</span>
-  <span>raw recipes</span>
-</div>
+<PillRow
+  label="Supported build ecosystems"
+  :items="['Python', 'CMake', 'Rust', 'R', 'ROS', 'Mojo', 'raw recipes']"
+/>
 
 <Note><code>path</code>, <code>git</code>, or <code>url</code> dependencies build automatically during normal Pixi use.</Note>
 
@@ -464,7 +432,7 @@ Pixi follows Git, builds SciPy in an isolated environment and installs the resul
 
 ::after::
 
-<Note class="text-base">Both need <code>preview = ["pixi-build"]</code> in the workspace.</Note>
+<Note small>Both need <code>preview = ["pixi-build"]</code> in the workspace.</Note>
 
 
 ---
@@ -480,18 +448,14 @@ layout: keynote
 
 # My understanding of HPC requirements
 
-<div class="relative grid grid-cols-2 gap-7 mt-20 before:content-empty before:absolute before:-top-3.5 before:-bottom-3.5 before:left-1/2 before:w-px before:bg-line">
-  <div class="card p-6 border-t-8 border-t-ink rounded-t-none">
-    <span class="label">Compute</span>
-    <h2 class="min-h-[2lh]">Optimized for your hardware</h2>
-    <p class="text-muted text-base">The software needs to fully utilize the CPU, GPU and system libraries on the machine.</p>
-  </div>
-  <div class="card p-6 border-t-8 border-t-accent rounded-t-none">
-    <span class="label">Infrastructure</span>
-    <h2 class="min-h-[2lh]">Able to deal with constrained storage and network</h2>
-    <p class="text-muted text-base">Compute nodes may be offline. Shared filesystems make millions of small files expensive.</p>
-  </div>
-</div>
+<Requirements>
+  <Requirement label="Compute" heading="Optimized for your hardware">
+    The software needs to fully utilize the CPU, GPU and system libraries on the machine.
+  </Requirement>
+  <Requirement label="Infrastructure" heading="Able to deal with constrained storage and network" accent>
+    Compute nodes may be offline. Shared filesystems make millions of small files expensive.
+  </Requirement>
+</Requirements>
 
 
 ---
@@ -628,7 +592,7 @@ link: "rattler#2059"
 
 <MountMap />
 
-<p class="text-muted text-xs">Fresh environments get much faster. Warm runs, mount lifecycle and user isolation still need work.</p>
+<Footnote>Fresh environments get much faster. Warm runs, mount lifecycle and user isolation still need work.</Footnote>
 
 
 ---
@@ -637,11 +601,11 @@ layout: keynote
 
 # What Pixi does today, and what it doesn't
 
-<div class="grid gap-3.5 mt-8">
+<StatusList>
   <StatusRow state="shipped">Rich platforms, offline mode and pixi-pack</StatusRow>
   <StatusRow state="preview">Pixi Build</StatusRow>
   <StatusRow state="prototype">Cache layering and the virtual filesystem</StatusRow>
-</div>
+</StatusList>
 
 
 ---
@@ -652,14 +616,13 @@ layout: end
 
 <p class="closing-subtitle">about your workflows, infrastructure and workarounds</p>
 
-<div class="bubbles">
+<Bubbles>
   <Bubble label="In the Q&A">right now</Bubble>
   <Bubble label="In the hallway">for the rest of the day</Bubble>
   <Bubble label="By email" href="mailto:julian@prefix.dev">julian@prefix.dev</Bubble>
-</div>
+</Bubbles>
 
 <SlidesQr
-  class="end-slides-qr"
   src="/slides-qr-code.png"
   label="link to the slides"
   href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/"

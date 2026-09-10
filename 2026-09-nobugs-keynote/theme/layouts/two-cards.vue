@@ -18,3 +18,43 @@ defineProps<{
     <slot name="after" />
   </div>
 </template>
+
+<style>
+.slidev-layout.two-cards-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Two cards, each opened by a yellow edge */
+.role-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.75rem;
+}
+
+/* A card row with nothing after it fills the slide */
+.role-pair:last-child {
+  flex: 1;
+}
+
+.role-pair > div {
+  display: flex;
+  min-height: 9rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  background: var(--keynote-white);
+  border-left: var(--keynote-rule) solid var(--keynote-yellow);
+  border-radius: 0 var(--keynote-radius-md) var(--keynote-radius-md) 0;
+}
+
+.slidev-layout .role-pair p {
+  margin: 0.5rem 0;
+  font-size: var(--keynote-text-md);
+}
+
+.slidev-layout .role-pair code {
+  font-size: var(--keynote-text-xs);
+}
+</style>

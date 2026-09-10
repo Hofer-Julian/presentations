@@ -94,3 +94,62 @@ function elbow(trigger: typeof TRIGGERS[number]) {
     </g>
   </svg>
 </template>
+
+<style>
+/* Stages a conda-forge package passes through */
+.life-cycle {
+  display: block;
+  width: 100%;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.life-cycle-box rect {
+  fill: var(--keynote-white);
+  stroke: var(--keynote-border);
+}
+
+.life-cycle-box rect.life-cycle-box-highlight {
+  fill: var(--keynote-yellow);
+  stroke: var(--keynote-yellow);
+}
+
+.life-cycle-name text {
+  fill: var(--keynote-ink);
+  font-size: 16px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.life-cycle-name text.life-cycle-mono {
+  font-family: var(--keynote-font-mono);
+  font-size: 14px;
+}
+
+.life-cycle-detail text {
+  fill: var(--keynote-muted);
+  font-size: 13px;
+  text-anchor: middle;
+}
+
+.life-cycle-arrow path,
+.life-cycle-loop path {
+  fill: none;
+  stroke: var(--keynote-muted);
+  stroke-width: 1.5;
+}
+
+.life-cycle-arrow path.life-cycle-head,
+.life-cycle-loop path.life-cycle-head {
+  fill: var(--keynote-muted);
+  stroke: none;
+}
+
+.life-cycle-loop-label {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--keynote-tracking-wide);
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+</style>

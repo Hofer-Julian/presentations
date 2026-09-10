@@ -1,18 +1,65 @@
+/* Design tokens, the base typography of a slide, and the handful of classes
+   slides.md reaches for directly. Everything else lives in the layout or the
+   component that renders it. */
+
 :root {
   color-scheme: light;
-  --keynote-paper: #f8f6f2;
-  --keynote-ink: #001d38;
-  --keynote-yellow: #ffd432;
-  --keynote-yellow-soft: rgb(255 212 50 / 24%);
-  --keynote-white: #ffffff;
+
+  /* Colour. The four base hues are kept as channels as well, so the
+     translucent variants below stay in step with the solids. */
+  --keynote-paper-rgb: 248 246 242;
+  --keynote-ink-rgb: 0 29 56;
+  --keynote-white-rgb: 255 255 255;
+  --keynote-yellow-rgb: 255 212 50;
+  --keynote-paper: rgb(var(--keynote-paper-rgb));
+  --keynote-ink: rgb(var(--keynote-ink-rgb));
+  --keynote-white: rgb(var(--keynote-white-rgb));
+  --keynote-yellow: rgb(var(--keynote-yellow-rgb));
   --keynote-muted: #62656a;
   --keynote-border: #ded9cf;
+
+  /* Yellow behind text, yellow across a slide, and paper over an image */
+  --keynote-yellow-soft: rgb(var(--keynote-yellow-rgb) / 24%);
+  --keynote-yellow-wash: rgb(var(--keynote-yellow-rgb) / 18%);
+  --keynote-scrim: rgb(var(--keynote-paper-rgb) / 92%);
+
+  /* How ready a piece of work is */
   --keynote-shipped: #dcecdf;
   --keynote-shipped-ink: #245c3a;
   --keynote-preview: #e8eaec;
   --keynote-preview-ink: var(--keynote-ink);
   --keynote-prototype: #f1dddd;
   --keynote-prototype-ink: #8a3d3d;
+
+  /* Type */
+  --keynote-font-mono: var(--slidev-font-mono, monospace);
+  --keynote-text-2xs: 0.625rem;
+  --keynote-text-xs: 0.75rem;
+  --keynote-text-sm: 0.875rem;
+  --keynote-text-base: 1rem;
+  --keynote-text-md: 1.125rem;
+  --keynote-text-lg: 1.25rem;
+  --keynote-text-xl: 1.5rem;
+  --keynote-text-2xl: 1.75rem;
+  --keynote-tracking-tight: -0.025em;
+  --keynote-tracking-slight: 0.025em;
+  --keynote-tracking-wide: 0.1em;
+
+  /* Shape */
+  --keynote-radius-xs: 0.25rem;
+  --keynote-radius-sm: 0.5rem;
+  --keynote-radius-md: 0.75rem;
+  --keynote-radius-lg: 1.25rem;
+  --keynote-radius-xl: 1.5rem;
+  --keynote-radius-pill: 9999px;
+  /* The yellow bar that marks a passage as the point */
+  --keynote-rule: 0.25rem;
+
+  /* Slide */
+  --keynote-slide-padding-top: 2.75rem;
+  --keynote-slide-padding-inline: 3rem;
+  --keynote-slide-padding-bottom: 5rem;
+
   --slidev-theme-primary: var(--keynote-ink);
   --slidev-code-background: var(--keynote-white);
   --slidev-code-font-size: 13px;
@@ -20,15 +67,15 @@
 }
 
 /* Base typography */
-.slidev-layout,
-.keynote-image-layout {
-  background: var(--keynote-paper);
-  color: var(--keynote-ink);
-}
 
 .slidev-layout {
-  padding: 2.75rem 3rem 5rem;
-  font-size: 1.25rem;
+  padding:
+    var(--keynote-slide-padding-top)
+    var(--keynote-slide-padding-inline)
+    var(--keynote-slide-padding-bottom);
+  background: var(--keynote-paper);
+  color: var(--keynote-ink);
+  font-size: var(--keynote-text-lg);
   line-height: 1.5;
 }
 
@@ -37,7 +84,7 @@
 .slidev-layout h3 {
   color: var(--keynote-ink);
   font-weight: 500;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--keynote-tracking-tight);
   text-wrap: balance;
 }
 
@@ -49,7 +96,7 @@
 
 .slidev-layout h2 {
   margin: 0 0 0.625rem;
-  font-size: 1.75rem;
+  font-size: var(--keynote-text-2xl);
   line-height: 1.25;
 }
 
@@ -123,10 +170,11 @@
 }
 
 /* Code */
+
 .slidev-layout :not(pre) > code {
   padding: 0.125rem 0.25rem;
   background: var(--keynote-white);
-  border-radius: 0.25rem;
+  border-radius: var(--keynote-radius-xs);
   font-size: 0.875em;
 }
 
@@ -136,89 +184,16 @@
   border: 1px solid var(--keynote-border);
 }
 
-/* CodeFile: a filename bar sitting flush on top of its code block.
-   Selectors carry the layout class so the generic paragraph rules further
-   down cannot reclaim the bar's colour, size or margins. */
-.slidev-layout .code-file {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  /* Slidev applies these variables with !important, so the block is rounded
-     by this container instead and the bar meets the code on a straight edge */
-  --slidev-code-margin: 0;
-  --slidev-code-radius: 0;
-}
+/* Shared classes */
 
-.slidev-layout .code-file .code-file-name {
-  margin: 0;
-  padding: 0.5rem 0.75rem;
-  background: var(--keynote-ink);
-  color: var(--keynote-white);
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-}
-
-.slidev-layout .code-file pre {
-  border-top: 0;
-}
-
-/* Listings long enough to need more room than a slide gives them */
-.code-dense {
-  --slidev-code-font-size: 11px;
-  --slidev-code-line-height: 1.3;
-}
-
-/* Marks the code block as the point of the slide */
-.slidev-layout .code-file-accent pre {
-  border-left: 0.25rem solid var(--keynote-yellow);
-}
-
-/* Components */
-
-/* Eyebrow and reference sharing the line above the heading, rendered by <SlideMeta> */
-.slide-meta {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
-  min-height: 1.75rem;
-  margin: 0 0 0.75rem;
-}
-
-.slidev-layout .slide-meta .eyebrow,
-.keynote-image-layout .slide-meta .eyebrow {
-  margin: 0;
-}
-
-/* Where the work behind a slide lives, rendered by <Ref> */
-.slidev-layout .ref,
-.keynote-image-layout .ref {
-  margin-left: auto;
-  padding: 0.1875rem 0.5rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 9999px;
-  color: var(--keynote-muted);
-  font-family: var(--slidev-font-mono, monospace);
-  font-size: 0.6875rem;
-  white-space: nowrap;
-}
-
-.slidev-layout a.ref:hover,
-.keynote-image-layout a.ref:hover {
-  border-color: var(--keynote-yellow);
-  color: var(--keynote-ink);
-}
-
-/* Eyebrow, rendered by every content layout above the heading */
+/* Eyebrow above a heading, set by <SlideMeta> and by the cover */
 .slidev-layout .eyebrow,
 .keynote-image-layout .eyebrow {
   margin: 0 0 0.75rem;
   color: var(--keynote-ink);
-  font-size: 0.75rem;
+  font-size: var(--keynote-text-xs);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--keynote-tracking-wide);
   text-transform: uppercase;
 }
 
@@ -226,47 +201,23 @@
 .label {
   display: block;
   color: var(--keynote-muted);
-  font-size: 0.625rem;
+  font-size: var(--keynote-text-2xs);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--keynote-tracking-wide);
   text-transform: uppercase;
-}
-
-/* Label on a dark surface */
-.label-inverse {
-  color: rgb(255 255 255 / 70%);
-}
-
-/* Raised surface; pair with .card-outlined where it needs an edge */
-.card {
-  background: var(--keynote-white);
-  border-radius: 0.75rem;
-}
-
-.card-outlined {
-  border: 1px solid var(--keynote-border);
-}
-
-/* Aside that qualifies the slide, rendered by <Note> */
-.slidev-layout .note {
-  margin: 0.75rem 0 0;
-  padding: 0.75rem 1rem;
-  background: var(--keynote-yellow-soft);
-  border-left: 0.25rem solid var(--keynote-yellow);
-  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 /* Sentence between the heading and the body of a slide */
 .slidev-layout .lead {
   margin: -0.5rem 0 1.25rem;
   color: var(--keynote-muted);
-  font-size: 1.25rem;
+  font-size: var(--keynote-text-lg);
 }
 
 /* Sentence that closes a slide */
 .slidev-layout .statement {
   margin: 1.5rem 0 0;
-  font-size: 1.5rem;
+  font-size: var(--keynote-text-xl);
   line-height: 1.25;
 }
 
@@ -274,493 +225,7 @@
   text-align: center;
 }
 
-/* A heading introduced by a .label sits closer to it */
-.label + h2 {
-  margin-top: 0.875rem;
-}
-
-/* Translucent surface for grouping cards */
-.panel {
-  background: rgb(255 255 255 / 58%);
-  border-radius: 1rem;
-}
-
-/* Cards and panels absorb the outer margins of the text they hold */
-.slidev-layout .card > :first-child,
-.slidev-layout .panel > :first-child {
-  margin-top: 0;
-}
-
-.slidev-layout .card > :last-child,
-.slidev-layout .panel > :last-child {
-  margin-bottom: 0;
-}
-
-/* Card whose heading and lines are set tight */
-.card-compact h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
-
-.card-compact p {
-  margin: 0.25rem 0;
-  color: var(--keynote-muted);
-  font-size: 0.875rem;
-}
-
-/* Two remarks side by side, closing a slide */
-.summary {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--keynote-white);
-  border-radius: 0.5rem;
-}
-
-.summary p {
-  margin: 0;
-  padding: 0.75rem 0.875rem;
-  font-size: 0.75rem;
-}
-
-.summary p + p {
-  border-left: 1px solid var(--keynote-border);
-}
-
-/* Map of which cache each environment takes a package from */
-.cache-map {
-  display: block;
-  width: 100%;
-  margin: 0.25rem 0 0.5rem;
-}
-
-.cache-map-env rect,
-.cache-map-store rect {
-  fill: var(--keynote-white);
-  stroke: var(--keynote-border);
-}
-
-.cache-map-site {
-  fill: var(--keynote-yellow);
-}
-
-.cache-map-chip rect {
-  fill: var(--keynote-paper);
-}
-
-.cache-map-chip-site rect {
-  fill: var(--keynote-white);
-}
-
-.cache-map-group text,
-.cache-map-label,
-.cache-map-label text {
-  fill: var(--keynote-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.cache-map-label-site {
-  fill: var(--keynote-ink);
-}
-
-.cache-map-name text {
-  fill: var(--keynote-ink);
-  font-family: var(--slidev-font-mono, monospace);
-  font-size: 14px;
-  text-anchor: middle;
-}
-
-.cache-map-line path {
-  fill: none;
-  stroke: var(--keynote-ink);
-  stroke-width: 1.5;
-  opacity: 0.3;
-}
-
-/* Stages a conda-forge package passes through, rendered by <LifeCycle> */
-.life-cycle {
-  display: block;
-  width: 100%;
-  margin: 1.75rem 0 0.5rem;
-}
-
-.life-cycle-box rect {
-  fill: var(--keynote-white);
-  stroke: var(--keynote-border);
-}
-
-.life-cycle-box rect.life-cycle-box-highlight {
-  fill: var(--keynote-yellow);
-  stroke: var(--keynote-yellow);
-}
-
-.life-cycle-name text {
-  fill: var(--keynote-ink);
-  font-size: 16px;
-  font-weight: 600;
-  text-anchor: middle;
-}
-
-.life-cycle-name text.life-cycle-mono {
-  font-family: var(--slidev-font-mono, monospace);
-  font-size: 14px;
-}
-
-.life-cycle-detail text {
-  fill: var(--keynote-muted);
-  font-size: 13px;
-  text-anchor: middle;
-}
-
-.life-cycle-arrow path,
-.life-cycle-loop path {
-  fill: none;
-  stroke: var(--keynote-muted);
-  stroke-width: 1.5;
-}
-
-.life-cycle-arrow path.life-cycle-head,
-.life-cycle-loop path.life-cycle-head {
-  fill: var(--keynote-muted);
-  stroke: none;
-}
-
-.life-cycle-loop-label {
-  fill: var(--keynote-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-anchor: middle;
-  text-transform: uppercase;
-}
-
-/* Files an environment holds, with and without a virtual filesystem */
-.mount-map {
-  display: block;
-  width: 100%;
-  margin: 0.25rem 0 0.5rem;
-}
-
-.mount-map-row-label text {
-  fill: var(--keynote-ink);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.mount-map-box rect {
-  fill: var(--keynote-white);
-  stroke: var(--keynote-border);
-}
-
-.mount-map-box-empty rect {
-  fill: none;
-  stroke: var(--keynote-ink);
-  stroke-dasharray: 5 5;
-  opacity: 0.45;
-}
-
-.mount-map-label text {
-  fill: var(--keynote-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.mount-map-bar rect {
-  fill: var(--keynote-ink);
-  opacity: 0.18;
-}
-
-.mount-map-flow path {
-  fill: none;
-  stroke: var(--keynote-ink);
-  stroke-width: 2;
-  opacity: 0.4;
-}
-
-.mount-map-flow .mount-map-head {
-  fill: var(--keynote-ink);
-  stroke: none;
-  opacity: 0.4;
-}
-
-.mount-map-flow-accent path {
-  stroke: var(--keynote-ink);
-  opacity: 0.75;
-}
-
-.mount-map-flow-accent .mount-map-head {
-  fill: var(--keynote-ink);
-  opacity: 0.75;
-}
-
-.mount-map-flow-label {
-  fill: var(--keynote-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-anchor: middle;
-  text-transform: uppercase;
-}
-
-/* Shell command shown as a chip */
-.slidev-layout .command {
-  padding: 0.625rem 1rem;
-  background: var(--keynote-ink);
-  color: var(--keynote-white);
-  border-radius: 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* A command and what running it does */
-.command-row {
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  gap: 1rem;
-  align-items: center;
-}
-
-.command-row p {
-  margin: 0;
-  color: var(--keynote-muted);
-  font-size: 1rem;
-}
-
-/* Term and explanation pairs */
-.definitions {
-  display: grid;
-  gap: 0.5rem;
-  margin: 0;
-}
-
-.definitions > div {
-  display: grid;
-  grid-template-columns: 6rem 1fr;
-  gap: 0.625rem;
-  align-items: center;
-}
-
-.definitions dt,
-.definitions dd {
-  margin: 0;
-}
-
-.definitions dd {
-  color: var(--keynote-muted);
-  font-size: 0.875rem;
-}
-
-.slidev-layout .definitions code {
-  background: var(--keynote-paper);
-}
-
-/* Stacked cards naming the layer each tool occupies */
-.layers {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.layers strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-size: 1rem;
-  line-height: 1.25;
-}
-
-.layers p {
-  margin: 0;
-  color: var(--keynote-muted);
-  font-size: 0.75rem;
-  line-height: 1.375;
-}
-
-/* Connector between two boxes */
-.slidev-layout .flow-arrow {
-  align-self: center;
-  margin: 0;
-  color: var(--keynote-muted);
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-align: center;
-}
-
-/* Row of boxes joined by arrows, rendered by <Flow> */
-.flow {
-  display: grid;
-  gap: 0.625rem;
-  align-items: stretch;
-}
-
-.flow > div {
-  display: flex;
-  min-height: 6rem;
-  padding: 1rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 0.75rem;
-  text-align: center;
-}
-
-.flow > .flow-highlight {
-  background: var(--keynote-yellow);
-  border-color: var(--keynote-yellow);
-}
-
-.flow > b {
-  align-self: center;
-  color: var(--keynote-muted);
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-.flow strong {
-  max-width: 9rem;
-  font-size: 1rem;
-  line-height: 1.25;
-  text-wrap: balance;
-}
-
-.flow strong code {
-  padding: 0;
-  background: transparent;
-  font-size: inherit;
-}
-
-/* Readiness row, rendered by <StatusRow> */
-.status-row {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 1.5rem;
-  align-items: center;
-  min-height: 4rem;
-  padding: 1rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 0.75rem;
-}
-
-.status-row strong {
-  font-size: 1.125rem;
-}
-
-.status-badge {
-  padding: 0.25rem 0.5rem;
-  border-radius: 9999px;
-  font-size: 0.625rem;
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.status-badge-shipped {
-  background: var(--keynote-shipped);
-  color: var(--keynote-shipped-ink);
-}
-
-.status-badge-preview {
-  background: var(--keynote-preview);
-  color: var(--keynote-preview-ink);
-}
-
-.status-badge-prototype {
-  background: var(--keynote-prototype);
-  color: var(--keynote-prototype-ink);
-}
-
-/* Row of outlined chips */
-.pill-row {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.pill-row > span {
-  padding: 0.25rem 0.75rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-/* Feedstock names grouped by the stage of the pipeline they serve */
-.package-columns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.875rem;
-  margin: 0.5rem 0 0;
-}
-
-.package-columns > div {
-  padding: 1.25rem 1.375rem 1.5rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 0.75rem;
-}
-
-.package-columns .label {
-  margin-bottom: 0.875rem;
-}
-
-.package-columns ul {
-  display: grid;
-  gap: 0.875rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.slidev-layout .package-columns ul > li {
-  margin: 0;
-  padding: 0;
-  font-family: var(--slidev-font-mono, monospace);
-  font-size: 1.0625rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-.slidev-layout .package-columns ul > li::before {
-  content: none;
-}
-
-/* QR code plus caption, rendered by <SlidesQr> */
-.slides-qr {
-  display: grid;
-  justify-items: center;
-  gap: 0.625rem;
-}
-
-.slides-qr img {
-  display: block;
-  width: 10rem;
-  height: 10rem;
-  padding: 0.5rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 0.75rem;
-}
-
-.slides-qr span {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.025em;
-}
-
-.slidev-layout a.slides-qr,
-.slidev-layout a.slides-qr:hover {
-  border-bottom: 0;
-}
+/* Slide modifiers, set through the `class` key of a slide's front matter */
 
 /* Lists that carry their own emoji instead of a marker */
 .emoji-list ul {
@@ -775,398 +240,4 @@
 /* Titles long enough to wrap, held on a single line */
 .title-one-line h1 {
   font-size: 2rem;
-}
-
-/* Cover layout */
-.slidev-layout.keynote-cover {
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  overflow: hidden;
-  padding: 6rem 4rem 3.5rem;
-  background:
-    linear-gradient(90deg, transparent 0 74%, rgb(255 212 50 / 18%) 74% 100%),
-    var(--keynote-paper);
-  text-align: left;
-}
-
-.cover-brand {
-  position: absolute;
-  z-index: 2;
-  bottom: 2.75rem;
-  left: 87%;
-  width: 9rem;
-  transform: translateX(-50%);
-}
-
-.cover-content {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.slidev-layout.keynote-cover h1 {
-  max-width: 48rem;
-  margin: 0;
-  font-size: 4rem;
-  line-height: 1.125;
-}
-
-.cover-speaker {
-  margin: 1.25rem 0 0;
-  font-size: 1.125rem;
-}
-
-.cover-slides-qr {
-  position: absolute;
-  top: 2.75rem;
-  left: 87%;
-  width: max-content;
-  transform: translateX(-50%);
-}
-
-/* Contents layout */
-.toc-slide {
-  padding: 2.75rem 3rem 5rem;
-}
-
-.toc-slide ul {
-  display: grid;
-  max-width: 48rem;
-  gap: 0.625rem;
-  margin: 0.875rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.toc-slide li {
-  display: flex;
-  align-items: center;
-  min-height: 3.5rem;
-  margin: 0;
-  padding: 0.625rem 1.25rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 0.75rem;
-}
-
-.slidev-layout.toc-slide ul > li::before {
-  content: none;
-}
-
-.toc-slide li strong {
-  font-size: 1.125rem;
-}
-
-/* Section layout */
-.keynote-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 4rem 6rem 5rem;
-  background:
-    linear-gradient(90deg, var(--keynote-yellow) 0 0.875rem, transparent 0.875rem),
-    var(--keynote-paper);
-}
-
-.keynote-section .section-label {
-  margin: 0 0 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.keynote-section h1 {
-  max-width: 48rem;
-  margin-bottom: 1.25rem;
-  font-size: 3.75rem;
-}
-
-/* Image-right layout */
-.keynote-image-layout {
-  display: grid;
-  grid-template-columns: 58% 42%;
-  grid-template-rows: auto 1fr;
-  height: 100%;
-}
-
-/* The meta row spans both columns so the reference pill reaches the slide edge */
-.keynote-image-layout > .slide-meta {
-  grid-column: 1 / -1;
-  /* The row's own padding sits inside min-height, so it carries the slide's top padding too */
-  min-height: 4.5rem;
-  padding: 2.75rem 3rem 0;
-}
-
-.keynote-image-layout .slidev-layout {
-  padding-right: 2rem;
-}
-
-.keynote-image-layout > .slide-meta + .slidev-layout {
-  padding-top: 0;
-}
-
-.keynote-image-layout > .slide-meta ~ .keynote-image-column {
-  margin-top: 0;
-}
-
-.keynote-image-column {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  margin: 2.5rem 2.25rem 5rem 0;
-}
-
-.keynote-image-panel {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  background: var(--keynote-white);
-  border: 0.875rem solid var(--keynote-white);
-  border-radius: 1.25rem;
-}
-
-/* Who or what the picture shows, set below it */
-.keynote-image-caption {
-  margin-top: 1rem;
-  color: var(--keynote-muted);
-  font-size: 0.9375rem;
-  line-height: 1.4;
-}
-
-.keynote-image-caption p {
-  margin: 0;
-}
-
-.keynote-image-caption strong {
-  color: var(--keynote-ink);
-}
-
-.keynote-image-panel-plain {
-  background: transparent;
-  border: 0;
-}
-
-.keynote-image-panel img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* Merges a screenshot's white background into the paper */
-.keynote-image-blend {
-  mix-blend-mode: multiply;
-}
-
-.keynote-image-panel figcaption {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  background: rgb(248 246 242 / 92%);
-  border-radius: 0.25rem;
-  color: var(--keynote-muted);
-  font-size: 0.625rem;
-}
-
-.keynote-image-panel figcaption a {
-  color: inherit;
-  border-bottom: 1px solid var(--keynote-yellow);
-}
-
-/* Code-right layout */
-.code-right-layout {
-  display: flex;
-  flex-direction: column;
-}
-
-.code-right-grid {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  flex: 1;
-  gap: 2rem;
-  align-items: stretch;
-  min-height: 0;
-}
-
-/* A grid followed by more content keeps its own height */
-.code-right-grid:not(:last-child) {
-  flex: none;
-}
-
-.code-right-copy {
-  padding-top: 0.25rem;
-}
-
-.code-right-layout > h1 {
-  margin-bottom: 1rem;
-}
-
-.code-right-copy h1 {
-  margin-bottom: 1rem;
-  font-size: 2.25rem;
-}
-
-/* Compare layout */
-.compare-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1.25rem;
-}
-
-.compare-grid h2 {
-  margin-bottom: 0.75rem;
-  font-size: 1.5rem;
-}
-
-.compare-grid p {
-  margin: 0.75rem 0 0;
-  color: var(--keynote-muted);
-  font-size: 1rem;
-}
-
-/* Two-cards layout */
-.two-cards-layout {
-  display: flex;
-  flex-direction: column;
-}
-
-.role-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1.75rem;
-}
-
-/* A card row with nothing after it fills the slide */
-.role-pair:last-child {
-  flex: 1;
-}
-
-.role-pair > div {
-  display: flex;
-  min-height: 9rem;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem 1.25rem;
-  background: var(--keynote-white);
-  border-left: 0.25rem solid var(--keynote-yellow);
-  border-radius: 0 0.75rem 0.75rem 0;
-}
-
-.role-pair p {
-  margin: 0.5rem 0;
-  font-size: 1.125rem;
-}
-
-.slidev-layout .role-pair code {
-  font-size: 0.75rem;
-}
-
-/* End layout */
-.slidev-layout.keynote-end {
-  padding: 3rem 4rem 4rem;
-  text-align: center;
-}
-
-.keynote-end h1 {
-  margin: 0 auto 0.5rem;
-}
-
-.closing-subtitle {
-  margin: 0 auto 2rem;
-  color: var(--keynote-muted);
-  font-size: 1.125rem;
-}
-
-.end-slides-qr {
-  width: max-content;
-  margin: 1.5rem auto 0;
-}
-
-/* Ways to reach the speaker, rendered by <Bubble> */
-.bubbles {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.bubble {
-  display: flex;
-  min-width: 0;
-  min-height: 9rem;
-  padding: 1.5rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--keynote-white);
-  border-radius: 1.5rem;
-  color: var(--keynote-ink);
-  text-align: center;
-}
-
-.slidev-layout a.bubble,
-.slidev-layout a.bubble:hover {
-  border-bottom: 0;
-}
-
-.bubble-label {
-  margin-bottom: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.bubble-detail {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-/* Footer */
-.keynote-footer {
-  position: absolute;
-  z-index: 10;
-  right: 2.25rem;
-  bottom: 1.25rem;
-  left: 2.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--keynote-ink);
-}
-
-.keynote-footer > img {
-  width: 7.5rem;
-  height: auto;
-  padding: 0.375rem 0.5rem;
-  margin-left: -0.5rem;
-  background: var(--keynote-paper);
-  border-radius: 0.5rem;
-}
-
-.keynote-footer-meta {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  font-size: 0.625rem;
-  letter-spacing: 0.025em;
-}
-
-.keynote-page {
-  display: grid;
-  place-items: center;
-  min-width: 1.75rem;
-  height: 1.75rem;
-  padding: 0 0.375rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: 50%;
-  font-variant-numeric: tabular-nums;
 }

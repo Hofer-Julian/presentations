@@ -17,3 +17,34 @@ const imageSrc = computed(() => assetUrl(props.src))
     <span>{{ label }}</span>
   </a>
 </template>
+
+<style>
+/* QR code plus caption */
+.slides-qr {
+  display: grid;
+  justify-items: center;
+  gap: 0.625rem;
+}
+
+.slides-qr img {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  padding: 0.5rem;
+  background: var(--keynote-white);
+  border: 1px solid var(--keynote-border);
+  border-radius: var(--keynote-radius-md);
+}
+
+.slides-qr span {
+  font-size: var(--keynote-text-xs);
+  font-weight: 500;
+  letter-spacing: var(--keynote-tracking-slight);
+}
+
+/* The code itself is the link, so it carries no underline of its own */
+.slidev-layout a.slides-qr,
+.slidev-layout a.slides-qr:hover {
+  border-bottom: 0;
+}
+</style>

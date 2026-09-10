@@ -86,3 +86,58 @@
     </g>
   </svg>
 </template>
+
+<style>
+/* Map of which cache each environment takes a package from */
+.cache-map {
+  display: block;
+  width: 100%;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.cache-map-env rect,
+.cache-map-store rect {
+  fill: var(--keynote-white);
+  stroke: var(--keynote-border);
+}
+
+.cache-map-site {
+  fill: var(--keynote-yellow);
+}
+
+.cache-map-chip rect {
+  fill: var(--keynote-paper);
+}
+
+.cache-map-chip-site rect {
+  fill: var(--keynote-white);
+}
+
+.cache-map-group text,
+.cache-map-label,
+.cache-map-label text {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--keynote-tracking-wide);
+  text-transform: uppercase;
+}
+
+.cache-map-label-site {
+  fill: var(--keynote-ink);
+}
+
+.cache-map-name text {
+  fill: var(--keynote-ink);
+  font-family: var(--keynote-font-mono);
+  font-size: 14px;
+  text-anchor: middle;
+}
+
+.cache-map-line path {
+  fill: none;
+  stroke: var(--keynote-ink);
+  stroke-width: 1.5;
+  opacity: 0.3;
+}
+</style>

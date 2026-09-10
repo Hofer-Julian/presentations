@@ -27,3 +27,25 @@ const href = computed(() => {
 <template>
   <a class="ref" :href="href" target="_blank" rel="noopener noreferrer">{{ to }}</a>
 </template>
+
+<style>
+/* Where the work behind a slide lives */
+.slidev-layout .ref,
+.keynote-image-layout .ref {
+  margin-left: auto;
+  padding: 0.1875rem 0.5rem;
+  background: var(--keynote-white);
+  border: 1px solid var(--keynote-border);
+  border-radius: var(--keynote-radius-pill);
+  color: var(--keynote-muted);
+  font-family: var(--keynote-font-mono);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.slidev-layout a.ref:hover,
+.keynote-image-layout a.ref:hover {
+  border-color: var(--keynote-yellow);
+  color: var(--keynote-ink);
+}
+</style>

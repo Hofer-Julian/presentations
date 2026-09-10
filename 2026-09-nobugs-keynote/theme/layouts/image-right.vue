@@ -56,3 +56,103 @@ const imageStyle = computed(() => ({
     </div>
   </div>
 </template>
+
+<style>
+.keynote-image-layout {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  background: var(--keynote-paper);
+  color: var(--keynote-ink);
+}
+
+/* The meta row spans both columns so the reference pill reaches the slide edge */
+.keynote-image-layout > .slide-meta {
+  grid-column: 1 / -1;
+  /* The row's own padding sits inside min-height, so it carries the slide's top padding too */
+  min-height: 4.5rem;
+  padding:
+    var(--keynote-slide-padding-top)
+    var(--keynote-slide-padding-inline)
+    0;
+}
+
+.keynote-image-layout .slidev-layout {
+  padding-right: 2rem;
+}
+
+.keynote-image-layout > .slide-meta + .slidev-layout {
+  padding-top: 0;
+}
+
+.keynote-image-layout > .slide-meta ~ .keynote-image-column {
+  margin-top: 0;
+}
+
+.keynote-image-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin: 2.5rem 2.25rem var(--keynote-slide-padding-bottom) 0;
+}
+
+.keynote-image-panel {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--keynote-white);
+  border: 0.875rem solid var(--keynote-white);
+  border-radius: var(--keynote-radius-lg);
+}
+
+/* An image that carries its own edges needs no frame around it */
+.keynote-image-panel-plain {
+  background: transparent;
+  border: 0;
+}
+
+.keynote-image-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Merges a screenshot's white background into the paper */
+.keynote-image-blend {
+  mix-blend-mode: multiply;
+}
+
+.keynote-image-panel figcaption {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--keynote-scrim);
+  border-radius: var(--keynote-radius-xs);
+  color: var(--keynote-muted);
+  font-size: var(--keynote-text-2xs);
+}
+
+.keynote-image-panel figcaption a {
+  color: inherit;
+  border-bottom: 1px solid var(--keynote-yellow);
+}
+
+/* Who or what the picture shows, set below it */
+.keynote-image-caption {
+  margin-top: 1rem;
+  color: var(--keynote-muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.keynote-image-caption p {
+  margin: 0;
+}
+
+.keynote-image-caption strong {
+  color: var(--keynote-ink);
+}
+</style>
