@@ -170,6 +170,36 @@
 
 /* Components */
 
+/* Eyebrow and reference sharing the line above the heading, rendered by <SlideMeta> */
+.slide-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  margin: 0 0 0.75rem;
+}
+
+.slidev-layout .slide-meta .eyebrow {
+  margin: 0;
+}
+
+/* Where the work behind a slide lives, rendered by <Ref> */
+.slidev-layout .ref {
+  margin-left: auto;
+  padding: 0.1875rem 0.5rem;
+  background: var(--keynote-white);
+  border: 1px solid var(--keynote-border);
+  border-radius: 9999px;
+  color: var(--keynote-muted);
+  font-family: var(--slidev-font-mono, monospace);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.slidev-layout a.ref:hover {
+  border-color: var(--keynote-yellow);
+  color: var(--keynote-ink);
+}
+
 /* Eyebrow, rendered by every content layout above the heading */
 .slidev-layout .eyebrow {
   margin: 0 0 0.75rem;

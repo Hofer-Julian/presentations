@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import SlideMeta from '../components/SlideMeta.vue'
+
 defineProps<{
   eyebrow?: string
+  link?: string
 }>()
 </script>
 
 <template>
   <div class="slidev-layout two-cards-layout">
-    <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
+    <SlideMeta :eyebrow="eyebrow" :link="link" />
     <slot />
     <div class="role-pair">
       <div><slot name="left" /></div>

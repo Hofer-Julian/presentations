@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import SlideMeta from '../components/SlideMeta.vue'
 import { assetUrl } from '../utils/asset'
 
 const props = withDefaults(defineProps<{
@@ -9,6 +10,7 @@ const props = withDefaults(defineProps<{
   eyebrow?: string
   frame?: boolean
   image: string
+  link?: string
   source?: string
   sourceHref?: string
   split?: string
@@ -32,7 +34,7 @@ const imageStyle = computed(() => ({
 <template>
   <div class="keynote-image-layout" :style="props.split ? { gridTemplateColumns: props.split } : undefined">
     <div class="slidev-layout default">
-      <p v-if="props.eyebrow" class="eyebrow">{{ props.eyebrow }}</p>
+      <SlideMeta :eyebrow="props.eyebrow" :link="props.link" />
       <slot />
     </div>
     <figure class="keynote-image-panel" :class="{ 'keynote-image-panel-plain': !props.frame }">

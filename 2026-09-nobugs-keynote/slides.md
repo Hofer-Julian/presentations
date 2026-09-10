@@ -166,6 +166,48 @@ class: emoji-list
 
 
 ---
+layout: code-right
+link: pixi.sh/latest/getting_started
+split: 1fr 1fr
+---
+
+::title::
+
+# Pixi manifest
+
+::left::
+
+- **Dependencies** from conda channels and PyPI in one environment
+- **Platforms** are all locked in one `pixi.lock`
+- **Tasks** are the commands of your project and run inside the environment
+
+<Note class="text-base"><code>pixi run fit</code> creates the environment if needed, then runs the task</Note>
+
+::right::
+
+<CodeFile name="pixi.toml">
+
+```toml
+[workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "win-64"]
+
+[dependencies]
+python = "3.13.*"
+numpy = ">=2.1"
+h5py = "*"
+
+[pypi-dependencies]
+lmfit = "*"
+
+[tasks]
+fit = "python fit.py"
+```
+
+</CodeFile>
+
+
+---
 layout: section
 label: Part 2
 ---
@@ -175,6 +217,7 @@ label: Part 2
 ---
 layout: keynote
 eyebrow: Pixi Build · Preview
+link: pixi.sh/latest/build/getting_started
 ---
 
 # Pixi can build software from source
@@ -203,6 +246,7 @@ eyebrow: Pixi Build · Preview
 
 ---
 layout: code-right
+link: pixi.sh/latest/build/dependency_types
 ---
 
 # Showcasing SciPy
@@ -246,6 +290,7 @@ blas-devel = "*"
 ---
 layout: compare
 eyebrow: Pixi Build · Preview
+link: pixi.sh/latest/build/package_source
 ---
 
 # Work on it, or depend on it
@@ -315,6 +360,7 @@ layout: keynote
 ---
 layout: code-right
 eyebrow: Shipped
+link: pixi.sh/latest/workspace/multi_platform_configuration
 ---
 
 ::title::
@@ -357,6 +403,7 @@ pytorch-cpu = "*"
 ---
 layout: two-cards
 eyebrow: Shipped
+link: pixi.sh/latest/deployment/pixi_pack
 ---
 
 # Working with limited connectivity
@@ -381,6 +428,7 @@ Move a complete environment archive across the network boundary, then unpack it 
 ---
 layout: keynote
 eyebrow: "Shipped in Rattler · Not yet integrated in Pixi"
+link: "rattler#43"
 ---
 
 # Layered package caches
@@ -392,6 +440,7 @@ eyebrow: "Shipped in Rattler · Not yet integrated in Pixi"
 ---
 layout: keynote
 eyebrow: Prototype
+link: "rattler#2059"
 ---
 
 # Virtual filesystem
