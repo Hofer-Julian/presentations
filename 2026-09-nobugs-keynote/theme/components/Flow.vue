@@ -45,28 +45,28 @@ const columns = computed(() => steps.value.map(() => '1fr').join(' auto '))
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: var(--keynote-radius-md);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
+  border-radius: var(--prefix-radius-md);
   text-align: center;
 }
 
 .flow > .flow-highlight {
-  background: var(--keynote-yellow);
-  border-color: var(--keynote-yellow);
+  background: var(--prefix-yellow);
+  border-color: var(--prefix-yellow);
 }
 
 /* The arrow between two boxes */
 .flow > b {
   align-self: center;
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-xl);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-xl);
   font-weight: 400;
 }
 
 .slidev-layout .flow strong {
   max-width: 9rem;
-  font-size: var(--keynote-text-base);
+  font-size: var(--prefix-text-base);
   line-height: 1.25;
   text-wrap: balance;
 }

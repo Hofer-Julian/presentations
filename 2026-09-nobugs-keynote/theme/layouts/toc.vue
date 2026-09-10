@@ -26,9 +26,9 @@ import SlideMeta from '../components/SlideMeta.vue'
   min-height: 3.5rem;
   margin: 0;
   padding: 0.625rem 1.25rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: var(--keynote-radius-md);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
+  border-radius: var(--prefix-radius-md);
 }
 
 .slidev-layout.toc-slide ul > li::before {
@@ -36,6 +36,6 @@ import SlideMeta from '../components/SlideMeta.vue'
 }
 
 .slidev-layout.toc-slide li strong {
-  font-size: var(--keynote-text-md);
+  font-size: var(--prefix-text-md);
 }
 </style>

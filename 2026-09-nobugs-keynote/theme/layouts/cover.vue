@@ -29,8 +29,8 @@ defineProps<{
   overflow: hidden;
   padding: 6rem 4rem 3.5rem;
   background:
-    linear-gradient(90deg, transparent 0 74%, var(--keynote-yellow-wash) 74% 100%),
-    var(--keynote-paper);
+    linear-gradient(90deg, transparent 0 74%, var(--prefix-yellow-wash) 74% 100%),
+    var(--prefix-paper);
   text-align: left;
 }
 
@@ -65,7 +65,7 @@ defineProps<{
 
 .cover-speaker {
   margin: 1.25rem 0 0;
-  font-size: var(--keynote-text-md);
+  font-size: var(--prefix-text-md);
 }
 
 .cover-slides-qr {

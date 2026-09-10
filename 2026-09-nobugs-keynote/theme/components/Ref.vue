@@ -34,18 +34,18 @@ const href = computed(() => {
 .keynote-image-layout .ref {
   margin-left: auto;
   padding: 0.1875rem 0.5rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: var(--keynote-radius-pill);
-  color: var(--keynote-muted);
-  font-family: var(--keynote-font-mono);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
+  border-radius: var(--prefix-radius-pill);
+  color: var(--prefix-muted);
+  font-family: var(--prefix-font-mono);
   font-size: 0.6875rem;
   white-space: nowrap;
 }
 
 .slidev-layout a.ref:hover,
 .keynote-image-layout a.ref:hover {
-  border-color: var(--keynote-yellow);
-  color: var(--keynote-ink);
+  border-color: var(--prefix-yellow);
+  color: var(--prefix-ink);
 }
 </style>

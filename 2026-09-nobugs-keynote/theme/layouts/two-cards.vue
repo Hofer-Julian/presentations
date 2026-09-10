@@ -44,17 +44,17 @@ defineProps<{
   flex-direction: column;
   justify-content: center;
   padding: 1rem 1.25rem;
-  background: var(--keynote-white);
-  border-left: var(--keynote-rule) solid var(--keynote-yellow);
-  border-radius: 0 var(--keynote-radius-md) var(--keynote-radius-md) 0;
+  background: var(--prefix-white);
+  border-left: var(--prefix-rule) solid var(--prefix-yellow);
+  border-radius: 0 var(--prefix-radius-md) var(--prefix-radius-md) 0;
 }
 
 .slidev-layout .role-pair p {
   margin: 0.5rem 0;
-  font-size: var(--keynote-text-md);
+  font-size: var(--prefix-text-md);
 }
 
 .slidev-layout .role-pair code {
-  font-size: var(--keynote-text-xs);
+  font-size: var(--prefix-text-xs);
 }
 </style>

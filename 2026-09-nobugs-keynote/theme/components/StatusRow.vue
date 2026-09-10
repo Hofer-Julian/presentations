@@ -20,36 +20,36 @@ defineProps<{
   align-items: center;
   min-height: 4rem;
   padding: 1rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: var(--keynote-radius-md);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
+  border-radius: var(--prefix-radius-md);
 }
 
 .slidev-layout .status-row strong {
-  font-size: var(--keynote-text-md);
+  font-size: var(--prefix-text-md);
 }
 
 .status-badge {
   padding: 0.25rem 0.5rem;
-  border-radius: var(--keynote-radius-pill);
-  font-size: var(--keynote-text-2xs);
+  border-radius: var(--prefix-radius-pill);
+  font-size: var(--prefix-text-2xs);
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
 }
 
 .status-badge-shipped {
-  background: var(--keynote-shipped);
-  color: var(--keynote-shipped-ink);
+  background: var(--prefix-shipped);
+  color: var(--prefix-shipped-ink);
 }
 
 .status-badge-preview {
-  background: var(--keynote-preview);
-  color: var(--keynote-preview-ink);
+  background: var(--prefix-preview);
+  color: var(--prefix-preview-ink);
 }
 
 .status-badge-prototype {
-  background: var(--keynote-prototype);
-  color: var(--keynote-prototype-ink);
+  background: var(--prefix-prototype);
+  color: var(--prefix-prototype-ink);
 }
 </style>

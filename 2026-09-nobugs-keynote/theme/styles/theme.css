@@ -7,61 +7,61 @@
 
   /* Colour. The four base hues are kept as channels as well, so the
      translucent variants below stay in step with the solids. */
-  --keynote-paper-rgb: 248 246 242;
-  --keynote-ink-rgb: 0 29 56;
-  --keynote-white-rgb: 255 255 255;
-  --keynote-yellow-rgb: 255 212 50;
-  --keynote-paper: rgb(var(--keynote-paper-rgb));
-  --keynote-ink: rgb(var(--keynote-ink-rgb));
-  --keynote-white: rgb(var(--keynote-white-rgb));
-  --keynote-yellow: rgb(var(--keynote-yellow-rgb));
-  --keynote-muted: #62656a;
-  --keynote-border: #ded9cf;
+  --prefix-paper-rgb: 248 246 242;
+  --prefix-ink-rgb: 0 29 56;
+  --prefix-white-rgb: 255 255 255;
+  --prefix-yellow-rgb: 255 212 50;
+  --prefix-paper: rgb(var(--prefix-paper-rgb));
+  --prefix-ink: rgb(var(--prefix-ink-rgb));
+  --prefix-white: rgb(var(--prefix-white-rgb));
+  --prefix-yellow: rgb(var(--prefix-yellow-rgb));
+  --prefix-muted: #62656a;
+  --prefix-border: #ded9cf;
 
   /* Yellow behind text, yellow across a slide, and paper over an image */
-  --keynote-yellow-soft: rgb(var(--keynote-yellow-rgb) / 24%);
-  --keynote-yellow-wash: rgb(var(--keynote-yellow-rgb) / 18%);
-  --keynote-scrim: rgb(var(--keynote-paper-rgb) / 92%);
+  --prefix-yellow-soft: rgb(var(--prefix-yellow-rgb) / 24%);
+  --prefix-yellow-wash: rgb(var(--prefix-yellow-rgb) / 18%);
+  --prefix-scrim: rgb(var(--prefix-paper-rgb) / 92%);
 
   /* How ready a piece of work is */
-  --keynote-shipped: #dcecdf;
-  --keynote-shipped-ink: #245c3a;
-  --keynote-preview: #e8eaec;
-  --keynote-preview-ink: var(--keynote-ink);
-  --keynote-prototype: #f1dddd;
-  --keynote-prototype-ink: #8a3d3d;
+  --prefix-shipped: #dcecdf;
+  --prefix-shipped-ink: #245c3a;
+  --prefix-preview: #e8eaec;
+  --prefix-preview-ink: var(--prefix-ink);
+  --prefix-prototype: #f1dddd;
+  --prefix-prototype-ink: #8a3d3d;
 
   /* Type */
-  --keynote-font-mono: var(--slidev-font-mono, monospace);
-  --keynote-text-2xs: 0.625rem;
-  --keynote-text-xs: 0.75rem;
-  --keynote-text-sm: 0.875rem;
-  --keynote-text-base: 1rem;
-  --keynote-text-md: 1.125rem;
-  --keynote-text-lg: 1.25rem;
-  --keynote-text-xl: 1.5rem;
-  --keynote-text-2xl: 1.75rem;
-  --keynote-tracking-tight: -0.025em;
-  --keynote-tracking-slight: 0.025em;
-  --keynote-tracking-wide: 0.1em;
+  --prefix-font-mono: var(--slidev-font-mono, monospace);
+  --prefix-text-2xs: 0.625rem;
+  --prefix-text-xs: 0.75rem;
+  --prefix-text-sm: 0.875rem;
+  --prefix-text-base: 1rem;
+  --prefix-text-md: 1.125rem;
+  --prefix-text-lg: 1.25rem;
+  --prefix-text-xl: 1.5rem;
+  --prefix-text-2xl: 1.75rem;
+  --prefix-tracking-tight: -0.025em;
+  --prefix-tracking-slight: 0.025em;
+  --prefix-tracking-wide: 0.1em;
 
   /* Shape */
-  --keynote-radius-xs: 0.25rem;
-  --keynote-radius-sm: 0.5rem;
-  --keynote-radius-md: 0.75rem;
-  --keynote-radius-lg: 1.25rem;
-  --keynote-radius-xl: 1.5rem;
-  --keynote-radius-pill: 9999px;
+  --prefix-radius-xs: 0.25rem;
+  --prefix-radius-sm: 0.5rem;
+  --prefix-radius-md: 0.75rem;
+  --prefix-radius-lg: 1.25rem;
+  --prefix-radius-xl: 1.5rem;
+  --prefix-radius-pill: 9999px;
   /* The yellow bar that marks a passage as the point */
-  --keynote-rule: 0.25rem;
+  --prefix-rule: 0.25rem;
 
   /* Slide */
-  --keynote-slide-padding-top: 2.75rem;
-  --keynote-slide-padding-inline: 3rem;
-  --keynote-slide-padding-bottom: 5rem;
+  --prefix-slide-padding-top: 2.75rem;
+  --prefix-slide-padding-inline: 3rem;
+  --prefix-slide-padding-bottom: 5rem;
 
-  --slidev-theme-primary: var(--keynote-ink);
-  --slidev-code-background: var(--keynote-white);
+  --slidev-theme-primary: var(--prefix-ink);
+  --slidev-code-background: var(--prefix-white);
   --slidev-code-font-size: 13px;
   --slidev-code-line-height: 1.5;
 }
@@ -70,21 +70,21 @@
 
 .slidev-layout {
   padding:
-    var(--keynote-slide-padding-top)
-    var(--keynote-slide-padding-inline)
-    var(--keynote-slide-padding-bottom);
-  background: var(--keynote-paper);
-  color: var(--keynote-ink);
-  font-size: var(--keynote-text-lg);
+    var(--prefix-slide-padding-top)
+    var(--prefix-slide-padding-inline)
+    var(--prefix-slide-padding-bottom);
+  background: var(--prefix-paper);
+  color: var(--prefix-ink);
+  font-size: var(--prefix-text-lg);
   line-height: 1.5;
 }
 
 .slidev-layout h1,
 .slidev-layout h2,
 .slidev-layout h3 {
-  color: var(--keynote-ink);
+  color: var(--prefix-ink);
   font-weight: 500;
-  letter-spacing: var(--keynote-tracking-tight);
+  letter-spacing: var(--prefix-tracking-tight);
   text-wrap: balance;
 }
 
@@ -96,7 +96,7 @@
 
 .slidev-layout h2 {
   margin: 0 0 0.625rem;
-  font-size: var(--keynote-text-2xl);
+  font-size: var(--prefix-text-2xl);
   line-height: 1.25;
 }
 
@@ -127,7 +127,7 @@
   left: -1.5rem;
   width: 0.375rem;
   height: 0.375rem;
-  background: var(--keynote-ink);
+  background: var(--prefix-ink);
   border-radius: 0.0625rem;
 }
 
@@ -139,7 +139,7 @@
 
 .slidev-layout ul ul > li {
   margin: 0.375rem 0;
-  color: var(--keynote-muted);
+  color: var(--prefix-muted);
   font-size: 0.9375em;
 }
 
@@ -147,7 +147,7 @@
   top: 0.72em;
   width: 0.625rem;
   height: 0.0938rem;
-  background: var(--keynote-muted);
+  background: var(--prefix-muted);
   border-radius: 0;
 }
 
@@ -156,16 +156,16 @@
 }
 
 .slidev-layout a {
-  color: var(--keynote-ink);
-  border-bottom: 2px solid var(--keynote-yellow);
+  color: var(--prefix-ink);
+  border-bottom: 2px solid var(--prefix-yellow);
 }
 
 .slidev-layout a:hover {
-  border-bottom-color: var(--keynote-ink);
+  border-bottom-color: var(--prefix-ink);
 }
 
 .slidev-layout a:focus-visible {
-  outline: 3px solid var(--keynote-ink);
+  outline: 3px solid var(--prefix-ink);
   outline-offset: 4px;
 }
 
@@ -173,15 +173,15 @@
 
 .slidev-layout :not(pre) > code {
   padding: 0.125rem 0.25rem;
-  background: var(--keynote-white);
-  border-radius: var(--keynote-radius-xs);
+  background: var(--prefix-white);
+  border-radius: var(--prefix-radius-xs);
   font-size: 0.875em;
 }
 
 .slidev-layout pre {
   margin: 0;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
 }
 
 /* Shared classes */
@@ -190,34 +190,34 @@
 .slidev-layout .eyebrow,
 .keynote-image-layout .eyebrow {
   margin: 0 0 0.75rem;
-  color: var(--keynote-ink);
-  font-size: var(--keynote-text-xs);
+  color: var(--prefix-ink);
+  font-size: var(--prefix-text-xs);
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
 }
 
 /* Small uppercase caption above a value */
 .label {
   display: block;
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-2xs);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-2xs);
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
 }
 
 /* Sentence between the heading and the body of a slide */
 .slidev-layout .lead {
   margin: -0.5rem 0 1.25rem;
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-lg);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-lg);
 }
 
 /* Sentence that closes a slide */
 .slidev-layout .statement {
   margin: 1.5rem 0 0;
-  font-size: var(--keynote-text-xl);
+  font-size: var(--prefix-text-xl);
   line-height: 1.25;
 }
 

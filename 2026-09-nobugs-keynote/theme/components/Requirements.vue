@@ -21,6 +21,6 @@
   bottom: -0.875rem;
   left: 50%;
   width: 1px;
-  background: var(--keynote-border);
+  background: var(--prefix-border);
 }
 </style>

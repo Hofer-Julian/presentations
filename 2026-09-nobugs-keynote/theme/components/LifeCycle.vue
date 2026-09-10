@@ -104,29 +104,29 @@ function elbow(trigger: typeof TRIGGERS[number]) {
 }
 
 .life-cycle-box rect {
-  fill: var(--keynote-white);
-  stroke: var(--keynote-border);
+  fill: var(--prefix-white);
+  stroke: var(--prefix-border);
 }
 
 .life-cycle-box rect.life-cycle-box-highlight {
-  fill: var(--keynote-yellow);
-  stroke: var(--keynote-yellow);
+  fill: var(--prefix-yellow);
+  stroke: var(--prefix-yellow);
 }
 
 .life-cycle-name text {
-  fill: var(--keynote-ink);
+  fill: var(--prefix-ink);
   font-size: 16px;
   font-weight: 600;
   text-anchor: middle;
 }
 
 .life-cycle-name text.life-cycle-mono {
-  font-family: var(--keynote-font-mono);
+  font-family: var(--prefix-font-mono);
   font-size: 14px;
 }
 
 .life-cycle-detail text {
-  fill: var(--keynote-muted);
+  fill: var(--prefix-muted);
   font-size: 13px;
   text-anchor: middle;
 }
@@ -134,21 +134,21 @@ function elbow(trigger: typeof TRIGGERS[number]) {
 .life-cycle-arrow path,
 .life-cycle-loop path {
   fill: none;
-  stroke: var(--keynote-muted);
+  stroke: var(--prefix-muted);
   stroke-width: 1.5;
 }
 
 .life-cycle-arrow path.life-cycle-head,
 .life-cycle-loop path.life-cycle-head {
-  fill: var(--keynote-muted);
+  fill: var(--prefix-muted);
   stroke: none;
 }
 
 .life-cycle-loop-label {
-  fill: var(--keynote-muted);
+  fill: var(--prefix-muted);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-anchor: middle;
   text-transform: uppercase;
 }

@@ -97,46 +97,46 @@
 
 .cache-map-env rect,
 .cache-map-store rect {
-  fill: var(--keynote-white);
-  stroke: var(--keynote-border);
+  fill: var(--prefix-white);
+  stroke: var(--prefix-border);
 }
 
 .cache-map-site {
-  fill: var(--keynote-yellow);
+  fill: var(--prefix-yellow);
 }
 
 .cache-map-chip rect {
-  fill: var(--keynote-paper);
+  fill: var(--prefix-paper);
 }
 
 .cache-map-chip-site rect {
-  fill: var(--keynote-white);
+  fill: var(--prefix-white);
 }
 
 .cache-map-group text,
 .cache-map-label,
 .cache-map-label text {
-  fill: var(--keynote-muted);
+  fill: var(--prefix-muted);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
 }
 
 .cache-map-label-site {
-  fill: var(--keynote-ink);
+  fill: var(--prefix-ink);
 }
 
 .cache-map-name text {
-  fill: var(--keynote-ink);
-  font-family: var(--keynote-font-mono);
+  fill: var(--prefix-ink);
+  font-family: var(--prefix-font-mono);
   font-size: 14px;
   text-anchor: middle;
 }
 
 .cache-map-line path {
   fill: none;
-  stroke: var(--keynote-ink);
+  stroke: var(--prefix-ink);
   stroke-width: 1.5;
   opacity: 0.3;
 }

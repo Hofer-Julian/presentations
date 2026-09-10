@@ -66,8 +66,8 @@ const imageStyle = computed(() => ({
   grid-template-columns: 58% 42%;
   grid-template-rows: auto auto 1fr;
   height: 100%;
-  background: var(--keynote-paper);
-  color: var(--keynote-ink);
+  background: var(--prefix-paper);
+  color: var(--prefix-ink);
 }
 
 /* The meta row spans both columns so the reference pill reaches the slide edge */
@@ -76,26 +76,26 @@ const imageStyle = computed(() => ({
   /* The row's own padding sits inside min-height, so it carries the slide's top padding too */
   min-height: 4.5rem;
   padding:
-    var(--keynote-slide-padding-top)
-    var(--keynote-slide-padding-inline)
+    var(--prefix-slide-padding-top)
+    var(--prefix-slide-padding-inline)
     0;
 }
 
 /* The heading spans both columns, so its length never eats into the picture */
 .keynote-image-layout > .keynote-image-title {
   grid-column: 1 / -1;
-  padding: 0 var(--keynote-slide-padding-inline);
+  padding: 0 var(--prefix-slide-padding-inline);
 }
 
 .keynote-image-layout > .keynote-image-copy {
-  padding: 0 2rem var(--keynote-slide-padding-bottom) var(--keynote-slide-padding-inline);
+  padding: 0 2rem var(--prefix-slide-padding-bottom) var(--prefix-slide-padding-inline);
 }
 
 .keynote-image-column {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  margin: 0 2.25rem var(--keynote-slide-padding-bottom) 0;
+  margin: 0 2.25rem var(--prefix-slide-padding-bottom) 0;
 }
 
 .keynote-image-panel {
@@ -103,9 +103,9 @@ const imageStyle = computed(() => ({
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  background: var(--keynote-white);
-  border: 0.875rem solid var(--keynote-white);
-  border-radius: var(--keynote-radius-lg);
+  background: var(--prefix-white);
+  border: 0.875rem solid var(--prefix-white);
+  border-radius: var(--prefix-radius-lg);
 }
 
 /* An image that carries its own edges needs no frame around it */
@@ -130,21 +130,21 @@ const imageStyle = computed(() => ({
   right: 0.5rem;
   bottom: 0.5rem;
   padding: 0.25rem 0.5rem;
-  background: var(--keynote-scrim);
-  border-radius: var(--keynote-radius-xs);
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-2xs);
+  background: var(--prefix-scrim);
+  border-radius: var(--prefix-radius-xs);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-2xs);
 }
 
 .keynote-image-panel figcaption a {
   color: inherit;
-  border-bottom: 1px solid var(--keynote-yellow);
+  border-bottom: 1px solid var(--prefix-yellow);
 }
 
 /* Who or what the picture shows, set below it */
 .keynote-image-caption {
   margin-top: 1rem;
-  color: var(--keynote-muted);
+  color: var(--prefix-muted);
   font-size: 0.9375rem;
   line-height: 1.4;
 }
@@ -154,6 +154,6 @@ const imageStyle = computed(() => ({
 }
 
 .keynote-image-caption strong {
-  color: var(--keynote-ink);
+  color: var(--prefix-ink);
 }
 </style>

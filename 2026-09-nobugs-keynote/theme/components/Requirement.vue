@@ -19,13 +19,13 @@ defineProps<{
 /* Card carrying one demand the software has to meet */
 .requirement {
   padding: 1.5rem;
-  background: var(--keynote-white);
-  border-top: 0.5rem solid var(--keynote-ink);
-  border-radius: 0 0 var(--keynote-radius-md) var(--keynote-radius-md);
+  background: var(--prefix-white);
+  border-top: 0.5rem solid var(--prefix-ink);
+  border-radius: 0 0 var(--prefix-radius-md) var(--prefix-radius-md);
 }
 
 .requirement-accent {
-  border-top-color: var(--keynote-yellow);
+  border-top-color: var(--prefix-yellow);
 }
 
 /* Reserving two lines keeps the paragraphs of a pair on the same baseline */
@@ -36,7 +36,7 @@ defineProps<{
 
 .slidev-layout .requirement p {
   margin-bottom: 0;
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-base);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-base);
 }
 </style>

@@ -31,15 +31,15 @@ const imageSrc = computed(() => assetUrl(props.src))
   width: 10rem;
   height: 10rem;
   padding: 0.5rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: var(--keynote-radius-md);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
+  border-radius: var(--prefix-radius-md);
 }
 
 .slides-qr span {
-  font-size: var(--keynote-text-xs);
+  font-size: var(--prefix-text-xs);
   font-weight: 500;
-  letter-spacing: var(--keynote-tracking-slight);
+  letter-spacing: var(--prefix-tracking-slight);
 }
 
 /* The code itself is the link, so it carries no underline of its own */

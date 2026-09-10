@@ -30,12 +30,12 @@ defineProps<{
 
 .slidev-layout .compare-grid h2 {
   margin-bottom: 0.75rem;
-  font-size: var(--keynote-text-xl);
+  font-size: var(--prefix-text-xl);
 }
 
 .slidev-layout .compare-grid p {
   margin: 0.75rem 0 0;
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-base);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-base);
 }
 </style>

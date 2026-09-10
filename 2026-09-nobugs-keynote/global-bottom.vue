@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--keynote-ink);
+  color: var(--prefix-ink);
 }
 
 /* Paper behind the logo, so it stays readable over a diagram */
@@ -27,16 +27,16 @@
   height: auto;
   padding: 0.375rem 0.5rem;
   margin-left: -0.5rem;
-  background: var(--keynote-paper);
-  border-radius: var(--keynote-radius-sm);
+  background: var(--prefix-paper);
+  border-radius: var(--prefix-radius-sm);
 }
 
 .keynote-footer-meta {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  font-size: var(--keynote-text-2xs);
-  letter-spacing: var(--keynote-tracking-slight);
+  font-size: var(--prefix-text-2xs);
+  letter-spacing: var(--prefix-tracking-slight);
 }
 
 .keynote-page {
@@ -45,8 +45,8 @@
   min-width: 1.75rem;
   height: 1.75rem;
   padding: 0 0.375rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
   border-radius: 50%;
   font-variant-numeric: tabular-nums;
 }

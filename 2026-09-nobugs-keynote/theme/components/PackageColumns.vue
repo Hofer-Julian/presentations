@@ -26,9 +26,9 @@ defineProps<{
 
 .package-columns > div {
   padding: 1.25rem 1.375rem 1.5rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: var(--keynote-radius-md);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
+  border-radius: var(--prefix-radius-md);
 }
 
 .package-columns .label {
@@ -47,7 +47,7 @@ defineProps<{
 .slidev-layout .package-columns ul > li {
   margin: 0;
   padding: 0;
-  font-family: var(--keynote-font-mono);
+  font-family: var(--prefix-font-mono);
   font-size: 1.0625rem;
   font-weight: 500;
   line-height: 1.2;

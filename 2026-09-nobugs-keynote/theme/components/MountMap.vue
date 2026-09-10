@@ -81,66 +81,66 @@ const CACHE_COLUMNS = [10, 60, 110, 160]
 }
 
 .mount-map-row-label text {
-  fill: var(--keynote-ink);
+  fill: var(--prefix-ink);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
 }
 
 .mount-map-box rect {
-  fill: var(--keynote-white);
-  stroke: var(--keynote-border);
+  fill: var(--prefix-white);
+  stroke: var(--prefix-border);
 }
 
 .mount-map-box-empty rect {
   fill: none;
-  stroke: var(--keynote-ink);
+  stroke: var(--prefix-ink);
   stroke-dasharray: 5 5;
   opacity: 0.45;
 }
 
 .mount-map-label text {
-  fill: var(--keynote-muted);
+  fill: var(--prefix-muted);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
 }
 
 .mount-map-bar rect {
-  fill: var(--keynote-ink);
+  fill: var(--prefix-ink);
   opacity: 0.18;
 }
 
 .mount-map-flow path {
   fill: none;
-  stroke: var(--keynote-ink);
+  stroke: var(--prefix-ink);
   stroke-width: 2;
   opacity: 0.4;
 }
 
 .mount-map-flow .mount-map-head {
-  fill: var(--keynote-ink);
+  fill: var(--prefix-ink);
   stroke: none;
   opacity: 0.4;
 }
 
 .mount-map-flow-accent path {
-  stroke: var(--keynote-ink);
+  stroke: var(--prefix-ink);
   opacity: 0.75;
 }
 
 .mount-map-flow-accent .mount-map-head {
-  fill: var(--keynote-ink);
+  fill: var(--prefix-ink);
   opacity: 0.75;
 }
 
 .mount-map-flow-label {
-  fill: var(--keynote-muted);
+  fill: var(--prefix-muted);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-anchor: middle;
   text-transform: uppercase;
 }

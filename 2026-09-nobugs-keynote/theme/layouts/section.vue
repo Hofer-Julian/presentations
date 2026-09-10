@@ -19,15 +19,15 @@ const props = defineProps<{
   justify-content: center;
   padding: 4rem 6rem 5rem;
   background:
-    linear-gradient(90deg, var(--keynote-yellow) 0 0.875rem, transparent 0.875rem),
-    var(--keynote-paper);
+    linear-gradient(90deg, var(--prefix-yellow) 0 0.875rem, transparent 0.875rem),
+    var(--prefix-paper);
 }
 
 .slidev-layout.keynote-section .section-label {
   margin: 0 0 1rem;
-  font-size: var(--keynote-text-sm);
+  font-size: var(--prefix-text-sm);
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
 }
 

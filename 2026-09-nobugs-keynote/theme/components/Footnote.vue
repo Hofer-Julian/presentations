@@ -7,7 +7,7 @@
 <style>
 /* Caveat set below the body of a slide */
 .slidev-layout .footnote {
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-xs);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-xs);
 }
 </style>

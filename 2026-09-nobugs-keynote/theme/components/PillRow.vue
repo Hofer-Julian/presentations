@@ -22,10 +22,10 @@ defineProps<{
 
 .pill-row > span {
   padding: 0.25rem 0.75rem;
-  background: var(--keynote-white);
-  border: 1px solid var(--keynote-border);
-  border-radius: var(--keynote-radius-pill);
-  font-size: var(--keynote-text-xs);
+  background: var(--prefix-white);
+  border: 1px solid var(--prefix-border);
+  border-radius: var(--prefix-radius-pill);
+  font-size: var(--prefix-text-xs);
   font-weight: 500;
   white-space: nowrap;
 }

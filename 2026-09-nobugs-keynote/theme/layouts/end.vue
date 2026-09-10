@@ -16,8 +16,8 @@
 
 /* The gap below comes from the theme's paragraph margin */
 .slidev-layout.keynote-end .closing-subtitle {
-  color: var(--keynote-muted);
-  font-size: var(--keynote-text-md);
+  color: var(--prefix-muted);
+  font-size: var(--prefix-text-md);
 }
 
 .keynote-end .slides-qr {

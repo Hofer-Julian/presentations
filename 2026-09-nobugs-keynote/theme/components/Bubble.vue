@@ -22,9 +22,9 @@ defineProps<{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--keynote-white);
-  border-radius: var(--keynote-radius-xl);
-  color: var(--keynote-ink);
+  background: var(--prefix-white);
+  border-radius: var(--prefix-radius-xl);
+  color: var(--prefix-ink);
   text-align: center;
 }
 
@@ -36,14 +36,14 @@ defineProps<{
 
 .bubble-label {
   margin-bottom: 1rem;
-  font-size: var(--keynote-text-xs);
+  font-size: var(--prefix-text-xs);
   font-weight: 600;
-  letter-spacing: var(--keynote-tracking-wide);
+  letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
 }
 
 .bubble-detail {
-  font-size: var(--keynote-text-md);
+  font-size: var(--prefix-text-md);
   font-weight: 500;
 }
 </style>

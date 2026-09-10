@@ -16,12 +16,12 @@ defineProps<{
 .slidev-layout .note {
   margin: 0.75rem 0 0;
   padding: 0.75rem 1rem;
-  background: var(--keynote-yellow-soft);
-  border-left: var(--keynote-rule) solid var(--keynote-yellow);
-  border-radius: 0 var(--keynote-radius-sm) var(--keynote-radius-sm) 0;
+  background: var(--prefix-yellow-soft);
+  border-left: var(--prefix-rule) solid var(--prefix-yellow);
+  border-radius: 0 var(--prefix-radius-sm) var(--prefix-radius-sm) 0;
 }
 
 .slidev-layout .note-small {
-  font-size: var(--keynote-text-base);
+  font-size: var(--prefix-text-base);
 }
 </style>
