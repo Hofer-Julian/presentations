@@ -71,7 +71,7 @@ sourceHref: https://www.wolfram.com/notebooks/
 eyebrow: Physics and Mathematica
 frame: false
 blend: true
-split: 48% 52%
+split: 50% 50%
 ---
 
 ::title::
@@ -80,7 +80,7 @@ split: 48% 52%
 
 ::default::
 
-- Equations, code and results in one place
+- Equations, code, and results in one place
 - Immediate visual feedback
 
 **Until an upgrade broke my script.**
@@ -119,7 +119,7 @@ layout: two-cards
 
 ## Python
 
-Analysis, plotting and orchestration.
+Analysis, plotting, and orchestration.
 
 Easy to express with Python package tools.
 
@@ -127,7 +127,7 @@ Easy to express with Python package tools.
 
 ## Compiled software
 
-C, C++, Fortran and system libraries.
+C, C++, Fortran, and system libraries.
 
 Often installed through separate instructions.
 
@@ -154,7 +154,7 @@ scale: 0.9
 **What worked**
 
 - Python and compiled libraries together
-- Linux, macOS and Windows packages
+- Linux, macOS, and Windows packages
 
 **What was still missing**
 
@@ -180,11 +180,11 @@ class: emoji-list
 ::default::
 
 - ⚡ Fast
-- 🆓 Open-Source
+- 🆓 Open source
 - 🛠️ Workflow management
 - 🌐 Multi-environments
 - 🔒 Reproducible thanks to lock files
-- 🐍 Supports conda and PyPI ecosystem
+- 🐍 Supports conda and PyPI ecosystems
 
 
 ---
@@ -257,7 +257,7 @@ scale: 0.85
 - Your package gets its own GitHub repository
 - You are a conda-forge package maintainer
 
-<Note>Close to 30,000 repositories live in the conda-forge organisation.</Note>
+<Note>Close to 30,000 repositories live in the conda-forge organization.</Note>
 
 
 ---
@@ -291,7 +291,7 @@ class: code-dense
 - **CEP 45** simplified variant selection
 - **CEP 48** rolls them out as repodata `v3` without breaking older clients
 
-<Note small>Written together by conda, Anaconda and prefix.dev. Pixi speaks <code>v3</code>, conda-forge does not yet.</Note>
+<Note small>Written together by conda, Anaconda, and prefix.dev. Pixi speaks <code>v3</code>, conda-forge does not yet.</Note>
 
 ::right::
 
@@ -382,7 +382,7 @@ class: code-dense
 - Still in preview
 - Backend takes care of building a conda package
 - C and C++ compilers are automatically set up
-- `host-dependencies` specify libraries necessary during both build- and run-time
+- `host-dependencies` specify libraries necessary at both build and run time
 
 
 ::right::
@@ -434,7 +434,7 @@ scipy = { path = "." }
 
 </CodeFile>
 
-SciPy itself is not built. Its build, host and run dependencies land in your environment, so you compile and test it yourself.
+SciPy itself is not built. Its build, host, and run dependencies land in your environment, so you compile and test it yourself.
 
 ::right::
 
@@ -449,7 +449,7 @@ scipy = { git = "https://github.com/scipy/scipy.git" }
 
 </CodeFile>
 
-Pixi follows Git, builds SciPy in an isolated environment and installs the resulting <code>.conda</code> package.
+Pixi follows Git, builds SciPy in an isolated environment, and installs the resulting <code>.conda</code> package.
 
 ::after::
 
@@ -471,7 +471,7 @@ layout: keynote
 
 <Requirements>
   <Requirement label="Compute" heading="Optimized for your hardware">
-    The software needs to fully utilize the CPU, GPU and system libraries on the machine.
+    The software needs to fully utilize the CPU, GPU, and system libraries on the machine.
   </Requirement>
   <Requirement label="Infrastructure" heading="Able to deal with constrained storage and network" accent>
     Compute nodes may be offline. Shared filesystems make millions of small files expensive.
@@ -578,7 +578,7 @@ link: pixi.sh/latest/deployment/pixi_pack
 
 <code>pixi install --offline</code>
 
-Great for limited or no internet connection. When solving, only considers packages that are already in the cache.
+Great for limited or no internet connection. When solving, Pixi only considers packages that are already in the cache.
 
 ::right::
 
@@ -597,7 +597,7 @@ link: "rattler#43"
 
 # Layered package caches
 
-<p class="lead">Environments of one user already share packages. This would add another cache layer, that is read-only and shared across users.</p>
+<p class="lead">Environments of one user already share packages. This would add another cache layer that is read-only and shared across users.</p>
 
 <CacheMap />
 
@@ -613,7 +613,7 @@ link: "rattler#2059"
 
 <MountMap />
 
-<Footnote>Fresh environments get much faster. Warm runs, mount lifecycle and user isolation still need work.</Footnote>
+<Footnote>Fresh environments get much faster. Warm runs, mount lifecycle, and user isolation still need work.</Footnote>
 
 
 ---
@@ -623,7 +623,7 @@ layout: keynote
 # What Pixi does today, and what it doesn't
 
 <StatusList>
-  <StatusRow state="shipped">Rich platforms, offline mode and pixi-pack</StatusRow>
+  <StatusRow state="shipped">Rich platforms, offline mode, and pixi-pack</StatusRow>
   <StatusRow state="preview">Pixi Build</StatusRow>
   <StatusRow state="prototype">Cache layering and the virtual filesystem</StatusRow>
 </StatusList>
@@ -635,7 +635,7 @@ layout: end
 
 # Let's keep talking
 
-<p class="closing-subtitle">about your workflows, infrastructure and workarounds</p>
+<p class="closing-subtitle">about your workflows, infrastructure, and workarounds</p>
 
 <Bubbles>
   <Bubble label="In the Q&A">right now</Bubble>
