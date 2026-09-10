@@ -34,7 +34,10 @@ const imageStyle = computed(() => ({
 <template>
   <div class="keynote-image-layout" :style="props.split ? { gridTemplateColumns: props.split } : undefined">
     <SlideMeta :eyebrow="props.eyebrow" :link="props.link" />
-    <div class="slidev-layout default">
+    <div class="slidev-layout keynote-image-title">
+      <slot name="title" />
+    </div>
+    <div class="slidev-layout keynote-image-copy">
       <slot />
     </div>
     <div class="keynote-image-column">
@@ -61,7 +64,7 @@ const imageStyle = computed(() => ({
 .keynote-image-layout {
   display: grid;
   grid-template-columns: 58% 42%;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   height: 100%;
   background: var(--keynote-paper);
   color: var(--keynote-ink);
@@ -78,23 +81,21 @@ const imageStyle = computed(() => ({
     0;
 }
 
-.keynote-image-layout .slidev-layout {
-  padding-right: 2rem;
+/* The heading spans both columns, so its length never eats into the picture */
+.keynote-image-layout > .keynote-image-title {
+  grid-column: 1 / -1;
+  padding: 0 var(--keynote-slide-padding-inline);
 }
 
-.keynote-image-layout > .slide-meta + .slidev-layout {
-  padding-top: 0;
-}
-
-.keynote-image-layout > .slide-meta ~ .keynote-image-column {
-  margin-top: 0;
+.keynote-image-layout > .keynote-image-copy {
+  padding: 0 2rem var(--keynote-slide-padding-bottom) var(--keynote-slide-padding-inline);
 }
 
 .keynote-image-column {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  margin: 2.5rem 2.25rem var(--keynote-slide-padding-bottom) 0;
+  margin: 0 2.25rem var(--keynote-slide-padding-bottom) 0;
 }
 
 .keynote-image-panel {

@@ -44,7 +44,11 @@ frame: false
 split: 66% 34%
 ---
 
+::title::
+
 # Julian Hofer
+
+::default::
 
 - Studied physics
 - Built numerical water models at Deltares
@@ -67,10 +71,14 @@ sourceHref: https://www.wolfram.com/notebooks/
 eyebrow: Physics and Mathematica
 frame: false
 blend: true
-split: 60% 40%
+split: 48% 52%
 ---
 
+::title::
+
 # Notebooks felt like magic
+
+::default::
 
 - Equations, code and results in one place
 - Immediate visual feedback
@@ -86,11 +94,14 @@ source: "Source: deltares.nl"
 sourceHref: https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite
 eyebrow: Deltares
 frame: false
-split: 62% 38%
-class: title-one-line
+split: 50% 50%
 ---
 
+::title::
+
 # Open source numerical water models
+
+::default::
 
 - Python for analysis and orchestration
 - Compiled libraries for simulation
@@ -133,10 +144,13 @@ alt: Conda package manager logo
 eyebrow: Conda
 frame: false
 scale: 0.9
-class: title-one-line
 ---
 
+::title::
+
 # Cross-platform and cross-language
+
+::default::
 
 **What worked**
 
@@ -160,7 +174,11 @@ scale: 1.6
 class: emoji-list
 ---
 
+::title::
+
 # Introducing Pixi
+
+::default::
 
 - ⚡ Fast
 - 🆓 Open-Source
@@ -229,7 +247,11 @@ frame: false
 scale: 0.85
 ---
 
+::title::
+
 # Anyone can add a package
+
+::default::
 
 - Open a pull request to `staged-recipes`
 - Get accepted

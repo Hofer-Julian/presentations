@@ -236,8 +236,3 @@
 .emoji-list .slidev-layout ul > li::before {
   content: none;
 }
-
-/* Titles long enough to wrap, held on a single line */
-.title-one-line h1 {
-  font-size: 2rem;
-}
