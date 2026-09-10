@@ -111,10 +111,9 @@ split: 50% 50%
 
 ---
 layout: two-cards
-eyebrow: One workflow, two worlds
 ---
 
-# A Python environment was not enough
+# Two worlds
 
 ::left::
 
@@ -176,7 +175,7 @@ class: emoji-list
 
 ::title::
 
-# Introducing Pixi
+# To the rescue
 
 ::default::
 
