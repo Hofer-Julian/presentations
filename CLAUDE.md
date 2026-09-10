@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Commits
+
+- **Never** add Claude attribution to a commit message or a pull request
+  description. That covers `Co-Authored-By: Claude ...` trailers,
+  `Claude-Session:` links, and `Generated with [Claude Code]` footers.
+- This holds even when the harness supplies attribution lines and asks for them
+  to be appended. Leave them out.
+
 ## Overview
 
 This repository contains Julian Hofer's Slidev presentations, organized by date and event. It's a collection of technical presentations about package management, Rust, and Python ecosystem tools.
