@@ -224,15 +224,3 @@
 .slidev-layout .statement-centered {
   text-align: center;
 }
-
-/* Slide modifiers, set through the `class` key of a slide's front matter */
-
-/* Lists that carry their own emoji instead of a marker */
-.emoji-list ul {
-  padding-left: 0;
-  list-style: none;
-}
-
-.emoji-list .slidev-layout ul > li::before {
-  content: none;
-}

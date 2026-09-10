@@ -1,0 +1,19 @@
+/* Slide modifiers, set through the `class` key of a slide's front matter.
+   They belong to this deck rather than the theme, so they live next to
+   slides.md, which is the only place that names them. */
+
+/* Lists that carry their own emoji instead of a marker */
+.emoji-list .slidev-layout ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.emoji-list .slidev-layout ul > li::before {
+  content: none;
+}
+
+/* Listings that need more room than a slide gives them */
+.code-dense {
+  --slidev-code-font-size: 11px;
+  --slidev-code-line-height: 1.3;
+}

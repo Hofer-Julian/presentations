@@ -45,10 +45,4 @@ defineProps<{
 .slidev-layout .code-file-accent pre {
   border-left: var(--prefix-rule) solid var(--prefix-yellow);
 }
-
-/* Slide modifier for listings that need more room than a slide gives them */
-.code-dense {
-  --slidev-code-font-size: 11px;
-  --slidev-code-line-height: 1.3;
-}
 </style>
