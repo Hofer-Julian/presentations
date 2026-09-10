@@ -3,7 +3,7 @@
     class="cache-map"
     viewBox="0 0 900 250"
     role="img"
-    aria-label="Four environments belonging to two researchers draw numpy and mantid from one shared site cache, while dials and h5py come from each researcher's own cache"
+    aria-label="Four environments belonging to two researchers draw numpy and mantid from one shared site cache, while both environments of a researcher share dials or h5py from that researcher's own cache"
   >
     <g class="cache-map-group">
       <text x="2" y="12">Researcher A</text>
@@ -38,22 +38,22 @@
     <g class="cache-map-name">
       <text x="52" y="74">dials</text>
       <text x="143" y="74">numpy</text>
-      <text x="267" y="74">numpy</text>
+      <text x="267" y="74">dials</text>
       <text x="358" y="74">mantid</text>
       <text x="542" y="74">numpy</text>
-      <text x="633" y="74">mantid</text>
-      <text x="757" y="74">numpy</text>
+      <text x="633" y="74">h5py</text>
+      <text x="757" y="74">mantid</text>
       <text x="848" y="74">h5py</text>
     </g>
 
     <g class="cache-map-line">
       <path d="M52 82 V206" />
+      <path d="M267 82 L52 206" />
       <path d="M143 82 L350 206" />
-      <path d="M267 82 L350 206" />
       <path d="M358 82 L500 206" />
       <path d="M542 82 L350 206" />
-      <path d="M633 82 L500 206" />
-      <path d="M757 82 L350 206" />
+      <path d="M633 82 L848 206" />
+      <path d="M757 82 L500 206" />
       <path d="M848 82 V206" />
     </g>
 

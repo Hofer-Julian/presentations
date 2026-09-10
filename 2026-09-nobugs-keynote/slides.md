@@ -1,7 +1,7 @@
 ---
 theme: ./theme
 layout: cover
-eyebrow: NOBUGS 2026 · 23 September 2026
+eyebrow: NOBUGS 2026 - 23 September 2026
 speaker: Julian Hofer
 qr: /slides-qr-code.png
 qrLabel: link to the slides
@@ -61,7 +61,7 @@ label: Part 1
 layout: image-right
 image: /mathematica-notebook.png
 alt: Light-mode Mathematica notebook with executable code and a sine plot
-source: Source · wolfram.com
+source: Source: wolfram.com
 sourceHref: https://www.wolfram.com/notebooks/
 eyebrow: Physics and Mathematica
 frame: false
@@ -81,7 +81,7 @@ split: 54% 46%
 layout: image-right
 image: /deltares-water-model.png
 alt: Delft3D Flexible Mesh displaying a coastal water model and its computational grid
-source: Source · deltares.nl
+source: Source: deltares.nl
 sourceHref: https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite
 eyebrow: Deltares
 frame: false
@@ -346,7 +346,7 @@ label: Part 3
 
 ---
 layout: keynote
-eyebrow: Pixi Build · Preview
+eyebrow: Preview
 link: pixi.sh/latest/build/getting_started
 ---
 
@@ -419,7 +419,7 @@ blas-devel = "*"
 
 ---
 layout: compare
-eyebrow: Pixi Build · Preview
+eyebrow: Preview
 link: pixi.sh/latest/build/package_source
 ---
 
@@ -598,7 +598,7 @@ Move a complete environment archive across the network boundary, then unpack it 
 
 ---
 layout: keynote
-eyebrow: "Shipped in Rattler · Not yet integrated in Pixi"
+eyebrow: "Prototype"
 link: "rattler#43"
 ---
 
