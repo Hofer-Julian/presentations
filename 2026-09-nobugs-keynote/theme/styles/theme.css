@@ -682,6 +682,46 @@
   white-space: nowrap;
 }
 
+/* Feedstock names grouped by the stage of the pipeline they serve */
+.package-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.875rem;
+  margin: 0.5rem 0 0;
+}
+
+.package-columns > div {
+  padding: 1.25rem 1.375rem 1.5rem;
+  background: var(--keynote-white);
+  border: 1px solid var(--keynote-border);
+  border-radius: 0.75rem;
+}
+
+.package-columns .label {
+  margin-bottom: 0.875rem;
+}
+
+.package-columns ul {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slidev-layout .package-columns ul > li {
+  margin: 0;
+  padding: 0;
+  font-family: var(--slidev-font-mono, monospace);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.slidev-layout .package-columns ul > li::before {
+  content: none;
+}
+
 /* QR code plus caption, rendered by <SlidesQr> */
 .slides-qr {
   display: grid;
@@ -849,17 +889,41 @@
   padding-top: 0;
 }
 
-.keynote-image-layout > .slide-meta ~ .keynote-image-panel {
+.keynote-image-layout > .slide-meta ~ .keynote-image-column {
   margin-top: 0;
+}
+
+.keynote-image-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin: 2.5rem 2.25rem 5rem 0;
 }
 
 .keynote-image-panel {
   position: relative;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
-  margin: 2.5rem 2.25rem 5rem 0;
   background: var(--keynote-white);
   border: 0.875rem solid var(--keynote-white);
   border-radius: 1.25rem;
+}
+
+/* Who or what the picture shows, set below it */
+.keynote-image-caption {
+  margin-top: 1rem;
+  color: var(--keynote-muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.keynote-image-caption p {
+  margin: 0;
+}
+
+.keynote-image-caption strong {
+  color: var(--keynote-ink);
 }
 
 .keynote-image-panel-plain {

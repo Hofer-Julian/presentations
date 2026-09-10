@@ -37,17 +37,22 @@ const imageStyle = computed(() => ({
     <div class="slidev-layout default">
       <slot />
     </div>
-    <figure class="keynote-image-panel" :class="{ 'keynote-image-panel-plain': !props.frame }">
-      <img
-        :src="imageSrc"
-        :alt="props.alt"
-        :class="{ 'keynote-image-blend': props.blend }"
-        :style="imageStyle"
-      />
-      <figcaption v-if="props.source">
-        <a v-if="props.sourceHref" :href="props.sourceHref">{{ props.source }}</a>
-        <span v-else>{{ props.source }}</span>
-      </figcaption>
-    </figure>
+    <div class="keynote-image-column">
+      <figure class="keynote-image-panel" :class="{ 'keynote-image-panel-plain': !props.frame }">
+        <img
+          :src="imageSrc"
+          :alt="props.alt"
+          :class="{ 'keynote-image-blend': props.blend }"
+          :style="imageStyle"
+        />
+        <figcaption v-if="props.source">
+          <a v-if="props.sourceHref" :href="props.sourceHref">{{ props.source }}</a>
+          <span v-else>{{ props.source }}</span>
+        </figcaption>
+      </figure>
+      <div v-if="$slots.caption" class="keynote-image-caption">
+        <slot name="caption" />
+      </div>
+    </div>
   </div>
 </template>

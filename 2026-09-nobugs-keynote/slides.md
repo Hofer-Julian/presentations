@@ -295,30 +295,46 @@ my-analysis = {
 
 
 ---
-layout: image-right
-image: /matthew-feickert.jpg
-alt: Matthew Feickert
-source: Source · github.com/matthewfeickert
-sourceHref: https://github.com/matthewfeickert
-eyebrow: PyHEP
-link: scikit-hep.org
+layout: keynote
+eyebrow: Photon and neutron
+link: conda-forge.org/packages
 ---
 
-# A field can decide to package itself
+# Your field is already doing this
 
-- **PyHEP** is the Python community in particle physics
-- **Scikit-HEP** builds that field's Python stack
-- Putting it on conda-forge was ordinary public work
-- **Matthew Feickert** (UW Madison, ATLAS, IRIS-HEP) has over 500 merged conda-forge pull requests
+<p class="lead">Each of these is a feedstock. Someone opened the pull request, and now keeps it building.</p>
 
-<div class="pill-row flex-wrap gap-y-2 mt-6" aria-label="High energy physics packages on conda-forge">
-  <span>sherpa</span>
-  <span>rivet</span>
-  <span>yoda</span>
-  <span>fastjet</span>
-  <span>contur</span>
-  <span>awkward</span>
-  <span>pyne</span>
+<div class="package-columns">
+  <div>
+    <span class="label">Acquisition and control</span>
+    <ul>
+      <li>bluesky</li>
+      <li>ophyd</li>
+      <li>databroker</li>
+      <li>pyepics</li>
+      <li>pytango</li>
+    </ul>
+  </div>
+  <div>
+    <span class="label">Reduction and analysis</span>
+    <ul>
+      <li>pyfai</li>
+      <li>silx</li>
+      <li>dials</li>
+      <li>tomopy</li>
+      <li>sasview</li>
+    </ul>
+  </div>
+  <div>
+    <span class="label">Formats and compression</span>
+    <ul>
+      <li>nexusformat</li>
+      <li>h5py</li>
+      <li>hdf5plugin</li>
+      <li>zarr</li>
+      <li>blosc</li>
+    </ul>
+  </div>
 </div>
 
 ---
@@ -506,6 +522,47 @@ pytorch-gpu = "*"
 
 [target."*cpu*".dependencies]
 pytorch-cpu = "*"
+```
+
+</CodeFile>
+
+::after::
+
+
+
+---
+layout: code-right
+eyebrow: Preview
+link: pixi.sh/latest/build/package_source
+---
+
+::title::
+
+# Build it for your hardware with Pixi Build
+
+::left::
+
+- There's no optimized build for your hardware?
+- Specify your platform
+- Build it yourself with Pixi Build
+
+::right::
+
+<CodeFile name="pixi.toml">
+
+```toml
+[workspace]
+preview = ["pixi-build"]
+platforms = [
+  { name = "cluster", platform = "linux-64", archspec = "zen4" },
+  "linux-64",
+]
+
+[dependencies]
+scipy = "*"
+
+[target.cluster.dependencies]
+scipy = { git = "https://github.com/scipy/scipy.git" }
 ```
 
 </CodeFile>
