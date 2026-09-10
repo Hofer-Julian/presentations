@@ -33,8 +33,8 @@ const imageStyle = computed(() => ({
 
 <template>
   <div class="keynote-image-layout" :style="props.split ? { gridTemplateColumns: props.split } : undefined">
+    <SlideMeta :eyebrow="props.eyebrow" :link="props.link" />
     <div class="slidev-layout default">
-      <SlideMeta :eyebrow="props.eyebrow" :link="props.link" />
       <slot />
     </div>
     <figure class="keynote-image-panel" :class="{ 'keynote-image-panel-plain': !props.frame }">

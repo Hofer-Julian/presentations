@@ -29,6 +29,7 @@ layout: toc
 # Contents
 
 - **How I got into reproducible software**
+- **conda-forge is a community**
 - **Packages from source with Pixi Build**
 - **Ideas for better HPC support**
 - **Tell me about your workflows and workarounds**
@@ -212,6 +213,119 @@ layout: section
 label: Part 2
 ---
 
+# conda-forge is a community
+
+---
+layout: image-right
+image: /conda-forge.png
+alt: conda-forge logo
+eyebrow: Openness
+link: conda-forge.org/docs/maintainer/adding_pkgs
+frame: false
+scale: 0.85
+---
+
+# Anyone can add a package
+
+- Open a pull request to `staged-recipes`
+- Get accepted
+- Your package gets its own GitHub repository
+- You are a conda-forge package maintainer
+
+<Note>Close to 30,000 repositories live in the conda-forge organisation.</Note>
+
+
+---
+layout: keynote
+eyebrow: Life cycle
+link: conda-forge.org/docs/maintainer/understanding_conda_forge/life_cycle
+---
+
+# The life of a conda-forge package
+
+<p class="lead">The autotick bot opens the pull requests. You review them, and CI does everything after that.</p>
+
+<LifeCycle />
+
+---
+layout: code-right
+eyebrow: conda Enhancement Proposals
+link: "ceps#146"
+split: 1fr 1fr
+---
+
+::title::
+
+# The format itself changes in the open
+
+::left::
+
+- A **CEP** is a proposal in `conda/ceps`, argued and voted on GitHub
+- **CEP 43** conditional dependencies
+- **CEP 44** optional dependency groups
+- **CEP 45** simplified variant selection
+- **CEP 48** rolls them out as repodata `v3` without breaking older clients
+
+<Note class="text-base">Written together by conda, Anaconda and prefix.dev. Pixi speaks <code>v3</code>, conda-forge does not yet.</Note>
+
+::right::
+
+<CodeFile name="pixi.toml">
+
+```toml
+[dependencies]
+# only on Windows
+pywin32 = { version = "*", when = "__win" }
+
+# only alongside a new enough Python
+numpy = {
+  version = "*",
+  when = { package = "python", version = ">=3.12" },
+}
+
+# optional groups and build variants
+my-analysis = {
+  version = ">=1.0",
+  extras = ["plot"],
+  flags = ["cuda"],
+}
+```
+
+</CodeFile>
+
+
+---
+layout: image-right
+image: /matthew-feickert.jpg
+alt: Matthew Feickert
+source: Source · github.com/matthewfeickert
+sourceHref: https://github.com/matthewfeickert
+eyebrow: PyHEP
+link: scikit-hep.org
+---
+
+# A field can decide to package itself
+
+- **PyHEP** is the Python community in particle physics
+- **Scikit-HEP** builds that field's Python stack
+- Putting it on conda-forge was ordinary public work
+- **Matthew Feickert** (UW Madison, ATLAS, IRIS-HEP) has over 500 merged conda-forge pull requests
+
+<div class="pill-row flex-wrap gap-y-2 mt-6" aria-label="High energy physics packages on conda-forge">
+  <span>sherpa</span>
+  <span>rivet</span>
+  <span>yoda</span>
+  <span>fastjet</span>
+  <span>contur</span>
+  <span>awkward</span>
+  <span>pyne</span>
+</div>
+
+---
+layout: section
+label: Part 3
+---
+
 # Packages from source with Pixi Build
 
 ---
@@ -332,7 +446,7 @@ Pixi follows Git, builds SciPy in an isolated environment and installs the resul
 
 ---
 layout: section
-label: Part 3
+label: Part 4
 ---
 
 # Ideas for better HPC support

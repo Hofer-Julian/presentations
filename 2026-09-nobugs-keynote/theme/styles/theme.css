@@ -178,12 +178,14 @@
   margin: 0 0 0.75rem;
 }
 
-.slidev-layout .slide-meta .eyebrow {
+.slidev-layout .slide-meta .eyebrow,
+.keynote-image-layout .slide-meta .eyebrow {
   margin: 0;
 }
 
 /* Where the work behind a slide lives, rendered by <Ref> */
-.slidev-layout .ref {
+.slidev-layout .ref,
+.keynote-image-layout .ref {
   margin-left: auto;
   padding: 0.1875rem 0.5rem;
   background: var(--keynote-white);
@@ -195,13 +197,15 @@
   white-space: nowrap;
 }
 
-.slidev-layout a.ref:hover {
+.slidev-layout a.ref:hover,
+.keynote-image-layout a.ref:hover {
   border-color: var(--keynote-yellow);
   color: var(--keynote-ink);
 }
 
 /* Eyebrow, rendered by every content layout above the heading */
-.slidev-layout .eyebrow {
+.slidev-layout .eyebrow,
+.keynote-image-layout .eyebrow {
   margin: 0 0 0.75rem;
   color: var(--keynote-ink);
   font-size: 0.75rem;
@@ -361,6 +365,63 @@
   stroke: var(--keynote-ink);
   stroke-width: 1.5;
   opacity: 0.3;
+}
+
+/* Stages a conda-forge package passes through, rendered by <LifeCycle> */
+.life-cycle {
+  display: block;
+  width: 100%;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.life-cycle-box rect {
+  fill: var(--keynote-white);
+  stroke: var(--keynote-border);
+}
+
+.life-cycle-box rect.life-cycle-box-highlight {
+  fill: var(--keynote-yellow);
+  stroke: var(--keynote-yellow);
+}
+
+.life-cycle-name text {
+  fill: var(--keynote-ink);
+  font-size: 16px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.life-cycle-name text.life-cycle-mono {
+  font-family: var(--slidev-font-mono, monospace);
+  font-size: 14px;
+}
+
+.life-cycle-detail text {
+  fill: var(--keynote-muted);
+  font-size: 13px;
+  text-anchor: middle;
+}
+
+.life-cycle-arrow path,
+.life-cycle-loop path {
+  fill: none;
+  stroke: var(--keynote-muted);
+  stroke-width: 1.5;
+}
+
+.life-cycle-arrow path.life-cycle-head,
+.life-cycle-loop path.life-cycle-head {
+  fill: var(--keynote-muted);
+  stroke: none;
+}
+
+.life-cycle-loop-label {
+  fill: var(--keynote-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-anchor: middle;
+  text-transform: uppercase;
 }
 
 /* Files an environment holds, with and without a virtual filesystem */
@@ -770,11 +831,26 @@
 .keynote-image-layout {
   display: grid;
   grid-template-columns: 58% 42%;
+  grid-template-rows: auto 1fr;
   height: 100%;
+}
+
+/* The meta row spans both columns so the reference pill reaches the slide edge */
+.keynote-image-layout > .slide-meta {
+  grid-column: 1 / -1;
+  padding: 2.75rem 3rem 0;
 }
 
 .keynote-image-layout .slidev-layout {
   padding-right: 2rem;
+}
+
+.keynote-image-layout > .slide-meta + .slidev-layout {
+  padding-top: 0;
+}
+
+.keynote-image-layout > .slide-meta ~ .keynote-image-panel {
+  margin-top: 0;
 }
 
 .keynote-image-panel {

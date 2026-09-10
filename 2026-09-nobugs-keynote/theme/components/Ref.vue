@@ -8,6 +8,7 @@ const props = defineProps<{
 
 /** Owners of the repositories that do not live under prefix-dev */
 const owners: Record<string, string> = {
+  ceps: 'conda',
   rattler: 'conda',
   'pixi-pack': 'Quantco',
 }
