@@ -1,3 +1,5 @@
+<!-- One way to reach the speaker, as a labelled card. Becomes a link when `href` is set. -->
+
 <script setup lang="ts">
 defineProps<{
   href?: string
@@ -13,7 +15,6 @@ defineProps<{
 </template>
 
 <style>
-/* A way to reach the speaker */
 .bubble {
   display: flex;
   min-width: 0;

@@ -1,3 +1,5 @@
+<!-- Two `Requirement` cards side by side, split by a hairline. -->
+
 <template>
   <div class="requirements">
     <slot />
@@ -5,7 +7,6 @@
 </template>
 
 <style>
-/* Two <Requirement> cards, split by a hairline */
 .requirements {
   position: relative;
   display: grid;

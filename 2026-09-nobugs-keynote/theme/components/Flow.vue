@@ -1,3 +1,5 @@
+<!-- Its children as a row of boxes joined by arrows. -->
+
 <script setup lang="ts">
 import type { VNode } from 'vue'
 import { Comment, Fragment, Text, computed, useSlots } from 'vue'
@@ -30,7 +32,6 @@ const columns = computed(() => steps.value.map(() => '1fr').join(' auto '))
 </template>
 
 <style>
-/* Row of boxes joined by arrows */
 .flow {
   display: grid;
   gap: 0.625rem;

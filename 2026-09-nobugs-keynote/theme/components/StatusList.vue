@@ -1,3 +1,5 @@
+<!-- Stack of `StatusRow`s. -->
+
 <template>
   <div class="status-list">
     <slot />
@@ -5,7 +7,6 @@
 </template>
 
 <style>
-/* Stack of <StatusRow>s */
 .status-list {
   display: grid;
   gap: 0.875rem;

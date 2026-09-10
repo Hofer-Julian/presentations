@@ -1,3 +1,5 @@
+<!-- QR code linking to the hosted slides, with a caption under it. -->
+
 <script setup lang="ts">
 import { computed } from 'vue'
 import { assetUrl } from '../utils/asset'
@@ -19,7 +21,6 @@ const imageSrc = computed(() => assetUrl(props.src))
 </template>
 
 <style>
-/* QR code plus caption */
 .slides-qr {
   display: grid;
   justify-items: center;

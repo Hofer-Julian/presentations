@@ -1,3 +1,5 @@
+<!-- Row of `Bubble`s, every column the same width. -->
+
 <template>
   <div class="bubbles">
     <slot />
@@ -5,7 +7,6 @@
 </template>
 
 <style>
-/* Row of <Bubble>s, each as wide as the next */
 .bubbles {
   display: grid;
   grid-auto-flow: column;

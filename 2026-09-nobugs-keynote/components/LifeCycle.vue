@@ -1,3 +1,5 @@
+<!-- The stages a conda-forge package passes through, for the life cycle slide. -->
+
 <script setup lang="ts">
 const STAGES = [
   { name: 'staged-recipes', detail: 'one review', mono: true },
@@ -96,7 +98,6 @@ function elbow(trigger: typeof TRIGGERS[number]) {
 </template>
 
 <style>
-/* Stages a conda-forge package passes through */
 .life-cycle {
   display: block;
   width: 100%;

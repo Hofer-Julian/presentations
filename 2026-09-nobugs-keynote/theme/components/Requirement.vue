@@ -1,3 +1,5 @@
+<!-- Card stating one demand, with a label above its heading. -->
+
 <script setup lang="ts">
 defineProps<{
   /** Picks out the second card of a pair with the yellow edge */
@@ -16,7 +18,6 @@ defineProps<{
 </template>
 
 <style>
-/* Card carrying one demand the software has to meet */
 .requirement {
   padding: 1.5rem;
   background: var(--prefix-white);

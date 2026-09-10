@@ -1,3 +1,5 @@
+<!-- What an environment holds with and without a virtual filesystem, for the mount slide. -->
+
 <script setup lang="ts">
 const ENVS = [320, 517, 714]
 const BAR_COLUMNS = [0, 50, 100]
@@ -73,7 +75,6 @@ const CACHE_COLUMNS = [10, 60, 110, 160]
 </template>
 
 <style>
-/* Files an environment holds, with and without a virtual filesystem */
 .mount-map {
   display: block;
   width: 100%;

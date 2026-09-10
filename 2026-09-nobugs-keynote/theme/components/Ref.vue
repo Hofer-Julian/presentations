@@ -1,3 +1,5 @@
+<!-- Pill linking to the work behind a slide. -->
+
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -29,7 +31,6 @@ const href = computed(() => {
 </template>
 
 <style>
-/* Where the work behind a slide lives */
 .slidev-layout .ref,
 .keynote-image-layout .ref {
   margin-left: auto;

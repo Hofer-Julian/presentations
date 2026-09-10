@@ -1,3 +1,5 @@
+<!-- Which cache each environment takes a package from, for the layered caches slide. -->
+
 <template>
   <svg
     class="cache-map"
@@ -88,7 +90,6 @@
 </template>
 
 <style>
-/* Map of which cache each environment takes a package from */
 .cache-map {
   display: block;
   width: 100%;

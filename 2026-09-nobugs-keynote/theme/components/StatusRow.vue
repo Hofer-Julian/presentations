@@ -1,3 +1,5 @@
+<!-- One piece of work, badged with how ready it is. -->
+
 <script setup lang="ts">
 defineProps<{
   state: 'shipped' | 'preview' | 'prototype'
@@ -12,7 +14,6 @@ defineProps<{
 </template>
 
 <style>
-/* Readiness row */
 .status-row {
   display: grid;
   grid-template-columns: 7rem 1fr;

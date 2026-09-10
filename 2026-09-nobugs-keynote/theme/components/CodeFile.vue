@@ -1,3 +1,5 @@
+<!-- Code block under a bar naming the file it comes from. -->
+
 <script setup lang="ts">
 defineProps<{
   name: string
@@ -13,8 +15,7 @@ defineProps<{
 </template>
 
 <style>
-/* A filename bar sitting flush on top of its code block.
-   Selectors carry the layout class so the theme's generic paragraph rules
+/* Selectors carry the layout class so the theme's generic paragraph rules
    cannot reclaim the bar's colour, size or margins. */
 .slidev-layout .code-file {
   display: flex;

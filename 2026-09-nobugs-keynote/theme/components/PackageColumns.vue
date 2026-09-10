@@ -1,6 +1,8 @@
+<!-- Columns of names, each column under its own label. -->
+
 <script setup lang="ts">
 defineProps<{
-  /** Feedstock names grouped by the stage of the pipeline they serve */
+  /** Each column, as a label and the names listed under it */
   groups: { label: string; packages: string[] }[]
 }>()
 </script>

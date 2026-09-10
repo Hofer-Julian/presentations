@@ -1,3 +1,5 @@
+<!-- Row of outlined chips, one per item. -->
+
 <script setup lang="ts">
 defineProps<{
   items: string[]
@@ -12,7 +14,6 @@ defineProps<{
 </template>
 
 <style>
-/* Row of outlined chips */
 .pill-row {
   display: flex;
   gap: 0.5rem;

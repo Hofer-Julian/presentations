@@ -1,3 +1,5 @@
+<!-- Aside on a yellow ground that qualifies the slide. -->
+
 <script setup lang="ts">
 defineProps<{
   /** Sets the aside a step below body size, for notes that run long */
@@ -12,7 +14,6 @@ defineProps<{
 </template>
 
 <style>
-/* Aside that qualifies the slide */
 .slidev-layout .note {
   margin: 0.75rem 0 0;
   padding: 0.75rem 1rem;

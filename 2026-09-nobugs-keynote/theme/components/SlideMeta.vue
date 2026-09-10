@@ -1,3 +1,5 @@
+<!-- The line above a heading, carrying the eyebrow and the reference. -->
+
 <script setup lang="ts">
 import Ref from './Ref.vue'
 
@@ -15,7 +17,6 @@ defineProps<{
 </template>
 
 <style>
-/* Eyebrow and reference sharing the line above the heading */
 .slide-meta {
   display: flex;
   gap: 1rem;
