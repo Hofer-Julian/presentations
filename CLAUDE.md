@@ -14,7 +14,6 @@ This repository contains Julian Hofer's Slidev presentations, organized by date 
   - `public/` - Static assets (images, logos, etc.)
   - `snippets/` - Code examples and demos (optional)
   - `global-bottom.vue` - Custom Vue component for presentation footer (optional)
-- **Picker Script**: `scripts/picker.ts` provides an interactive CLI to select which presentation to run
 - **Package Management**: Uses pixi for both system and Node.js dependencies
 - **Configuration**: Some presentations use pyproject.toml instead of pixi.toml for modern Python project structure
 
@@ -22,14 +21,14 @@ This repository contains Julian Hofer's Slidev presentations, organized by date 
 
 ### Starting Development Server
 ```bash
-# Interactive picker to choose presentation
-pixi run start
+# Start the dev server for one presentation folder
+pixi run start 2026-09-nobugs-keynote
 ```
 
 ### Building/Exporting Presentations
 ```bash
-# Export presentations (typically to PDF)
-pixi run export
+# Export one presentation (typically to PDF)
+pixi run export 2026-09-nobugs-keynote
 ```
 
 ### Installation
@@ -44,7 +43,7 @@ pixi install
 1. Create folder with format: `YYYY-MM-event-name/`
 2. Add `slides.md` with Slidev frontmatter
 3. Create `public/` folder for assets
-4. The picker script will automatically detect the new presentation
+4. `pixi run build` picks up the new folder automatically
 
 ### Presentation Themes
 - Uses Slidev themes: `seriph` and `default`
@@ -63,7 +62,6 @@ pixi install
 - `@slidev/cli` - Core Slidev presentation framework
 - `@slidev/theme-*` - Presentation themes
 - `typescript` - TypeScript support
-- `prompts` - Interactive CLI prompts
 - `execa` - Process execution for scripts
 
 ### System Dependencies (via pixi)

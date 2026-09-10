@@ -2,9 +2,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "esno scripts/build.ts",
-    "dev": "esno scripts/picker.ts --open",
-    "export": "esno scripts/picker.ts export"
+    "build": "esno scripts/build.ts"
   },
   "dependencies": {
     "@iconify-json/file-icons": "^1.2.2",
@@ -14,11 +12,9 @@
     "@slidev/theme-default": "^0.25.0",
     "@slidev/theme-seriph": "^0.25.0",
     "@types/node": "^26.4.1",
-    "@types/prompts": "^2.4.9",
     "esno": "^4.8.0",
     "execa": "^10.0.1",
     "playwright-chromium": "^1.63.0",
-    "prompts": "^2.4.2",
     "typescript": "^7.0.2",
     "yaml": "^2.9.0"
   },
