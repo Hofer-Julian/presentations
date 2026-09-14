@@ -52,7 +52,7 @@ fullHeight: true
 ::default::
 
 - Studied physics
-- Built numerical water models at Deltares
+- Wrote numerical water models at Deltares
 - Build Pixi at prefix.dev
 
 <LogoRow
