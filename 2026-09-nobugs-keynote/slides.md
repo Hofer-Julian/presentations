@@ -353,6 +353,32 @@ label: Part 3
 
 ---
 layout: keynote
+eyebrow: Motivation
+---
+
+# Not every package is on a channel
+
+<Cards>
+  <Card label="Your own code" heading="Beamline and analysis scripts">
+
+Written at the facility, shared with a handful of colleagues.
+
+Never published to conda-forge, and it does not need to be.
+
+  </Card>
+  <Card label="Someone else's code" heading="A fork, a patch, a newer commit" accent>
+
+The fix you need is on `main`, not in the latest release.
+
+Or the published build does not match your machine.
+
+  </Card>
+</Cards>
+
+<Statement centered>All of it should install like any other dependency.</Statement>
+
+---
+layout: keynote
 eyebrow: Preview
 link: pixi.sh/latest/build/getting_started
 ---
