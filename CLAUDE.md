@@ -53,6 +53,22 @@ pixi install
 3. Create `public/` folder for assets
 4. `pixi run build` picks up the new folder automatically
 
+### Where CSS Goes
+
+Keep every rule next to the markup it styles.
+
+- `theme/styles/theme.css` holds only design tokens, the base typography of a
+  slide, and the few classes `slides.md` names directly. A rule that applies
+  inside a single layout or component does not belong here.
+- A layout styles itself, in the `<style>` block of `theme/layouts/*.vue`.
+- A component styles itself, in the `<style>` block of `theme/components/*.vue`.
+- `style.css` next to `slides.md` holds slide modifiers set through the `class`
+  key of a slide's front matter, and nothing else.
+
+When a slide needs a layout to place its parts differently, add a prop to the
+layout rather than a modifier class that reaches into the layout's internals
+from outside.
+
 ### Presentation Themes
 - Uses Slidev themes: `seriph` and `default`
 - Custom styling with dark color scheme

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
+  eyebrow?: string
   label?: string
 }>()
 </script>
@@ -7,6 +8,7 @@ const props = defineProps<{
 <template>
   <div class="slidev-layout keynote-section">
     <p v-if="props.label" class="section-label">{{ props.label }}</p>
+    <p v-if="props.eyebrow" class="eyebrow section-eyebrow">{{ props.eyebrow }}</p>
     <slot />
   </div>
 </template>
@@ -29,6 +31,12 @@ const props = defineProps<{
   font-weight: 600;
   letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
+}
+
+/* Reads as a lead-in to the heading, so it steps back from the part label */
+.slidev-layout.keynote-section .section-eyebrow {
+  margin: -0.5rem 0 0.75rem;
+  color: var(--prefix-muted);
 }
 
 .slidev-layout.keynote-section h1 {

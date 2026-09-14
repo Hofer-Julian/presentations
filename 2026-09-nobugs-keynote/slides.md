@@ -41,7 +41,8 @@ image: /julian.jpg
 alt: Julian Hofer
 backgroundSize: cover
 frame: false
-split: 66% 34%
+split: 62% 38%
+fullHeight: true
 ---
 
 ::title::
@@ -53,6 +54,14 @@ split: 66% 34%
 - Studied physics
 - Built numerical water models at Deltares
 - Builds Pixi at prefix.dev
+
+<LogoRow
+  label="Communities I contribute to"
+  :items="[
+    { src: '/gnome-logo.svg', alt: 'GNOME' },
+    { src: '/conda-forge.svg', alt: 'conda-forge', scale: 0.85 },
+  ]"
+/>
 
 
 ---
@@ -68,7 +77,6 @@ image: /mathematica-notebook.png
 alt: Light-mode Mathematica notebook with executable code and a sine plot
 source: "Source: wolfram.com"
 sourceHref: https://www.wolfram.com/notebooks/
-eyebrow: Physics and Mathematica
 frame: false
 blend: true
 split: 50% 50%
@@ -76,10 +84,11 @@ split: 50% 50%
 
 ::title::
 
-# Notebooks felt like magic
+# Physics and Mathematica
 
 ::default::
 
+- Notebooks felt like magic
 - Equations, code, and results in one place
 - Immediate visual feedback
 
@@ -92,46 +101,44 @@ image: /deltares-water-model.png
 alt: Delft3D Flexible Mesh displaying a coastal water model and its computational grid
 source: "Source: deltares.nl"
 sourceHref: https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite
-eyebrow: Deltares
 frame: false
 split: 50% 50%
 ---
 
 ::title::
 
-# Open source numerical water models
+# Deltares
 
 ::default::
 
-- Python for analysis and orchestration
-- Compiled libraries for simulation
+- Worked there from 2019 to 2024
+- Open source numerical models
 - Shared by researchers and engineers
 - Expected to work for years
 
 
 ---
-layout: two-cards
+layout: keynote
 ---
 
 # Two worlds
 
-::left::
-
-## Python
+<Cards>
+  <Card heading="Python">
 
 Analysis, plotting, and orchestration.
 
-Easy to express with Python package tools.
+Interpreter was tricky to manage on Windows.
 
-::right::
+  </Card>
+  <Card heading="Compiled software" accent>
 
-## Compiled software
-
-C, C++, Fortran, and system libraries.
+Dependencies written in C, C++ and Fortran.
 
 Often installed through separate instructions.
 
-::after::
+  </Card>
+</Cards>
 
 <p class="statement statement-centered">I needed both, in one environment.</p>
 
@@ -199,11 +206,12 @@ split: 1fr 1fr
 
 ::left::
 
-- **Dependencies** from conda channels and PyPI in one environment
+- **Channels** are where conda packages come from, like `conda-forge`
+- **Dependencies** from those channels and from PyPI, in one environment
 - **Platforms** are all locked in one `pixi.lock`
 - **Tasks** are the commands of your project and run inside the environment
 
-<Note small><code>pixi run fit</code> creates the environment if needed, then runs the task</Note>
+<Note small><code>pixi run fit</code> installs the environment if needed, then runs the task</Note>
 
 ::right::
 
@@ -277,6 +285,7 @@ layout: code-right
 link: "ceps#146"
 split: 1fr 1fr
 class: code-dense
+eyebrow: Conda Enhancement Proposal
 ---
 
 ::title::
@@ -285,11 +294,11 @@ class: code-dense
 
 ::left::
 
-- A **CEP** is a proposal in `conda/ceps`, argued and voted on GitHub
-- **CEP 43** conditional dependencies
-- **CEP 44** optional dependency groups
-- **CEP 45** simplified variant selection
-- **CEP 48** rolls them out as repodata `v3` without breaking older clients
+- A **CEP** is a proposal argued and voted on GitHub at in `conda/ceps`
+- **CEP 43:** conditional dependencies
+- **CEP 44:** extra dependency groups
+- **CEP 45:** flags
+- **CEP 48:** how to roll it out
 
 <Note small>Written together by conda, Anaconda, and prefix.dev. Pixi speaks <code>v3</code>, conda-forge does not yet.</Note>
 
@@ -308,7 +317,7 @@ numpy = {
   when = { package = "python", version = ">=3.12" },
 }
 
-# optional groups and build variants
+# extra dependency groups and flags
 my-analysis = {
   version = ">=1.0",
   extras = ["plot"],
@@ -370,12 +379,13 @@ link: pixi.sh/latest/build/getting_started
 ---
 layout: code-right
 link: pixi.sh/latest/build/dependency_types
-class: code-dense
+class: code-dense 
+eyebrow: Showcase
 ---
 
 ::title::
 
-# Showcasing SciPy
+# SciPy
 
 ::left::
 
@@ -465,18 +475,19 @@ label: Part 4
 
 ---
 layout: keynote
+eyebrow: My understanding of
 ---
 
-# My understanding of HPC requirements
+# HPC requirements
 
-<Requirements>
-  <Requirement label="Compute" heading="Optimized for your hardware">
+<Cards>
+  <Card label="Compute" heading="Optimized for your hardware">
     The software needs to fully utilize the CPU, GPU, and system libraries on the machine.
-  </Requirement>
-  <Requirement label="Infrastructure" heading="Able to deal with constrained storage and network" accent>
+  </Card>
+  <Card label="Infrastructure" heading="Able to deal with constrained storage and network" accent>
     Compute nodes may be offline. Shared filesystems make millions of small files expensive.
-  </Requirement>
-</Requirements>
+  </Card>
+</Cards>
 
 
 ---
@@ -565,28 +576,29 @@ scipy = { git = "https://github.com/scipy/scipy.git" }
 
 
 ---
-layout: two-cards
+layout: keynote
 eyebrow: Shipped
 link: pixi.sh/latest/deployment/pixi_pack
 ---
 
 # Working with limited connectivity
 
-::left::
-
-## Offline mode
+<Cards>
+  <Card heading="Offline mode">
 
 <code>pixi install --offline</code>
 
 Great for limited or no internet connection. When solving, Pixi only considers packages that are already in the cache.
 
-::right::
-
-## pixi-pack
+  </Card>
+  <Card heading="pixi-pack" accent>
 
 <code>pixi-pack --platform gpu pixi.toml</code>
 
 Move a complete environment archive across the network boundary, then unpack it without Pixi.
+
+  </Card>
+</Cards>
 
 
 ---

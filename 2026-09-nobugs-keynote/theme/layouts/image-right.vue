@@ -9,6 +9,8 @@ const props = withDefaults(defineProps<{
   blend?: boolean
   eyebrow?: string
   frame?: boolean
+  /** Runs the image down the full height of the slide, beside the heading */
+  fullHeight?: boolean
   image: string
   link?: string
   source?: string
@@ -20,6 +22,7 @@ const props = withDefaults(defineProps<{
   backgroundSize: 'contain',
   blend: false,
   frame: true,
+  fullHeight: false,
   scale: 1,
 })
 
@@ -32,7 +35,11 @@ const imageStyle = computed(() => ({
 </script>
 
 <template>
-  <div class="keynote-image-layout" :style="props.split ? { gridTemplateColumns: props.split } : undefined">
+  <div
+    class="keynote-image-layout"
+    :class="{ 'keynote-image-layout-tall': props.fullHeight }"
+    :style="props.split ? { gridTemplateColumns: props.split } : undefined"
+  >
     <SlideMeta :eyebrow="props.eyebrow" :link="props.link" />
     <div class="slidev-layout keynote-image-title">
       <slot name="title" />
@@ -139,6 +146,25 @@ const imageStyle = computed(() => ({
 .keynote-image-panel figcaption a {
   color: inherit;
   border-bottom: 1px solid var(--prefix-yellow);
+}
+
+/* A full-height image takes the second column from the heading, so every cell
+   of the first column has to be placed by hand */
+.keynote-image-layout-tall > .keynote-image-title {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.keynote-image-layout-tall > .keynote-image-copy {
+  display: flex;
+  flex-direction: column;
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.keynote-image-layout-tall > .keynote-image-column {
+  grid-row: 2 / -1;
+  grid-column: 2;
 }
 
 /* Who or what the picture shows, set below it */

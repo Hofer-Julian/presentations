@@ -1,6 +1,10 @@
 /* Design tokens, the base typography of a slide, and the handful of classes
-   slides.md reaches for directly. Everything else lives in the layout or the
-   component that renders it. */
+   slides.md reaches for directly.
+
+   Nothing else belongs here. A rule that only ever applies inside one layout
+   or one component goes into that layout or component, next to the markup it
+   styles. If a slide needs to change how a layout places its parts, give the
+   layout a prop instead of reaching into its class names from outside. */
 
 :root {
   color-scheme: light;
@@ -131,7 +135,7 @@
   border-radius: 0.0625rem;
 }
 
-/* Nested items sit further in and step back in weight */
+/* Nested items sit further in, a size down, behind a dash instead of a square */
 .slidev-layout ul ul {
   margin: 0.5rem 0 0.875rem;
   padding-left: 1.375rem;
@@ -139,7 +143,6 @@
 
 .slidev-layout ul ul > li {
   margin: 0.375rem 0;
-  color: var(--prefix-muted);
   font-size: 0.9375em;
 }
 

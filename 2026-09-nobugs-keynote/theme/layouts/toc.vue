@@ -14,7 +14,7 @@ import SlideMeta from '../components/SlideMeta.vue'
 .slidev-layout.toc-slide ul {
   display: grid;
   max-width: 48rem;
-  gap: 0.625rem;
+  gap: 0.5rem;
   margin: 0.875rem 0 0;
   padding: 0;
   list-style: none;
@@ -23,9 +23,9 @@ import SlideMeta from '../components/SlideMeta.vue'
 .slidev-layout.toc-slide li {
   display: flex;
   align-items: center;
-  min-height: 3.5rem;
+  min-height: 2.5rem;
   margin: 0;
-  padding: 0.625rem 1.25rem;
+  padding: 0.5rem 1.125rem;
   background: var(--prefix-white);
   border: 1px solid var(--prefix-border);
   border-radius: var(--prefix-radius-md);
