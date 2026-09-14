@@ -1,6 +1,8 @@
 <!-- Card making one point, with an optional label above its heading. -->
 
 <script setup lang="ts">
+import Label from './Label.vue'
+
 defineProps<{
   /** Picks out the second card of a pair with the yellow edge */
   accent?: boolean
@@ -11,7 +13,7 @@ defineProps<{
 
 <template>
   <div class="card" :class="{ 'card-accent': accent }">
-    <span v-if="label" class="label">{{ label }}</span>
+    <Label v-if="label">{{ label }}</Label>
     <h2>{{ heading }}</h2>
     <slot />
   </div>

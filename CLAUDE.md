@@ -57,17 +57,21 @@ pixi install
 
 Keep every rule next to the markup it styles.
 
-- `theme/styles/theme.css` holds only design tokens, the base typography of a
-  slide, and the few classes `slides.md` names directly. A rule that applies
-  inside a single layout or component does not belong here.
+- `theme/styles/theme.css` holds design tokens and the base typography a slide
+  gives its markdown. Nothing else, not even a class `slides.md` names
+  directly.
 - A layout styles itself, in the `<style>` block of `theme/layouts/*.vue`.
 - A component styles itself, in the `<style>` block of `theme/components/*.vue`.
+- A single slide styles itself, in a `<style>` block inside that slide in
+  `slides.md`. Slidev scopes it to the slide it sits in.
 - `style.css` next to `slides.md` holds slide modifiers set through the `class`
-  key of a slide's front matter, and nothing else.
+  key of a slide's front matter, for the rare case where more than one slide
+  wants the same modifier.
 
-When a slide needs a layout to place its parts differently, add a prop to the
-layout rather than a modifier class that reaches into the layout's internals
-from outside.
+A run of prose that wants its own look becomes a component, so the slide names
+the thing rather than the CSS: `<Lead>`, not `<p class="lead">`. When a slide
+needs a layout to place its parts differently, add a prop to the layout rather
+than a modifier class that reaches into the layout's internals from outside.
 
 ### Presentation Themes
 - Uses Slidev themes: `seriph` and `default`

@@ -140,7 +140,7 @@ Often installed through separate instructions.
   </Card>
 </Cards>
 
-<p class="statement statement-centered">I needed both, in one environment.</p>
+<Statement centered>I needed both, in one environment.</Statement>
 
 
 ---
@@ -276,7 +276,7 @@ link: conda-forge.org/docs/maintainer/understanding_conda_forge/life_cycle
 
 # The life of a conda-forge package
 
-<p class="lead">The autotick bot opens the pull requests. You review them, and CI does everything after that.</p>
+<Lead>The autotick bot opens the pull requests. You review them, and CI does everything after that.</Lead>
 
 <LifeCycle />
 
@@ -336,7 +336,7 @@ link: conda-forge.org/packages
 
 # Your field is already doing this
 
-<p class="lead">Each of these is a feedstock. Someone opened the pull request, and now keeps it building.</p>
+<Lead>Each of these is a feedstock. Someone opened the pull request, and now keeps it building.</Lead>
 
 <PackageColumns :groups="[
   { label: 'Acquisition and control', packages: ['bluesky', 'ophyd', 'databroker', 'pyepics', 'pytango'] },
@@ -359,7 +359,7 @@ link: pixi.sh/latest/build/getting_started
 
 # Pixi can build software from source
 
-<p class="lead">A build backend knows how to build one kind of project.</p>
+<Lead>A build backend knows how to build one kind of project.</Lead>
 
 <Flow role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
   <div><strong>source + project files</strong></div>
@@ -609,7 +609,7 @@ link: "rattler#43"
 
 # Layered package caches
 
-<p class="lead">Environments of one user already share packages. This would add another cache layer that is read-only and shared across users.</p>
+<Lead>Environments of one user already share packages. This would add another cache layer that is read-only and shared across users.</Lead>
 
 <CacheMap />
 
@@ -621,7 +621,7 @@ link: "rattler#2059"
 
 # Virtual filesystem
 
-<p class="lead">No environment files are written. The mount serves them from the package cache.</p>
+<Lead>No environment files are written. The mount serves them from the package cache.</Lead>
 
 <MountMap />
 

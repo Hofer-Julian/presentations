@@ -1,6 +1,8 @@
 <!-- Columns of names, each column under its own label. -->
 
 <script setup lang="ts">
+import Label from './Label.vue'
+
 defineProps<{
   /** Each column, as a label and the names listed under it */
   groups: { label: string; packages: string[] }[]
@@ -10,7 +12,7 @@ defineProps<{
 <template>
   <div class="package-columns">
     <div v-for="group in groups" :key="group.label">
-      <span class="label">{{ group.label }}</span>
+      <Label>{{ group.label }}</Label>
       <ul>
         <li v-for="name in group.packages" :key="name">{{ name }}</li>
       </ul>

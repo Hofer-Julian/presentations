@@ -1,10 +1,11 @@
-/* Design tokens, the base typography of a slide, and the handful of classes
-   slides.md reaches for directly.
+/* Design tokens and the base typography a slide gives its markdown.
 
-   Nothing else belongs here. A rule that only ever applies inside one layout
-   or one component goes into that layout or component, next to the markup it
-   styles. If a slide needs to change how a layout places its parts, give the
-   layout a prop instead of reaching into its class names from outside. */
+   Nothing else belongs here, not even a class slides.md names directly. A rule
+   that applies inside one layout or one component goes into that layout or
+   component, next to the markup it styles. A run of prose that wants its own
+   look becomes a component, so the slide names the thing rather than the CSS.
+   If a slide needs a layout to place its parts differently, give the layout a
+   prop instead of reaching into its class names from outside. */
 
 :root {
   color-scheme: light;
@@ -185,45 +186,4 @@
   margin: 0;
   background: var(--prefix-white);
   border: 1px solid var(--prefix-border);
-}
-
-/* Shared classes */
-
-/* Eyebrow above a heading, set by <SlideMeta> and by the cover */
-.slidev-layout .eyebrow,
-.keynote-image-layout .eyebrow {
-  margin: 0 0 0.75rem;
-  color: var(--prefix-ink);
-  font-size: var(--prefix-text-xs);
-  font-weight: 600;
-  letter-spacing: var(--prefix-tracking-wide);
-  text-transform: uppercase;
-}
-
-/* Small uppercase caption above a value */
-.label {
-  display: block;
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-2xs);
-  font-weight: 600;
-  letter-spacing: var(--prefix-tracking-wide);
-  text-transform: uppercase;
-}
-
-/* Sentence between the heading and the body of a slide */
-.slidev-layout .lead {
-  margin: -0.5rem 0 1.25rem;
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-lg);
-}
-
-/* Sentence that closes a slide */
-.slidev-layout .statement {
-  margin: 1.5rem 0 0;
-  font-size: var(--prefix-text-xl);
-  line-height: 1.25;
-}
-
-.slidev-layout .statement-centered {
-  text-align: center;
 }

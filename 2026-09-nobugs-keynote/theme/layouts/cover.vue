@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Eyebrow from '../components/Eyebrow.vue'
+
 defineProps<{
   eyebrow?: string
   qr?: string
@@ -12,7 +14,7 @@ defineProps<{
   <div class="slidev-layout cover keynote-cover">
     <img class="cover-brand" src="/prefix-logo.svg" alt="Prefix.dev" />
     <div class="cover-content">
-      <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
+      <Eyebrow v-if="eyebrow">{{ eyebrow }}</Eyebrow>
       <slot />
       <p v-if="speaker" class="cover-speaker">{{ speaker }}</p>
     </div>

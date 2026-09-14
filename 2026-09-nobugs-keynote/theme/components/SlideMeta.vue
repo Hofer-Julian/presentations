@@ -1,6 +1,7 @@
 <!-- The line above a heading, carrying the eyebrow and the reference. -->
 
 <script setup lang="ts">
+import Eyebrow from './Eyebrow.vue'
 import Ref from './Ref.vue'
 
 defineProps<{
@@ -11,7 +12,7 @@ defineProps<{
 
 <template>
   <header class="slide-meta">
-    <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
+    <Eyebrow v-if="eyebrow">{{ eyebrow }}</Eyebrow>
     <Ref v-if="link" :to="link" />
   </header>
 </template>
