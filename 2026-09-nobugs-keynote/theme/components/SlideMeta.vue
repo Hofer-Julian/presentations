@@ -21,7 +21,7 @@ defineProps<{
 .slide-meta {
   display: flex;
   gap: 1rem;
-  align-items: baseline;
+  align-items: center;
   min-height: 1.75rem;
   margin: 0 0 0.75rem;
 }

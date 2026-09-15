@@ -206,10 +206,10 @@ split: 1fr 1fr
 
 ::left::
 
-- **Channels** are where conda packages come from, like `conda-forge`
-- **Dependencies** from those channels and from PyPI, in one environment
-- **Platforms** are all locked in one `pixi.lock`
-- **Tasks** are the commands of your project and run inside the environment
+- **Channels** where conda packages come from
+- **Dependencies** from those channels and from PyPI
+- **Platforms** all locked in one `pixi.lock`
+- **Tasks** commands that run inside the environment
 
 <Note small><code>pixi run fit</code> installs the environment if needed, then runs the task</Note>
 
@@ -276,7 +276,7 @@ link: conda-forge.org/docs/maintainer/understanding_conda_forge/life_cycle
 
 # The life of a conda-forge package
 
-<Lead>The autotick bot opens the pull requests. You review them, and CI does everything after that.</Lead>
+<Lead>The autotick bot opens the pull requests. You review them.</Lead>
 
 <LifeCycle />
 
@@ -294,7 +294,7 @@ eyebrow: Conda Enhancement Proposal
 
 ::left::
 
-- A **CEP** is a proposal argued and voted on GitHub at in `conda/ceps`
+- A **CEP** is a proposal argued and voted on in `conda/ceps`
 - **CEP 43:** conditional dependencies
 - **CEP 44:** extra dependency groups
 - **CEP 45:** flags
@@ -359,18 +359,14 @@ eyebrow: Motivation
 # Not every package is on a channel
 
 <Cards>
-  <Card label="Your own code" heading="Beamline and analysis scripts">
+  <Card heading="Your own code">
 
-Written at the facility, shared with a handful of colleagues.
-
-Never published to conda-forge, and it does not need to be.
+Your monorepo, or a colleague's Git repository.
 
   </Card>
-  <Card label="Someone else's code" heading="A fork, a patch, a newer commit" accent>
+  <Card heading="Someone else's code" accent>
 
-The fix you need is on `main`, not in the latest release.
-
-Or the published build does not match your machine.
+The fix is on `main`, or the build does not match your machine.
 
   </Card>
 </Cards>
@@ -385,12 +381,10 @@ link: pixi.sh/latest/build/getting_started
 
 # Pixi can build software from source
 
-<Lead>A build backend knows how to build one kind of project.</Lead>
-
 <Flow role="img" aria-label="Source and project files flow through a Pixi Build backend into a conda package and then an environment">
   <div><strong>source + project files</strong></div>
   <div class="flow-highlight"><strong>Pixi Build backend</strong></div>
-  <div><strong><code>.conda</code> package</strong></div>
+  <div><strong>conda package</strong></div>
   <div><strong>environment</strong></div>
 </Flow>
 
@@ -415,7 +409,6 @@ eyebrow: Showcase
 
 ::left::
 
-- Still in preview
 - Backend takes care of building a conda package
 - C and C++ compilers are automatically set up
 - `host-dependencies` specify libraries necessary at both build and run time
@@ -453,6 +446,7 @@ blas-devel = "*"
 layout: compare
 eyebrow: Preview
 link: pixi.sh/latest/build/package_source
+centered: true
 ---
 
 # Work on it, or depend on it
@@ -470,7 +464,7 @@ scipy = { path = "." }
 
 </CodeFile>
 
-SciPy itself is not built. Its build, host, and run dependencies land in your environment, so you compile and test it yourself.
+Installs only SciPy's dependencies
 
 ::right::
 
@@ -485,11 +479,7 @@ scipy = { git = "https://github.com/scipy/scipy.git" }
 
 </CodeFile>
 
-Pixi follows Git, builds SciPy in an isolated environment, and installs the resulting <code>.conda</code> package.
-
-::after::
-
-<Note small>Both need <code>preview = ["pixi-build"]</code> in the workspace.</Note>
+Builds and installs SciPy itself
 
 
 ---
@@ -508,10 +498,14 @@ eyebrow: My understanding of
 
 <Cards>
   <Card label="Compute" heading="Optimized for your hardware">
-    The software needs to fully utilize the CPU, GPU, and system libraries on the machine.
+
+It has to use the CPU, GPU, and system libraries of the machine.
+
   </Card>
-  <Card label="Infrastructure" heading="Able to deal with constrained storage and network" accent>
-    Compute nodes may be offline. Shared filesystems make millions of small files expensive.
+  <Card label="Infrastructure" heading="Constrained storage and network" accent>
+
+Compute nodes may be offline. Shared filesystems make millions of small files expensive.
+
   </Card>
 </Cards>
 
@@ -528,11 +522,10 @@ link: pixi.sh/latest/workspace/multi_platform_configuration
 
 ::left::
 
-- Best of both worlds:
-  - Lock file describing all platforms
-  - Platforms can be as specific as needed to fit your machine
-- The first platform that matches your machine will be used
-- You can still use one environment for everything
+- One lock file describes every platform
+- A platform can be as specific as your machine needs
+- The first match wins
+- Still one environment for everything
 
 
 ::right::
@@ -554,8 +547,6 @@ pytorch-cpu = "*"
 ```
 
 </CodeFile>
-
-::after::
 
 
 
@@ -597,8 +588,6 @@ scipy = { git = "https://github.com/scipy/scipy.git" }
 
 </CodeFile>
 
-::after::
-
 
 
 ---
@@ -614,14 +603,14 @@ link: pixi.sh/latest/deployment/pixi_pack
 
 <code>pixi install --offline</code>
 
-Great for limited or no internet connection. When solving, Pixi only considers packages that are already in the cache.
+When solving, Pixi only considers packages that are already in the cache.
 
   </Card>
   <Card heading="pixi-pack" accent>
 
 <code>pixi-pack --platform gpu pixi.toml</code>
 
-Move a complete environment archive across the network boundary, then unpack it without Pixi.
+A whole environment as one archive, unpacked without Pixi.
 
   </Card>
 </Cards>
@@ -647,7 +636,7 @@ link: "rattler#2059"
 
 # Virtual filesystem
 
-<Lead>No environment files are written. The mount serves them from the package cache.</Lead>
+<Lead>Packages are read directly from the cache instead of being copied first.</Lead>
 
 <MountMap />
 
@@ -676,9 +665,9 @@ layout: end
 <p class="closing-subtitle">about your workflows, infrastructure, and workarounds</p>
 
 <Bubbles>
-  <Bubble label="In the Q&A">right now</Bubble>
-  <Bubble label="In the hallway">for the rest of the day</Bubble>
-  <Bubble label="By email" href="mailto:julian@prefix.dev">julian@prefix.dev</Bubble>
+  <Bubble>In the Q&A</Bubble>
+  <Bubble>In the hallway</Bubble>
+  <Bubble href="mailto:julian@prefix.dev">julian@prefix.dev</Bubble>
 </Bubbles>
 
 <SlidesQr

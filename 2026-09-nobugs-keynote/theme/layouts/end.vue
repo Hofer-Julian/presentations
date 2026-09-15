@@ -22,6 +22,12 @@
 
 .keynote-end .slides-qr {
   width: max-content;
-  margin: 1.5rem auto 0;
+  margin: 2.25rem auto 0;
+}
+
+/* The one thing to act on, big enough to scan from the back of the room */
+.keynote-end .slides-qr img {
+  width: 12rem;
+  height: 12rem;
 }
 </style>
