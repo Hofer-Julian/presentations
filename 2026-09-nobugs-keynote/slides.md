@@ -421,12 +421,9 @@ eyebrow: Showcase
 [workspace]
 preview = ["pixi-build"]
 
-[package.build.backend]
-name = "pixi-build-python"
-version = "*"
-
-[package.build.config]
-compilers = ["c", "cxx"]
+[package.build]
+backend.name = "pixi-build-python"
+config.compilers = ["c", "cxx"]
 
 [package.host-dependencies]
 ninja = "*"
