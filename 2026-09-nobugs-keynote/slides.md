@@ -546,10 +546,10 @@ platforms = [
   { name = "cpu", platform = "linux-64" },
 ]
 
-[target."*gpu*".dependencies]
+[target.gpu.dependencies]
 pytorch-gpu = "*"
 
-[target."*cpu*".dependencies]
+[target.cpu.dependencies]
 pytorch-cpu = "*"
 ```
 
