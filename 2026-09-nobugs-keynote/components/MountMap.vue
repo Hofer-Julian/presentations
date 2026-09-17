@@ -12,14 +12,14 @@ const CACHE_COLUMNS = [10, 60, 110, 160]
     class="mount-map"
     viewBox="0 0 900 245"
     role="img"
-    aria-label="Today every environment holds a copy of the cache's files. With a virtual filesystem the environments hold no files and read from the cache on demand"
+    aria-label="Today every environment holds a link to each of the cache's files. With a virtual filesystem the environments hold no entries and read from the cache on demand"
   >
     <g class="mount-map-row-label">
       <text x="0" y="10">Today</text>
       <text x="0" y="137">With a virtual filesystem</text>
     </g>
 
-    <!-- Today: the cache and every environment hold the same files -->
+    <!-- Today: every environment holds a link to each of the cache's files -->
     <g class="mount-map-box">
       <rect x="0" y="20" width="210" height="88" rx="10" />
       <rect v-for="x in ENVS" :key="x" :x="x" y="20" width="186" height="88" rx="10" />
@@ -45,7 +45,7 @@ const CACHE_COLUMNS = [10, 60, 110, 160]
       <path d="M222 64 H292" />
       <path class="mount-map-head" d="M292 56 L308 64 L292 72 Z" />
     </g>
-    <text class="mount-map-flow-label" x="265" y="50">copies</text>
+    <text class="mount-map-flow-label" x="265" y="50">links</text>
 
     <!-- With a virtual filesystem: only the cache holds files -->
     <g class="mount-map-box">

@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import SlideMeta from '../components/SlideMeta.vue'
 import { assetUrl } from '../utils/asset'
 
 const props = withDefaults(defineProps<{
   alt?: string
   backgroundSize?: 'contain' | 'cover'
   blend?: boolean
-  eyebrow?: string
   frame?: boolean
   /** Runs the image down the full height of the slide, beside the heading */
   fullHeight?: boolean
   image: string
-  link?: string
   source?: string
   sourceHref?: string
   split?: string
@@ -40,7 +37,6 @@ const imageStyle = computed(() => ({
     :class="{ 'keynote-image-layout-tall': props.fullHeight }"
     :style="props.split ? { gridTemplateColumns: props.split } : undefined"
   >
-    <SlideMeta :eyebrow="props.eyebrow" :link="props.link" />
     <div class="slidev-layout keynote-image-title">
       <slot name="title" />
     </div>
@@ -71,27 +67,16 @@ const imageStyle = computed(() => ({
 .keynote-image-layout {
   display: grid;
   grid-template-columns: 58% 42%;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   height: 100%;
   background: var(--prefix-paper);
   color: var(--prefix-ink);
 }
 
-/* The meta row spans both columns so the reference pill reaches the slide edge */
-.keynote-image-layout > .slide-meta {
-  grid-column: 1 / -1;
-  /* The row's own padding sits inside min-height, so it carries the slide's top padding too */
-  min-height: 4.5rem;
-  padding:
-    var(--prefix-slide-padding-top)
-    var(--prefix-slide-padding-inline)
-    0;
-}
-
 /* The heading spans both columns, so its length never eats into the picture */
 .keynote-image-layout > .keynote-image-title {
   grid-column: 1 / -1;
-  padding: 0 var(--prefix-slide-padding-inline);
+  padding: var(--prefix-slide-padding-top) var(--prefix-slide-padding-inline) 0;
 }
 
 .keynote-image-layout > .keynote-image-copy {
@@ -151,20 +136,22 @@ const imageStyle = computed(() => ({
 /* A full-height image takes the second column from the heading, so every cell
    of the first column has to be placed by hand */
 .keynote-image-layout-tall > .keynote-image-title {
-  grid-row: 2;
+  grid-row: 1;
   grid-column: 1;
 }
 
 .keynote-image-layout-tall > .keynote-image-copy {
   display: flex;
   flex-direction: column;
-  grid-row: 3;
+  grid-row: 2;
   grid-column: 1;
 }
 
+/* The picture runs beside the heading, so it takes the slide's top padding itself */
 .keynote-image-layout-tall > .keynote-image-column {
-  grid-row: 2 / -1;
+  grid-row: 1 / -1;
   grid-column: 2;
+  margin-top: var(--prefix-slide-padding-top);
 }
 
 /* Who or what the picture shows, set below it */

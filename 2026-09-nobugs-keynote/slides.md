@@ -147,19 +147,19 @@ Often installed through separate instructions.
 layout: image-right
 image: /conda-logo.svg
 alt: Conda package manager logo
-eyebrow: Conda
 frame: false
 scale: 0.9
 ---
 
 ::title::
 
-# Cross-platform and cross-language
+# Conda
 
 ::default::
 
 **What worked**
 
+- Cross-platform and cross-language
 - Python and compiled libraries together
 - Linux, macOS, and Windows packages
 
@@ -174,7 +174,6 @@ scale: 0.9
 layout: image-right
 image: /paxton-text-in-circle.svg
 alt: Paxton, the Pixi mascot
-eyebrow: Pixi
 frame: false
 scale: 1.6
 class: emoji-list
@@ -182,7 +181,7 @@ class: emoji-list
 
 ::title::
 
-# To the rescue
+# Pixi to the rescue
 
 ::default::
 
@@ -248,7 +247,6 @@ label: Part 2
 layout: image-right
 image: /conda-forge.svg
 alt: conda-forge logo
-eyebrow: Openness
 link: conda-forge.org/docs/maintainer/adding_pkgs
 frame: false
 scale: 0.85
@@ -270,7 +268,6 @@ scale: 0.85
 
 ---
 layout: keynote
-eyebrow: Life cycle
 link: conda-forge.org/docs/maintainer/understanding_conda_forge/life_cycle
 ---
 
@@ -285,15 +282,15 @@ layout: code-right
 link: "ceps#146"
 split: 1fr 1fr
 class: code-dense
-eyebrow: Conda Enhancement Proposal
 ---
 
 ::title::
 
-# The format itself changes in the open
+# Conda Enhancement Proposals
 
 ::left::
 
+- The format itself changes in the open
 - A **CEP** is a proposal argued and voted on in `conda/ceps`
 - **CEP 43:** conditional dependencies
 - **CEP 44:** extra dependency groups
@@ -330,7 +327,6 @@ my-analysis = {
 
 ---
 layout: keynote
-eyebrow: Photon and neutron
 link: conda-forge.org/packages
 ---
 
@@ -353,10 +349,11 @@ label: Part 3
 
 ---
 layout: keynote
-eyebrow: Motivation
 ---
 
-# Not every package is on a channel
+# Motivation
+
+<Lead>Not every package is on a channel.</Lead>
 
 <Cards>
   <Card heading="Your own code">
@@ -375,7 +372,6 @@ The fix is on `main`, or the build does not match your machine.
 
 ---
 layout: keynote
-eyebrow: Preview
 link: pixi.sh/latest/build/getting_started
 ---
 
@@ -399,13 +395,12 @@ link: pixi.sh/latest/build/getting_started
 ---
 layout: code-right
 link: pixi.sh/latest/build/dependency_types
-class: code-dense 
-eyebrow: Showcase
+class: code-dense
 ---
 
 ::title::
 
-# SciPy
+# Building SciPy from source
 
 ::left::
 
@@ -441,7 +436,6 @@ blas-devel = "*"
 
 ---
 layout: compare
-eyebrow: Preview
 link: pixi.sh/latest/build/package_source
 centered: true
 ---
@@ -488,10 +482,9 @@ label: Part 4
 
 ---
 layout: keynote
-eyebrow: My understanding of
 ---
 
-# HPC requirements
+# My understanding of HPC requirements
 
 <Cards>
   <Card label="Compute" heading="Optimized for your hardware">
@@ -509,7 +502,6 @@ Compute nodes may be offline. Shared filesystems make millions of small files ex
 
 ---
 layout: code-right
-eyebrow: Shipped
 link: pixi.sh/latest/workspace/multi_platform_configuration
 ---
 
@@ -549,7 +541,6 @@ pytorch-cpu = "*"
 
 ---
 layout: code-right
-eyebrow: Preview
 link: pixi.sh/latest/build/package_source
 split: 1fr 1fr
 ---
@@ -589,7 +580,6 @@ scipy = { git = "https://github.com/scipy/scipy.git" }
 
 ---
 layout: keynote
-eyebrow: Shipped
 link: pixi.sh/latest/deployment/pixi_pack
 ---
 
@@ -615,11 +605,10 @@ A whole environment as one archive, unpacked without Pixi.
 
 ---
 layout: keynote
-eyebrow: "Prototype"
 link: "rattler#43"
 ---
 
-# Layered package caches
+# Prototype: Layered package caches
 
 <Lead>Environments of one user already share packages. This would add another cache layer that is read-only and shared across users.</Lead>
 
@@ -627,13 +616,12 @@ link: "rattler#43"
 
 ---
 layout: keynote
-eyebrow: Prototype
 link: "rattler#2059"
 ---
 
-# Virtual filesystem
+# Prototype: Virtual filesystem
 
-<Lead>Packages are read directly from the cache instead of being copied first.</Lead>
+<Lead>Packages are read directly from the cache instead of being linked into every environment.</Lead>
 
 <MountMap />
 

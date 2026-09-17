@@ -7,56 +7,63 @@
     role="img"
     aria-label="Four environments belonging to two researchers draw numpy and mantid from one shared site cache, while both environments of a researcher share dials or h5py from that researcher's own cache"
   >
-    <g class="cache-map-group">
-      <text x="2" y="12">Researcher A</text>
-      <text x="898" y="12" text-anchor="end">Researcher B</text>
+    <!-- A plate behind each researcher, holding their name and their environments -->
+    <g class="cache-map-owner">
+      <rect x="0" y="0" width="418" height="100" rx="12" />
+      <rect x="482" y="0" width="418" height="100" rx="12" />
+    </g>
+
+    <g class="cache-map-owner-name">
+      <text x="209" y="20">Researcher A</text>
+      <text x="691" y="20">Researcher B</text>
     </g>
 
     <g class="cache-map-env">
-      <rect x="0" y="26" width="195" height="64" rx="10" />
-      <rect x="215" y="26" width="195" height="64" rx="10" />
-      <rect x="490" y="26" width="195" height="64" rx="10" />
-      <rect x="705" y="26" width="195" height="64" rx="10" />
+      <rect x="12" y="30" width="190" height="62" rx="10" />
+      <rect x="216" y="30" width="190" height="62" rx="10" />
+      <rect x="494" y="30" width="190" height="62" rx="10" />
+      <rect x="698" y="30" width="190" height="62" rx="10" />
     </g>
 
     <g class="cache-map-label">
-      <text x="14" y="46">Environment 1</text>
-      <text x="229" y="46">Environment 2</text>
-      <text x="504" y="46">Environment 1</text>
-      <text x="719" y="46">Environment 2</text>
+      <text x="24" y="48">Environment 1</text>
+      <text x="228" y="48">Environment 2</text>
+      <text x="506" y="48">Environment 1</text>
+      <text x="710" y="48">Environment 2</text>
     </g>
 
     <g class="cache-map-chip">
-      <rect x="12" y="56" width="80" height="26" rx="6" />
-      <rect x="103" y="56" width="80" height="26" rx="6" />
-      <rect x="227" y="56" width="80" height="26" rx="6" />
-      <rect x="318" y="56" width="80" height="26" rx="6" />
-      <rect x="502" y="56" width="80" height="26" rx="6" />
-      <rect x="593" y="56" width="80" height="26" rx="6" />
-      <rect x="717" y="56" width="80" height="26" rx="6" />
-      <rect x="808" y="56" width="80" height="26" rx="6" />
+      <rect x="24" y="58" width="79" height="26" rx="6" />
+      <rect x="111" y="58" width="79" height="26" rx="6" />
+      <rect x="228" y="58" width="79" height="26" rx="6" />
+      <rect x="315" y="58" width="79" height="26" rx="6" />
+      <rect x="506" y="58" width="79" height="26" rx="6" />
+      <rect x="593" y="58" width="79" height="26" rx="6" />
+      <rect x="710" y="58" width="79" height="26" rx="6" />
+      <rect x="797" y="58" width="79" height="26" rx="6" />
     </g>
 
     <g class="cache-map-name">
-      <text x="52" y="74">dials</text>
-      <text x="143" y="74">numpy</text>
-      <text x="267" y="74">dials</text>
-      <text x="358" y="74">mantid</text>
-      <text x="542" y="74">numpy</text>
-      <text x="633" y="74">h5py</text>
-      <text x="757" y="74">mantid</text>
-      <text x="848" y="74">h5py</text>
+      <text x="64" y="76">dials</text>
+      <text x="150" y="76">numpy</text>
+      <text x="268" y="76">dials</text>
+      <text x="355" y="76">mantid</text>
+      <text x="546" y="76">numpy</text>
+      <text x="633" y="76">h5py</text>
+      <text x="750" y="76">mantid</text>
+      <text x="837" y="76">h5py</text>
     </g>
 
+    <!-- The cache boxes paint over these, so every line ends on a box edge -->
     <g class="cache-map-line">
-      <path d="M52 82 V206" />
-      <path d="M267 82 L52 206" />
-      <path d="M143 82 L350 206" />
-      <path d="M358 82 L500 206" />
-      <path d="M542 82 L350 206" />
-      <path d="M633 82 L848 206" />
-      <path d="M757 82 L500 206" />
-      <path d="M848 82 V206" />
+      <path d="M64 84 L98 206" />
+      <path d="M268 84 L98 206" />
+      <path d="M150 84 L350 206" />
+      <path d="M355 84 L500 206" />
+      <path d="M546 84 L350 206" />
+      <path d="M750 84 L500 206" />
+      <path d="M633 84 L803 206" />
+      <path d="M837 84 L803 206" />
     </g>
 
     <g class="cache-map-store">
@@ -65,15 +72,15 @@
     </g>
     <rect class="cache-map-site" x="250" y="175" width="400" height="75" rx="10" />
 
-    <g class="cache-map-label">
-      <text x="14" y="195">Own cache</text>
-      <text x="719" y="195">Own cache</text>
+    <g class="cache-map-label cache-map-label-cache">
+      <text x="98" y="195">Own cache</text>
+      <text x="803" y="195">Own cache</text>
+      <text class="cache-map-label-site" x="450" y="195">Read-only site cache</text>
     </g>
-    <text class="cache-map-label cache-map-label-site" x="264" y="195">Site cache · read-only</text>
 
     <g class="cache-map-chip">
-      <rect x="12" y="206" width="80" height="26" rx="6" />
-      <rect x="808" y="206" width="80" height="26" rx="6" />
+      <rect x="58" y="206" width="80" height="26" rx="6" />
+      <rect x="763" y="206" width="80" height="26" rx="6" />
     </g>
     <g class="cache-map-chip cache-map-chip-site">
       <rect x="300" y="206" width="100" height="26" rx="6" />
@@ -81,8 +88,8 @@
     </g>
 
     <g class="cache-map-name">
-      <text x="52" y="224">dials</text>
-      <text x="848" y="224">h5py</text>
+      <text x="98" y="224">dials</text>
+      <text x="803" y="224">h5py</text>
       <text x="350" y="224">numpy</text>
       <text x="500" y="224">mantid</text>
     </g>
@@ -94,6 +101,11 @@
   display: block;
   width: 100%;
   margin: 0.25rem 0 0.5rem;
+}
+
+/* A wash rather than an outline, so the plate never competes with the lines */
+.cache-map-owner rect {
+  fill: rgb(var(--prefix-ink-rgb) / 6%);
 }
 
 .cache-map-env rect,
@@ -114,7 +126,6 @@
   fill: var(--prefix-white);
 }
 
-.cache-map-group text,
 .cache-map-label,
 .cache-map-label text {
   fill: var(--prefix-muted);
@@ -122,6 +133,21 @@
   font-weight: 600;
   letter-spacing: var(--prefix-tracking-wide);
   text-transform: uppercase;
+}
+
+/* The name the plate belongs to, centred over the environments it holds */
+.cache-map-owner-name text {
+  fill: var(--prefix-ink);
+  font-size: 11px;
+  text-anchor: middle;
+  font-weight: 600;
+  letter-spacing: var(--prefix-tracking-wide);
+  text-transform: uppercase;
+}
+
+/* A cache names itself over its middle, where its packages sit */
+.cache-map-label-cache text {
+  text-anchor: middle;
 }
 
 .cache-map-label-site {

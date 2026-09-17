@@ -1,4 +1,4 @@
-<!-- Pill linking to the work behind a slide. -->
+<!-- Link to the work behind a slide, set in the footer. -->
 
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -31,22 +31,16 @@ const href = computed(() => {
 </template>
 
 <style>
-.slidev-layout .ref,
-.keynote-image-layout .ref {
-  margin-left: auto;
-  padding: 0.1875rem 0.5rem;
-  background: var(--prefix-white);
-  border: 1px solid var(--prefix-border);
-  border-radius: var(--prefix-radius-pill);
+.ref {
+  border-bottom: 2px solid var(--prefix-yellow);
   color: var(--prefix-muted);
   font-family: var(--prefix-font-mono);
   font-size: 0.6875rem;
   white-space: nowrap;
 }
 
-.slidev-layout a.ref:hover,
-.keynote-image-layout a.ref:hover {
-  border-color: var(--prefix-yellow);
+a.ref:hover {
+  border-bottom-color: var(--prefix-ink);
   color: var(--prefix-ink);
 }
 </style>

@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import SlideMeta from '../components/SlideMeta.vue'
-
 defineProps<{
-  eyebrow?: string
-  link?: string
   /** Sets the pair in the middle of the slide, for columns short enough to float */
   centered?: boolean
 }>()
@@ -11,7 +7,6 @@ defineProps<{
 
 <template>
   <div class="slidev-layout compare-layout" :class="{ 'compare-centered': centered }">
-    <SlideMeta :eyebrow="eyebrow" :link="link" />
     <slot />
     <div class="compare-grid">
       <div><slot name="left" /></div>

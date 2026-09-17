@@ -2,7 +2,7 @@
   <footer v-if="$nav.currentLayout !== 'cover'" class="keynote-footer">
     <img src="/prefix-logo.svg" alt="Prefix.dev" />
     <div class="keynote-footer-meta">
-      <span>NOBUGS 2026 - 23 September 2026</span>
+      <Ref v-if="$nav.currentFrontmatter.link" :to="$nav.currentFrontmatter.link" />
       <span class="keynote-page">{{ $nav.currentPage }}</span>
     </div>
   </footer>
