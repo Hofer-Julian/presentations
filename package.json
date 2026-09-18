@@ -18,11 +18,5 @@
     "typescript": "^7.0.2",
     "yaml": "^2.9.0"
   },
-  "name": "slidev-presentations",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "playwright-chromium"
-    ]
-  }
+  "name": "slidev-presentations"
 }
