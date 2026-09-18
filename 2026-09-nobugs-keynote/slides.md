@@ -294,10 +294,7 @@ class: code-dense
 - A **CEP** is a proposal argued and voted on in `conda/ceps`
 - **CEP 43:** conditional dependencies
 - **CEP 44:** extra dependency groups
-- **CEP 45:** flags
 - **CEP 48:** how to roll it out
-
-<Note small>Written together by conda, Anaconda, and prefix.dev. Pixi speaks <code>v3</code>, conda-forge does not yet.</Note>
 
 ::right::
 
@@ -308,18 +305,14 @@ class: code-dense
 # only with a CUDA driver
 cupy = { version = "*", when = "__cuda" }
 
-# only alongside a new enough Python
-numpy = {
+# only on Python without `tomllib`
+tomli = {
   version = "*",
-  when = { package = "python", version = ">=3.12" },
+  when = { package = "python", version = "<3.11" },
 }
 
-# extra dependency groups and flags
-my-analysis = {
-  version = ">=1.0",
-  extras = ["plot"],
-  flags = ["cuda"],
-}
+# extra dependency groups
+my-analysis = { version = ">=1.0", extras = ["plot"] }
 ```
 
 </CodeFile>
