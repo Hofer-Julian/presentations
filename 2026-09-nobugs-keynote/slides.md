@@ -305,8 +305,8 @@ class: code-dense
 
 ```toml
 [dependencies]
-# only on Windows
-pywin32 = { version = "*", when = "__win" }
+# only with a CUDA driver
+cupy = { version = "*", when = "__cuda" }
 
 # only alongside a new enough Python
 numpy = {
