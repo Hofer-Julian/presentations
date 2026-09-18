@@ -88,6 +88,7 @@ split: 50% 50%
 
 ::default::
 
+- I studied from 2013 to 2019
 - Notebooks felt like magic
 - Equations, code, and results in one place
 - Immediate visual feedback
