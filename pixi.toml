@@ -20,4 +20,4 @@ cmd = "pnpm exec slidev export {{ presentation }}/slides.md"
 depends-on = ["install"]
 
 [dependencies]
-pnpm = ">=10.6.5,<11"
+pnpm = ">=12.4.1,<13"
