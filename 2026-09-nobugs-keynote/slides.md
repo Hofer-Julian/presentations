@@ -160,7 +160,6 @@ scale: 0.9
 
 **What worked**
 
-- Cross-platform and cross-language
 - Python and compiled libraries together
 - Linux, macOS, and Windows packages
 
