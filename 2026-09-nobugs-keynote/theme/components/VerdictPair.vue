@@ -21,10 +21,6 @@
   gap: 0.5rem 1rem;
 }
 
-.verdict-pair .verdict-row-aside {
-  grid-template-columns: 1fr auto auto;
-}
-
 .verdict-pair .verdict-kind {
   grid-column: 1 / -1;
 }

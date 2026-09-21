@@ -250,19 +250,17 @@ link: conda-forge.org/docs/user/introduction
 
 # Three kinds of conda
 
+<SlidesQr
+  small
+  class="microrattler-qr"
+  src="/microrattler-qr-code.png"
+  href="https://prefix.dev/channels/@prefix-dev/prefix-labs/packages/microrattler"
+/>
+
 <VerdictList>
   <VerdictPair>
     <VerdictRow kind="Client" name="conda, mamba, Pixi" verdict="open">Programs that solve and install environments</VerdictRow>
-    <VerdictRow kind="Client" name="microrattler" verdict="soon">
-      Fast client with conda compatible API
-      <template #aside>
-        <SlidesQr
-          small
-          src="/microrattler-qr-code.png"
-          href="https://prefix.dev/channels/@prefix-dev/prefix-labs/packages/microrattler"
-        />
-      </template>
-    </VerdictRow>
+    <VerdictRow kind="Client" name="microrattler" verdict="soon">Fast client, conda compatible API</VerdictRow>
   </VerdictPair>
   <VerdictRow kind="Format" name="conda packages" verdict="open">An open standard, changed through the CEP process</VerdictRow>
   <VerdictPair>
@@ -270,6 +268,14 @@ link: conda-forge.org/docs/user/introduction
     <VerdictRow kind="Channel" name="defaults" verdict="commercial">Published by Anaconda</VerdictRow>
   </VerdictPair>
 </VerdictList>
+
+<style>
+.microrattler-qr {
+  position: absolute;
+  top: 1.25rem;
+  right: 3rem;
+}
+</style>
 
 <!--
 conda used to fall back to the `defaults` channel when nothing configured one:

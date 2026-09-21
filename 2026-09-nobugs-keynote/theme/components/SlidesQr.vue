@@ -1,4 +1,4 @@
-<!-- QR code linking somewhere worth scanning, with a caption under it. -->
+<!-- QR code linking somewhere worth scanning, with an optional caption under it. -->
 
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -27,7 +27,7 @@ const imageSrc = computed(() => assetUrl(props.src))
     rel="noopener noreferrer"
   >
     <img :src="imageSrc" :alt="`QR code for ${label ?? href}`" />
-    <span>{{ label }}</span>
+    <span v-if="label">{{ label }}</span>
   </a>
 </template>
 
