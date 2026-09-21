@@ -245,6 +245,7 @@ label: Part 2
 
 ---
 layout: keynote
+clicks: 3
 link: conda-forge.org/docs/user/introduction
 ---
 
@@ -258,12 +259,12 @@ link: conda-forge.org/docs/user/introduction
 />
 
 <VerdictList>
-  <VerdictPair>
+  <VerdictPair class="kind-step" :class="{ 'kind-step-on': $clicks === 1 }">
     <VerdictRow kind="Client" name="conda, mamba, Pixi" verdict="open">Programs that solve and install environments</VerdictRow>
     <VerdictRow kind="Client" name="microrattler" verdict="soon">Fast client, conda compatible API</VerdictRow>
   </VerdictPair>
-  <VerdictRow kind="Format" name="conda packages" verdict="open">An open standard, changed through the CEP process</VerdictRow>
-  <VerdictPair>
+  <VerdictRow class="kind-step" :class="{ 'kind-step-on': $clicks === 2 }" kind="Format" name="conda packages" verdict="open">An open standard, changed through the CEP process</VerdictRow>
+  <VerdictPair class="kind-step" :class="{ 'kind-step-on': $clicks === 3 }">
     <VerdictRow kind="Channel" name="conda-forge, bioconda, robostack" verdict="free">Run by their communities</VerdictRow>
     <VerdictRow kind="Channel" name="defaults" verdict="commercial">Published by Anaconda</VerdictRow>
   </VerdictPair>
@@ -274,6 +275,18 @@ link: conda-forge.org/docs/user/introduction
   position: absolute;
   top: 1.25rem;
   right: 3rem;
+}
+
+/* One kind of conda at a time, ringed as I talk about it */
+.kind-step {
+  border-radius: var(--prefix-radius-md);
+  outline: 2px solid transparent;
+  outline-offset: 0.375rem;
+  transition: outline-color 200ms ease;
+}
+
+.kind-step-on {
+  outline-color: var(--prefix-yellow);
 }
 </style>
 
