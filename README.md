@@ -1,6 +1,6 @@
 # Julian's presentations
 
-[Browse the presentations](https://hofer-julian.github.io/presentations/).
+[Browse the presentations](https://talks.julianhofer.eu/).
 
 To start the slide show:
 
@@ -10,8 +10,7 @@ To start the slide show:
 Edit the corresponding `slides.md` file to see the changes.
 
 Build all presentations and the selection page with `pixi run build`.
-The output is in `dist/`. For the GitHub Pages path, use
-`pixi run build --base /presentations/`.
+The output is in `dist/`, ready to be served from the root of a domain.
 
 Export a single presentation to PDF with
 `pixi run export 2026-09-nobugs-keynote`.

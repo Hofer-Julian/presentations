@@ -28,9 +28,7 @@ jobs:
           locked: true
 
       - name: Build presentations
-        run: pixi run build --base "$PAGES_BASE"
-        env:
-          PAGES_BASE: /${{ github.event.repository.name }}/
+        run: pixi run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5

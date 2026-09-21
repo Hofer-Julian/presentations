@@ -5,7 +5,7 @@ eyebrow: NOBUGS 2026 - 23 September 2026
 speaker: Julian Hofer
 qr: /slides-qr-code.png
 qrLabel: link to the slides
-qrHref: https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/
+qrHref: https://talks.julianhofer.eu/2026-09-nobugs-keynote/
 highlighter: shiki
 lineNumbers: false
 fonts:
@@ -706,5 +706,5 @@ layout: end
 <SlidesQr
   src="/slides-qr-code.png"
   label="link to the slides"
-  href="https://hofer-julian.github.io/presentations/2026-09-nobugs-keynote/"
+  href="https://talks.julianhofer.eu/2026-09-nobugs-keynote/"
 />
