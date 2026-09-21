@@ -134,7 +134,7 @@ Interpreter was tricky to manage on Windows.
   </Card>
   <Card heading="Compiled software" accent>
 
-Dependencies written in C, C++ and Fortran.
+Dependencies written in C, C++, and Fortran.
 
 Often installed through separate instructions.
 
@@ -242,6 +242,30 @@ label: Part 2
 ---
 
 # conda-forge is a community
+
+---
+layout: keynote
+link: conda-forge.org/docs/user/introduction
+---
+
+# Which conda is which
+
+<VerdictList>
+  <VerdictRow kind="Client" name="conda, mamba, Pixi" verdict="open">Programs that solve and install environments</VerdictRow>
+  <VerdictRow kind="Format" name="conda packages" verdict="open">An open standard, changed through the CEP process</VerdictRow>
+  <VerdictPair>
+    <VerdictRow kind="Channel" name="conda-forge, bioconda, robostack" verdict="free">Run by their communities</VerdictRow>
+    <VerdictRow kind="Channel" name="defaults" verdict="commercial">Published by Anaconda</VerdictRow>
+  </VerdictPair>
+</VerdictList>
+
+<!--
+conda used to fall back to the `defaults` channel when nothing configured one:
+it did so through 24.7.1, warned about it from 24.9.0, and dropped the fallback
+in 25.9.0. A condarc written by an installer still pins the channel, so a recent
+conda alone is no guarantee.
+-->
+
 
 ---
 layout: image-right
@@ -397,7 +421,7 @@ class: code-dense
 
 ::left::
 
-- Backend takes care of building a conda package
+- The backend takes care of building a conda package
 - C and C++ compilers are automatically set up
 - `host-dependencies` specify libraries necessary at both build and run time
 
