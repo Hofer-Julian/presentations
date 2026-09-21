@@ -56,10 +56,13 @@ defineProps<{
 }
 
 .verdict-badge {
+  /* One width for every badge, so they line up down the slide */
+  min-width: 6rem;
   padding: 0.25rem 0.75rem;
   border-radius: var(--prefix-radius-pill);
   font-size: var(--prefix-text-2xs);
   font-weight: 600;
+  text-align: center;
   text-transform: uppercase;
 }
 
