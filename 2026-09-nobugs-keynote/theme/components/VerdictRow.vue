@@ -4,17 +4,18 @@
 defineProps<{
   kind: string
   name: string
-  verdict: 'open' | 'free' | 'commercial'
+  verdict: 'open' | 'free' | 'commercial' | 'soon'
 }>()
 </script>
 
 <template>
-  <div class="verdict-row">
+  <div class="verdict-row" :class="{ 'verdict-row-aside': $slots.aside }">
     <span class="verdict-kind">{{ kind }}</span>
     <div>
       <strong>{{ name }}</strong>
       <p class="verdict-sub"><slot /></p>
     </div>
+    <slot name="aside" />
     <span class="verdict-badge" :class="`verdict-badge-${verdict}`">{{ verdict }}</span>
   </div>
 </template>
@@ -29,6 +30,11 @@ defineProps<{
   background: var(--prefix-white);
   border: 1px solid var(--prefix-border);
   border-radius: var(--prefix-radius-md);
+}
+
+/* A row that carries something of its own, such as a QR code, beside its text */
+.verdict-row-aside {
+  grid-template-columns: 7rem 1fr auto auto;
 }
 
 .verdict-kind {
@@ -63,7 +69,8 @@ defineProps<{
   color: var(--prefix-shipped-ink);
 }
 
-.verdict-badge-commercial {
+.verdict-badge-commercial,
+.verdict-badge-soon {
   background: var(--prefix-preview);
   color: var(--prefix-preview-ink);
 }

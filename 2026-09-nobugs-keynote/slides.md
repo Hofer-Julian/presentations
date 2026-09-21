@@ -248,10 +248,22 @@ layout: keynote
 link: conda-forge.org/docs/user/introduction
 ---
 
-# Which conda is which
+# Three kinds of conda
 
 <VerdictList>
-  <VerdictRow kind="Client" name="conda, mamba, Pixi" verdict="open">Programs that solve and install environments</VerdictRow>
+  <VerdictPair>
+    <VerdictRow kind="Client" name="conda, mamba, Pixi" verdict="open">Programs that solve and install environments</VerdictRow>
+    <VerdictRow kind="Client" name="microrattler" verdict="soon">
+      Fast client with conda compatible API
+      <template #aside>
+        <SlidesQr
+          small
+          src="/microrattler-qr-code.png"
+          href="https://prefix.dev/channels/@prefix-dev/prefix-labs/packages/microrattler"
+        />
+      </template>
+    </VerdictRow>
+  </VerdictPair>
   <VerdictRow kind="Format" name="conda packages" verdict="open">An open standard, changed through the CEP process</VerdictRow>
   <VerdictPair>
     <VerdictRow kind="Channel" name="conda-forge, bioconda, robostack" verdict="free">Run by their communities</VerdictRow>

@@ -1,21 +1,32 @@
-<!-- QR code linking to the hosted slides, with a caption under it. -->
+<!-- QR code linking somewhere worth scanning, with a caption under it. -->
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { assetUrl } from '../utils/asset'
 
-const props = defineProps<{
-  href?: string
-  label?: string
-  src: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    href?: string
+    label?: string
+    src: string
+    /* Half the usual size, for a code that shares a slide with other content */
+    small?: boolean
+  }>(),
+  { small: false },
+)
 
 const imageSrc = computed(() => assetUrl(props.src))
 </script>
 
 <template>
-  <a class="slides-qr" :href="href" target="_blank" rel="noopener noreferrer">
-    <img :src="imageSrc" alt="QR code for the hosted slides" />
+  <a
+    class="slides-qr"
+    :class="{ 'slides-qr-small': small }"
+    :href="href"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img :src="imageSrc" :alt="`QR code for ${label ?? href}`" />
     <span>{{ label }}</span>
   </a>
 </template>
@@ -41,6 +52,22 @@ const imageSrc = computed(() => assetUrl(props.src))
   font-size: var(--prefix-text-xs);
   font-weight: 500;
   letter-spacing: var(--prefix-tracking-slight);
+}
+
+.slides-qr-small {
+  gap: 0.375rem;
+}
+
+.slides-qr-small img {
+  width: 5.5rem;
+  height: 5.5rem;
+  /* The code itself carries the quiet zone at this size */
+  padding: 0;
+}
+
+.slides-qr-small span {
+  font-size: var(--prefix-text-2xs);
+  color: var(--prefix-muted);
 }
 
 /* The code itself is the link, so it carries no underline of its own */
