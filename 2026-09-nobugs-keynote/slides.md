@@ -147,14 +147,14 @@ Often installed through separate instructions.
 ---
 layout: image-right
 image: /conda-logo.svg
-alt: Conda package manager logo
+alt: conda package manager logo
 frame: false
 scale: 0.9
 ---
 
 ::title::
 
-# Conda
+# conda
 
 ::default::
 
