@@ -664,7 +664,7 @@ link: "rattler#43"
 
 ---
 layout: keynote
-link: "rattler#2059"
+link: talks.chrisburr.me/2026-09-21-leaps-rattlervfs-cvmfs
 ---
 
 # Prototype: Virtual filesystem
