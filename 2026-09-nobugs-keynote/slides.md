@@ -116,8 +116,6 @@ split: 50% 50%
 
 
 ---
-layout: keynote
----
 
 # Two worlds
 
@@ -240,7 +238,6 @@ label: Part 2
 # conda-forge is a community
 
 ---
-layout: keynote
 clicks: 3
 link: conda-forge.org/docs/user/introduction
 ---
@@ -310,7 +307,6 @@ scale: 0.85
 
 
 ---
-layout: keynote
 link: conda-forge.org/docs/maintainer/understanding_conda_forge/life_cycle
 ---
 
@@ -362,7 +358,6 @@ my-analysis = { version = ">=1.0", extras = ["plot"] }
 
 
 ---
-layout: keynote
 link: conda-forge.org/packages
 ---
 
@@ -384,8 +379,6 @@ label: Part 3
 # Packages from source with Pixi Build
 
 ---
-layout: keynote
----
 
 # Motivation
 
@@ -405,7 +398,6 @@ The fix is on `main`, or the build does not match your machine.
 <Statement>All of it should install like any other dependency.</Statement>
 
 ---
-layout: keynote
 link: pixi.sh/latest/build/getting_started
 ---
 
@@ -514,8 +506,6 @@ label: Part 4
 # Ideas for better HPC support
 
 ---
-layout: keynote
----
 
 # My understanding of HPC requirements
 
@@ -614,7 +604,6 @@ scipy = { git = "https://github.com/scipy/scipy.git" }
 
 
 ---
-layout: keynote
 link: pixi.sh/latest/deployment/pixi_pack
 ---
 
@@ -639,7 +628,6 @@ A whole environment as one archive, unpacked without Pixi.
 
 
 ---
-layout: keynote
 link: "rattler#43"
 ---
 
@@ -650,7 +638,6 @@ link: "rattler#43"
 <CacheMap />
 
 ---
-layout: keynote
 link: talks.chrisburr.me/2026-09-21-leaps-rattlervfs-cvmfs
 ---
 
@@ -663,8 +650,6 @@ link: talks.chrisburr.me/2026-09-21-leaps-rattlervfs-cvmfs
 <Footnote>Fresh environments get much faster. Warm runs, mount lifecycle, and user isolation still need work.</Footnote>
 
 
----
-layout: keynote
 ---
 
 # What Pixi does today, and what it doesn't
