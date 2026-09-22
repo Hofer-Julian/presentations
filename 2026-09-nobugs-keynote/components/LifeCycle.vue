@@ -132,25 +132,14 @@ function elbow(trigger: typeof TRIGGERS[number]) {
   text-anchor: middle;
 }
 
-.life-cycle-arrow path,
-.life-cycle-loop path {
+.life-cycle-arrow path {
   fill: none;
   stroke: var(--prefix-muted);
   stroke-width: 1.5;
 }
 
-.life-cycle-arrow path.life-cycle-head,
-.life-cycle-loop path.life-cycle-head {
+.life-cycle-arrow path.life-cycle-head {
   fill: var(--prefix-muted);
   stroke: none;
-}
-
-.life-cycle-loop-label {
-  fill: var(--prefix-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: var(--prefix-tracking-wide);
-  text-anchor: middle;
-  text-transform: uppercase;
 }
 </style>

@@ -40,7 +40,6 @@ layout: image-right
 image: /julian.jpg
 alt: Julian Hofer
 backgroundSize: cover
-frame: false
 split: 62% 38%
 fullHeight: true
 ---
@@ -77,7 +76,6 @@ image: /mathematica-notebook.png
 alt: Light-mode Mathematica notebook with executable code and a sine plot
 source: "Source: wolfram.com"
 sourceHref: https://www.wolfram.com/notebooks/
-frame: false
 blend: true
 split: 50% 50%
 ---
@@ -102,7 +100,6 @@ image: /deltares-water-model.png
 alt: Delft3D Flexible Mesh displaying a coastal water model and its computational grid
 source: "Source: deltares.nl"
 sourceHref: https://www.deltares.nl/en/software-and-data/products/delft3d-flexible-mesh-suite
-frame: false
 split: 50% 50%
 ---
 
@@ -141,14 +138,13 @@ Often installed through separate instructions.
   </Card>
 </Cards>
 
-<Statement centered>I needed both, in one environment.</Statement>
+<Statement>I needed both, in one environment.</Statement>
 
 
 ---
 layout: image-right
 image: /conda-logo.svg
 alt: conda package manager logo
-frame: false
 scale: 0.9
 ---
 
@@ -172,7 +168,6 @@ scale: 0.9
 
 ---
 layout: image-right
-frame: false
 class: emoji-list
 ---
 
@@ -304,7 +299,6 @@ layout: image-right
 image: /conda-forge.svg
 alt: conda-forge logo
 link: conda-forge.org/docs/maintainer/adding_pkgs
-frame: false
 scale: 0.85
 ---
 
@@ -415,7 +409,7 @@ The fix is on `main`, or the build does not match your machine.
   </Card>
 </Cards>
 
-<Statement centered>All of it should install like any other dependency.</Statement>
+<Statement>All of it should install like any other dependency.</Statement>
 
 ---
 layout: keynote
@@ -484,7 +478,6 @@ blas-devel = "*"
 ---
 layout: compare
 link: pixi.sh/latest/build/package_source
-centered: true
 ---
 
 # Work on it, or depend on it

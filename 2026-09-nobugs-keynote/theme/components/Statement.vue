@@ -1,13 +1,7 @@
 <!-- Sentence that closes a slide. -->
 
-<script setup lang="ts">
-defineProps<{
-  centered?: boolean
-}>()
-</script>
-
 <template>
-  <p class="statement" :class="{ 'statement-centered': centered }"><slot /></p>
+  <p class="statement"><slot /></p>
 </template>
 
 <style>
@@ -15,9 +9,6 @@ defineProps<{
   margin: 1.5rem 0 0;
   font-size: var(--prefix-text-xl);
   line-height: 1.25;
-}
-
-.slidev-layout .statement-centered {
   text-align: center;
 }
 </style>

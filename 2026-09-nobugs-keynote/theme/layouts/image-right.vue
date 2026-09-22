@@ -6,7 +6,6 @@ const props = withDefaults(defineProps<{
   alt?: string
   backgroundSize?: 'contain' | 'cover'
   blend?: boolean
-  frame?: boolean
   /** Runs the image down the full height of the slide, beside the heading */
   fullHeight?: boolean
   /** Path to the picture; leave it out when the `media` slot fills the panel */
@@ -19,7 +18,6 @@ const props = withDefaults(defineProps<{
   alt: '',
   backgroundSize: 'contain',
   blend: false,
-  frame: true,
   fullHeight: false,
   scale: 1,
 })
@@ -45,7 +43,7 @@ const imageStyle = computed(() => ({
       <slot />
     </div>
     <div class="keynote-image-column">
-      <figure class="keynote-image-panel" :class="{ 'keynote-image-panel-plain': !props.frame }">
+      <figure class="keynote-image-panel">
         <slot v-if="$slots.media" name="media" />
         <img
           v-else
@@ -93,20 +91,14 @@ const imageStyle = computed(() => ({
   margin: 0 2.25rem var(--prefix-slide-padding-bottom) 0;
 }
 
+/* Every picture carries its own edges, so the panel only rounds the corners
+   it clips */
 .keynote-image-panel {
   position: relative;
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  background: var(--prefix-white);
-  border: 0.875rem solid var(--prefix-white);
   border-radius: var(--prefix-radius-lg);
-}
-
-/* An image that carries its own edges needs no frame around it */
-.keynote-image-panel-plain {
-  background: transparent;
-  border: 0;
 }
 
 .keynote-image-panel img {

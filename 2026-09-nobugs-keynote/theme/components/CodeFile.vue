@@ -3,12 +3,11 @@
 <script setup lang="ts">
 defineProps<{
   name: string
-  accent?: boolean
 }>()
 </script>
 
 <template>
-  <div class="code-file" :class="{ 'code-file-accent': accent }">
+  <div class="code-file">
     <p class="code-file-name">{{ name }}</p>
     <slot />
   </div>
@@ -40,10 +39,5 @@ defineProps<{
 
 .slidev-layout .code-file pre {
   border-top: 0;
-}
-
-/* Marks the code block as the point of the slide */
-.slidev-layout .code-file-accent pre {
-  border-left: var(--prefix-rule) solid var(--prefix-yellow);
 }
 </style>

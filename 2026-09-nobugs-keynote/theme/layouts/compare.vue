@@ -1,12 +1,5 @@
-<script setup lang="ts">
-defineProps<{
-  /** Sets the pair in the middle of the slide, for columns short enough to float */
-  centered?: boolean
-}>()
-</script>
-
 <template>
-  <div class="slidev-layout compare-layout" :class="{ 'compare-centered': centered }">
+  <div class="slidev-layout compare-layout">
     <slot />
     <div class="compare-grid">
       <div><slot name="left" /></div>
@@ -17,17 +10,24 @@ defineProps<{
 </template>
 
 <style>
-/* Two takes on the same thing, side by side */
+/* Two takes on the same thing, side by side, held in the middle of the slide */
+.compare-layout {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
 .compare-grid {
   display: grid;
+  flex: 1;
   grid-template-columns: 1fr 1fr;
+  align-content: center;
   gap: 2rem;
-  margin-top: 1.25rem;
 }
 
 .slidev-layout .compare-grid h2 {
-  margin-bottom: 0.75rem;
-  font-size: var(--prefix-text-xl);
+  margin-bottom: 1rem;
+  font-size: var(--prefix-text-2xl);
 }
 
 .slidev-layout .compare-grid p {
@@ -36,27 +36,9 @@ defineProps<{
   font-size: var(--prefix-text-base);
 }
 
-/* A short pair keeps the middle of the slide and reads a size up */
-.compare-layout.compare-centered {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-}
-
-.compare-centered .compare-grid {
-  flex: 1;
-  align-content: center;
-  margin-top: 0;
-}
-
-.slidev-layout.compare-centered .compare-grid h2 {
-  margin-bottom: 1rem;
-  font-size: var(--prefix-text-2xl);
-}
-
 /* The line under a column is the point of that column, not an aside. It stays
    a child selector so the file-name bar inside a CodeFile keeps its own rules. */
-.compare-centered .compare-grid > div > p {
+.slidev-layout .compare-grid > div > p {
   margin: 1rem 0 0;
   color: var(--prefix-ink);
   font-size: var(--prefix-text-lg);
