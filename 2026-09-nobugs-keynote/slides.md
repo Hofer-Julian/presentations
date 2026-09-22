@@ -172,16 +172,17 @@ scale: 0.9
 
 ---
 layout: image-right
-image: /paxton-text-in-circle.svg
-alt: Paxton, the Pixi mascot
 frame: false
-scale: 1.6
 class: emoji-list
 ---
 
 ::title::
 
 # Pixi to the rescue
+
+::media::
+
+<PaxtonAnimation />
 
 ::default::
 

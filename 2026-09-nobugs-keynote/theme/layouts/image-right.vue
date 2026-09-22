@@ -9,7 +9,8 @@ const props = withDefaults(defineProps<{
   frame?: boolean
   /** Runs the image down the full height of the slide, beside the heading */
   fullHeight?: boolean
-  image: string
+  /** Path to the picture; leave it out when the `media` slot fills the panel */
+  image?: string
   source?: string
   sourceHref?: string
   split?: string
@@ -23,7 +24,7 @@ const props = withDefaults(defineProps<{
   scale: 1,
 })
 
-const imageSrc = computed(() => assetUrl(props.image))
+const imageSrc = computed(() => (props.image ? assetUrl(props.image) : undefined))
 
 const imageStyle = computed(() => ({
   objectFit: props.backgroundSize,
@@ -45,7 +46,9 @@ const imageStyle = computed(() => ({
     </div>
     <div class="keynote-image-column">
       <figure class="keynote-image-panel" :class="{ 'keynote-image-panel-plain': !props.frame }">
+        <slot v-if="$slots.media" name="media" />
         <img
+          v-else
           :src="imageSrc"
           :alt="props.alt"
           :class="{ 'keynote-image-blend': props.blend }"
