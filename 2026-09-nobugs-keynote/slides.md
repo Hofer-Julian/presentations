@@ -570,6 +570,7 @@ link: pixi.sh/latest/workspace/multi_platform_configuration
 
 ```toml
 [workspace]
+channels = ["conda-forge"]
 platforms = [
   { name = "gpu", platform = "linux-64", cuda = "12.0" },
   { name = "cpu", platform = "linux-64" },
@@ -608,11 +609,12 @@ split: 1fr 1fr
 
 ```toml
 [workspace]
-preview = ["pixi-build"]
+channels = ["conda-forge"]
 platforms = [
   { name = "cluster", platform = "linux-64", archspec = "zen4" },
   "linux-64",
 ]
+preview = ["pixi-build"]
 
 [dependencies]
 scipy = "*"
@@ -635,7 +637,7 @@ link: pixi.sh/latest/deployment/pixi_pack
 <Cards>
   <Card heading="Offline mode">
 
-<code>pixi install --offline</code>
+<code>pixi update --offline</code>
 
 When solving, Pixi only considers packages that are already in the cache.
 
