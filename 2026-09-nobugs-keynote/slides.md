@@ -286,13 +286,6 @@ link: conda-forge.org/docs/user/introduction
 }
 </style>
 
-<!--
-conda used to fall back to the `defaults` channel when nothing configured one:
-it did so through 24.7.1, warned about it from 24.9.0, and dropped the fallback
-in 25.9.0. A condarc written by an installer still pins the channel, so a recent
-conda alone is no guarantee.
--->
-
 
 ---
 layout: image-right
