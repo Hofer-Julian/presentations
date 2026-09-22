@@ -206,8 +206,8 @@ split: 1fr 1fr
 ::left::
 
 - **Channels** where conda packages come from
-- **Dependencies** from those channels and from PyPI
 - **Platforms** all locked in one `pixi.lock`
+- **Dependencies** from those channels and from PyPI
 - **Tasks** commands that run inside the environment
 
 <Note small><code>pixi run fit</code> installs the environment if needed, then runs the task</Note>
