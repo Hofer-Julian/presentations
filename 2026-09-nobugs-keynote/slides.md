@@ -401,8 +401,6 @@ layout: keynote
 
 # Motivation
 
-<Lead>Not every package is on a channel.</Lead>
-
 <Cards>
   <Card heading="Your own code">
 
