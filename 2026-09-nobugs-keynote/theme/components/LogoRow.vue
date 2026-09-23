@@ -36,36 +36,36 @@ defineProps<{
   --logo-row-height: 3.5rem;
   /* Sets the logos off from the copy without letting them drift into the footer */
   margin-top: 2.5rem;
-}
 
-.logo-row-label {
-  display: block;
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-xs);
-  letter-spacing: var(--prefix-tracking-wide);
-  text-transform: uppercase;
-}
+  .logo-row-label {
+    display: block;
+    color: var(--prefix-muted);
+    font-size: var(--prefix-text-xs);
+    letter-spacing: var(--prefix-tracking-wide);
+    text-transform: uppercase;
+  }
 
-.logo-row ul {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  padding: 0;
-  margin: 1rem 0 0;
-  list-style: none;
-}
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 0;
+    margin: 1rem 0 0;
+    list-style: none;
 
-.logo-row li {
-  margin: 0;
-}
+    > li::before {
+      content: none;
+    }
+  }
 
-.logo-row ul > li::before {
-  content: none;
-}
+  li {
+    margin: 0;
+  }
 
-.logo-row img {
-  display: block;
-  width: auto;
-  height: var(--logo-row-height);
+  img {
+    display: block;
+    width: auto;
+    height: var(--logo-row-height);
+  }
 }
 </style>

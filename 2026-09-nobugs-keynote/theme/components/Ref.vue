@@ -37,10 +37,10 @@ const href = computed(() => {
   font-family: var(--prefix-font-mono);
   font-size: 0.6875rem;
   white-space: nowrap;
-}
 
-a.ref:hover {
-  border-bottom-color: var(--prefix-ink);
-  color: var(--prefix-ink);
+  &:is(a):hover {
+    border-bottom-color: var(--prefix-ink);
+    color: var(--prefix-ink);
+  }
 }
 </style>

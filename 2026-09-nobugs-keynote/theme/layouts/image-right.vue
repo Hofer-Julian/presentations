@@ -72,96 +72,98 @@ const imageStyle = computed(() => ({
   height: 100%;
   background: var(--prefix-paper);
   color: var(--prefix-ink);
-}
 
-/* The heading spans both columns, so its length never eats into the picture */
-.keynote-image-layout > .keynote-image-title {
-  grid-column: 1 / -1;
-  padding: var(--prefix-slide-padding-top) var(--prefix-slide-padding-inline) 0;
-}
+  /* The heading spans both columns, so its length never eats into the picture */
+  > .keynote-image-title {
+    grid-column: 1 / -1;
+    padding: var(--prefix-slide-padding-top) var(--prefix-slide-padding-inline) 0;
+  }
 
-.keynote-image-layout > .keynote-image-copy {
-  padding: 0 2rem var(--prefix-slide-padding-bottom) var(--prefix-slide-padding-inline);
-}
+  > .keynote-image-copy {
+    padding: 0 2rem var(--prefix-slide-padding-bottom) var(--prefix-slide-padding-inline);
+  }
 
-.keynote-image-column {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  margin: 0 2.25rem var(--prefix-slide-padding-bottom) 0;
-}
+  .keynote-image-column {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin: 0 2.25rem var(--prefix-slide-padding-bottom) 0;
+  }
 
-/* Every picture carries its own edges, so the panel only rounds the corners
-   it clips */
-.keynote-image-panel {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  border-radius: var(--prefix-radius-lg);
-}
+  /* Every picture carries its own edges, so the panel only rounds the corners
+     it clips */
+  .keynote-image-panel {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: var(--prefix-radius-lg);
 
-.keynote-image-panel img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
-/* Merges a screenshot's white background into the paper */
-.keynote-image-blend {
-  mix-blend-mode: multiply;
-}
+    figcaption {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--prefix-scrim);
+      border-radius: var(--prefix-radius-xs);
+      color: var(--prefix-muted);
+      font-size: var(--prefix-text-2xs);
 
-.keynote-image-panel figcaption {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--prefix-scrim);
-  border-radius: var(--prefix-radius-xs);
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-2xs);
-}
+      a {
+        color: inherit;
+        border-bottom: 1px solid var(--prefix-yellow);
+      }
+    }
+  }
 
-.keynote-image-panel figcaption a {
-  color: inherit;
-  border-bottom: 1px solid var(--prefix-yellow);
-}
+  /* Merges a screenshot's white background into the paper */
+  .keynote-image-blend {
+    mix-blend-mode: multiply;
+  }
 
-/* A full-height image takes the second column from the heading, so every cell
-   of the first column has to be placed by hand */
-.keynote-image-layout-tall > .keynote-image-title {
-  grid-row: 1;
-  grid-column: 1;
-}
+  /* A full-height image takes the second column from the heading, so every cell
+     of the first column has to be placed by hand */
+  &.keynote-image-layout-tall {
+    > .keynote-image-title {
+      grid-row: 1;
+      grid-column: 1;
+    }
 
-.keynote-image-layout-tall > .keynote-image-copy {
-  display: flex;
-  flex-direction: column;
-  grid-row: 2;
-  grid-column: 1;
-}
+    > .keynote-image-copy {
+      display: flex;
+      flex-direction: column;
+      grid-row: 2;
+      grid-column: 1;
+    }
 
-/* The picture runs beside the heading, so it takes the slide's top padding itself */
-.keynote-image-layout-tall > .keynote-image-column {
-  grid-row: 1 / -1;
-  grid-column: 2;
-  margin-top: var(--prefix-slide-padding-top);
-}
+    /* The picture runs beside the heading, so it takes the slide's top padding itself */
+    > .keynote-image-column {
+      grid-row: 1 / -1;
+      grid-column: 2;
+      margin-top: var(--prefix-slide-padding-top);
+    }
+  }
 
-/* Who or what the picture shows, set below it */
-.keynote-image-caption {
-  margin-top: 1rem;
-  color: var(--prefix-muted);
-  font-size: 0.9375rem;
-  line-height: 1.4;
-}
+  /* Who or what the picture shows, set below it */
+  .keynote-image-caption {
+    margin-top: 1rem;
+    color: var(--prefix-muted);
+    font-size: 0.9375rem;
+    line-height: 1.4;
 
-.keynote-image-caption p {
-  margin: 0;
-}
+    p {
+      margin: 0;
+    }
 
-.keynote-image-caption strong {
-  color: var(--prefix-ink);
+    strong {
+      color: var(--prefix-ink);
+    }
+  }
 }
 </style>

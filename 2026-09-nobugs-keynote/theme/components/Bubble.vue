@@ -27,11 +27,11 @@ defineProps<{
   font-weight: 500;
   text-align: center;
   text-wrap: balance;
-}
 
-/* The whole bubble is the link, so it carries no underline of its own */
-.slidev-layout a.bubble,
-.slidev-layout a.bubble:hover {
-  border-bottom: 0;
+  /* The whole bubble is the link, so it carries no underline of its own */
+  &:is(.slidev-layout a),
+  &:is(.slidev-layout a):hover {
+    border-bottom: 0;
+  }
 }
 </style>

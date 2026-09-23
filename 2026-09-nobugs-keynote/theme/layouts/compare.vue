@@ -15,32 +15,34 @@
   display: flex;
   height: 100%;
   flex-direction: column;
-}
 
-.compare-grid {
-  display: grid;
-  flex: 1;
-  grid-template-columns: 1fr 1fr;
-  align-content: center;
-  gap: 2rem;
-}
+  .compare-grid {
+    display: grid;
+    flex: 1;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    gap: 2rem;
 
-.slidev-layout .compare-grid h2 {
-  margin-bottom: 1rem;
-  font-size: var(--prefix-text-2xl);
-}
+    .slidev-layout & {
+      h2 {
+        margin-bottom: 1rem;
+        font-size: var(--prefix-text-2xl);
+      }
 
-.slidev-layout .compare-grid p {
-  margin: 0.75rem 0 0;
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-base);
-}
+      p {
+        margin: 0.75rem 0 0;
+        color: var(--prefix-muted);
+        font-size: var(--prefix-text-base);
+      }
 
-/* The line under a column is the point of that column, not an aside. It stays
-   a child selector so the file-name bar inside a CodeFile keeps its own rules. */
-.slidev-layout .compare-grid > div > p {
-  margin: 1rem 0 0;
-  color: var(--prefix-ink);
-  font-size: var(--prefix-text-lg);
+      /* The line under a column is the point of that column, not an aside. It stays
+         a child selector so the file-name bar inside a CodeFile keeps its own rules. */
+      > div > p {
+        margin: 1rem 0 0;
+        color: var(--prefix-ink);
+        font-size: var(--prefix-text-lg);
+      }
+    }
+  }
 }
 </style>

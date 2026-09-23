@@ -22,33 +22,33 @@ const props = defineProps<{
 .slidev-layout.code-right-layout {
   display: flex;
   flex-direction: column;
-}
 
-.code-right-grid {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  flex: 1;
-  gap: 2rem;
-  align-items: stretch;
-  min-height: 0;
-}
+  > h1 {
+    margin-bottom: 1rem;
+  }
 
-/* A grid followed by more content keeps its own height */
-.code-right-grid:not(:last-child) {
-  flex: none;
-}
+  .code-right-grid {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    flex: 1;
+    gap: 2rem;
+    align-items: stretch;
+    min-height: 0;
 
-.code-right-copy {
-  padding-top: 0.25rem;
-}
+    /* A grid followed by more content keeps its own height */
+    &:not(:last-child) {
+      flex: none;
+    }
 
-.slidev-layout.code-right-layout > h1 {
-  margin-bottom: 1rem;
-}
+    .code-right-copy {
+      padding-top: 0.25rem;
 
-/* A title placed in the left column instead of above the grid */
-.slidev-layout .code-right-copy h1 {
-  margin-bottom: 1rem;
-  font-size: 2.25rem;
+      /* A title placed in the left column instead of above the grid */
+      h1 {
+        margin-bottom: 1rem;
+        font-size: 2.25rem;
+      }
+    }
+  }
 }
 </style>

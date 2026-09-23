@@ -24,33 +24,33 @@ defineProps<{
   background: var(--prefix-white);
   border: 1px solid var(--prefix-border);
   border-radius: var(--prefix-radius-md);
-}
 
-.slidev-layout .status-row strong {
-  font-size: var(--prefix-text-md);
-}
+  .slidev-layout & strong {
+    font-size: var(--prefix-text-md);
+  }
 
-.status-badge {
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--prefix-radius-pill);
-  font-size: var(--prefix-text-2xs);
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-}
+  .status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--prefix-radius-pill);
+    font-size: var(--prefix-text-2xs);
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
 
-.status-badge-shipped {
-  background: var(--prefix-shipped);
-  color: var(--prefix-shipped-ink);
-}
+    &.status-badge-shipped {
+      background: var(--prefix-shipped);
+      color: var(--prefix-shipped-ink);
+    }
 
-.status-badge-preview {
-  background: var(--prefix-preview);
-  color: var(--prefix-preview-ink);
-}
+    &.status-badge-preview {
+      background: var(--prefix-preview);
+      color: var(--prefix-preview-ink);
+    }
 
-.status-badge-prototype {
-  background: var(--prefix-prototype);
-  color: var(--prefix-prototype-ink);
+    &.status-badge-prototype {
+      background: var(--prefix-prototype);
+      color: var(--prefix-prototype-ink);
+    }
+  }
 }
 </style>

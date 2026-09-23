@@ -14,15 +14,17 @@ defineProps<{
 </template>
 
 <style>
-.slidev-layout .note {
-  margin: 0.75rem 0 0;
-  padding: 0.75rem 1rem;
-  background: var(--prefix-yellow-soft);
-  border-left: var(--prefix-rule) solid var(--prefix-yellow);
-  border-radius: 0 var(--prefix-radius-sm) var(--prefix-radius-sm) 0;
-}
+.slidev-layout {
+  .note {
+    margin: 0.75rem 0 0;
+    padding: 0.75rem 1rem;
+    background: var(--prefix-yellow-soft);
+    border-left: var(--prefix-rule) solid var(--prefix-yellow);
+    border-radius: 0 var(--prefix-radius-sm) var(--prefix-radius-sm) 0;
 
-.slidev-layout .note-small {
-  font-size: var(--prefix-text-base);
+    &.note-small {
+      font-size: var(--prefix-text-base);
+    }
+  }
 }
 </style>

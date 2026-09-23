@@ -102,44 +102,44 @@ function elbow(trigger: typeof TRIGGERS[number]) {
   display: block;
   width: 100%;
   margin: 1.75rem 0 0.5rem;
-}
 
-.life-cycle-box rect {
-  fill: var(--prefix-white);
-  stroke: var(--prefix-border);
-}
+  .life-cycle-box rect {
+    fill: var(--prefix-white);
+    stroke: var(--prefix-border);
 
-.life-cycle-box rect.life-cycle-box-highlight {
-  fill: var(--prefix-yellow);
-  stroke: var(--prefix-yellow);
-}
+    &.life-cycle-box-highlight {
+      fill: var(--prefix-yellow);
+      stroke: var(--prefix-yellow);
+    }
+  }
 
-.life-cycle-name text {
-  fill: var(--prefix-ink);
-  font-size: 16px;
-  font-weight: 600;
-  text-anchor: middle;
-}
+  .life-cycle-name text {
+    fill: var(--prefix-ink);
+    font-size: 16px;
+    font-weight: 600;
+    text-anchor: middle;
 
-.life-cycle-name text.life-cycle-mono {
-  font-family: var(--prefix-font-mono);
-  font-size: 14px;
-}
+    &.life-cycle-mono {
+      font-family: var(--prefix-font-mono);
+      font-size: 14px;
+    }
+  }
 
-.life-cycle-detail text {
-  fill: var(--prefix-muted);
-  font-size: 13px;
-  text-anchor: middle;
-}
+  .life-cycle-detail text {
+    fill: var(--prefix-muted);
+    font-size: 13px;
+    text-anchor: middle;
+  }
 
-.life-cycle-arrow path {
-  fill: none;
-  stroke: var(--prefix-muted);
-  stroke-width: 1.5;
-}
+  .life-cycle-arrow path {
+    fill: none;
+    stroke: var(--prefix-muted);
+    stroke-width: 1.5;
 
-.life-cycle-arrow path.life-cycle-head {
-  fill: var(--prefix-muted);
-  stroke: none;
+    &.life-cycle-head {
+      fill: var(--prefix-muted);
+      stroke: none;
+    }
+  }
 }
 </style>

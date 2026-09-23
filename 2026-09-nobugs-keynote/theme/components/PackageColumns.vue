@@ -26,38 +26,38 @@ defineProps<{
   grid-template-columns: repeat(3, 1fr);
   gap: 0.875rem;
   margin: 0.5rem 0 0;
-}
 
-.package-columns > div {
-  padding: 1.25rem 1.375rem 1.5rem;
-  background: var(--prefix-white);
-  border: 1px solid var(--prefix-border);
-  border-radius: var(--prefix-radius-md);
-}
+  > div {
+    padding: 1.25rem 1.375rem 1.5rem;
+    background: var(--prefix-white);
+    border: 1px solid var(--prefix-border);
+    border-radius: var(--prefix-radius-md);
+  }
 
-.package-columns .label {
-  margin-bottom: 0.875rem;
-}
+  .label {
+    margin-bottom: 0.875rem;
+  }
 
-/* Package names carry no bullet: the column heading already groups them */
-.slidev-layout .package-columns ul {
-  display: grid;
-  gap: 0.875rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+  /* Package names carry no bullet: the column heading already groups them */
+  .slidev-layout & ul {
+    display: grid;
+    gap: 0.875rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-.slidev-layout .package-columns ul > li {
-  margin: 0;
-  padding: 0;
-  font-family: var(--prefix-font-mono);
-  font-size: 1.0625rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
+    > li {
+      margin: 0;
+      padding: 0;
+      font-family: var(--prefix-font-mono);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      line-height: 1.2;
 
-.slidev-layout .package-columns ul > li::before {
-  content: none;
+      &::before {
+        content: none;
+      }
+    }
+  }
 }
 </style>

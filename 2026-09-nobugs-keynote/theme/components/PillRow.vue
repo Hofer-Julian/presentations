@@ -19,15 +19,15 @@ defineProps<{
   gap: 0.5rem;
   align-items: center;
   margin: 0 0 1rem;
-}
 
-.pill-row > span {
-  padding: 0.25rem 0.75rem;
-  background: var(--prefix-white);
-  border: 1px solid var(--prefix-border);
-  border-radius: var(--prefix-radius-pill);
-  font-size: var(--prefix-text-xs);
-  font-weight: 500;
-  white-space: nowrap;
+  > span {
+    padding: 0.25rem 0.75rem;
+    background: var(--prefix-white);
+    border: 1px solid var(--prefix-border);
+    border-radius: var(--prefix-radius-pill);
+    font-size: var(--prefix-text-xs);
+    font-weight: 500;
+    white-space: nowrap;
+  }
 }
 </style>

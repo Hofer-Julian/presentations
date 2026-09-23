@@ -19,35 +19,35 @@
   align-items: center;
   justify-content: space-between;
   color: var(--prefix-ink);
-}
 
-/* Paper behind the logo, so it stays readable over a diagram */
-.keynote-footer > img {
-  width: 7.5rem;
-  height: auto;
-  padding: 0.375rem 0.5rem;
-  margin-left: -0.5rem;
-  background: var(--prefix-paper);
-  border-radius: var(--prefix-radius-sm);
-}
+  /* Paper behind the logo, so it stays readable over a diagram */
+  > img {
+    width: 7.5rem;
+    height: auto;
+    padding: 0.375rem 0.5rem;
+    margin-left: -0.5rem;
+    background: var(--prefix-paper);
+    border-radius: var(--prefix-radius-sm);
+  }
 
-.keynote-footer-meta {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  font-size: var(--prefix-text-2xs);
-  letter-spacing: var(--prefix-tracking-slight);
-}
+  .keynote-footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: var(--prefix-text-2xs);
+    letter-spacing: var(--prefix-tracking-slight);
+  }
 
-.keynote-page {
-  display: grid;
-  place-items: center;
-  min-width: 1.75rem;
-  height: 1.75rem;
-  padding: 0 0.375rem;
-  background: var(--prefix-white);
-  border: 1px solid var(--prefix-border);
-  border-radius: 50%;
-  font-variant-numeric: tabular-nums;
+  .keynote-page {
+    display: grid;
+    place-items: center;
+    min-width: 1.75rem;
+    height: 1.75rem;
+    padding: 0 0.375rem;
+    background: var(--prefix-white);
+    border: 1px solid var(--prefix-border);
+    border-radius: 50%;
+    font-variant-numeric: tabular-nums;
+  }
 }
 </style>

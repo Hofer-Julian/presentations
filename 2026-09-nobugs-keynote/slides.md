@@ -276,10 +276,10 @@ link: conda-forge.org/docs/user/introduction
   outline: 2px solid transparent;
   outline-offset: 0.375rem;
   transition: outline-color 200ms ease;
-}
 
-.kind-step-on {
-  outline-color: var(--prefix-yellow);
+  &.kind-step-on {
+    outline-color: var(--prefix-yellow);
+  }
 }
 </style>
 

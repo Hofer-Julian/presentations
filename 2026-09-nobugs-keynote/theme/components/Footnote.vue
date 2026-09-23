@@ -7,8 +7,10 @@
 </template>
 
 <style>
-.slidev-layout .footnote {
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-xs);
+.slidev-layout {
+  .footnote {
+    color: var(--prefix-muted);
+    font-size: var(--prefix-text-xs);
+  }
 }
 </style>

@@ -11,17 +11,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
-}
 
-.verdict-pair .verdict-row {
-  grid-template-columns: 1fr auto;
-  /* The text row takes the slack, so a taller neighbour cannot push the kind
-     label and the badge out of line */
-  grid-template-rows: auto 1fr;
-  gap: 0.5rem 1rem;
-}
+  .verdict-row {
+    grid-template-columns: 1fr auto;
+    /* The text row takes the slack, so a taller neighbour cannot push the kind
+       label and the badge out of line */
+    grid-template-rows: auto 1fr;
+    gap: 0.5rem 1rem;
+  }
 
-.verdict-pair .verdict-kind {
-  grid-column: 1 / -1;
+  .verdict-kind {
+    grid-column: 1 / -1;
+  }
 }
 </style>

@@ -34,47 +34,47 @@ defineProps<{
     linear-gradient(90deg, transparent 0 74%, var(--prefix-yellow-wash) 74% 100%),
     var(--prefix-paper);
   text-align: left;
-}
 
-.cover-brand {
-  position: absolute;
-  z-index: 2;
-  bottom: 2.75rem;
-  left: 87%;
-  width: 9rem;
-  transform: translateX(-50%);
-}
+  .cover-brand {
+    position: absolute;
+    z-index: 2;
+    bottom: 2.75rem;
+    left: 87%;
+    width: 9rem;
+    transform: translateX(-50%);
+  }
 
-.cover-content {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-}
+  .cover-content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.slidev-layout.keynote-cover h1 {
-  max-width: 48rem;
-  margin: 0;
-  font-size: 4rem;
-  line-height: 1.125;
-}
+  h1 {
+    max-width: 48rem;
+    margin: 0;
+    font-size: 4rem;
+    line-height: 1.125;
+  }
 
-/* First line of the title, set lighter than the line it introduces */
-.keynote-cover .cover-title-lead {
-  display: block;
-  font-weight: 300;
-}
+  /* First line of the title, set lighter than the line it introduces */
+  .cover-title-lead {
+    display: block;
+    font-weight: 300;
+  }
 
-.cover-speaker {
-  margin: 1.25rem 0 0;
-  font-size: var(--prefix-text-md);
-}
+  .cover-speaker {
+    margin: 1.25rem 0 0;
+    font-size: var(--prefix-text-md);
+  }
 
-.cover-slides-qr {
-  position: absolute;
-  top: 2.75rem;
-  left: 87%;
-  width: max-content;
-  transform: translateX(-50%);
+  .cover-slides-qr {
+    position: absolute;
+    top: 2.75rem;
+    left: 87%;
+    width: max-content;
+    transform: translateX(-50%);
+  }
 }
 </style>

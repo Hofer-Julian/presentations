@@ -5,10 +5,12 @@
 </template>
 
 <style>
-.slidev-layout .statement {
-  margin: 1.5rem 0 0;
-  font-size: var(--prefix-text-xl);
-  line-height: 1.25;
-  text-align: center;
+.slidev-layout {
+  .statement {
+    margin: 1.5rem 0 0;
+    font-size: var(--prefix-text-xl);
+    line-height: 1.25;
+    text-align: center;
+  }
 }
 </style>

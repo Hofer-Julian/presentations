@@ -101,70 +101,70 @@
   display: block;
   width: 100%;
   margin: 0.25rem 0 0.5rem;
-}
 
-/* A wash rather than an outline, so the plate never competes with the lines */
-.cache-map-owner rect {
-  fill: rgb(var(--prefix-ink-rgb) / 6%);
-}
+  /* A wash rather than an outline, so the plate never competes with the lines */
+  .cache-map-owner rect {
+    fill: rgb(var(--prefix-ink-rgb) / 6%);
+  }
 
-.cache-map-env rect,
-.cache-map-store rect {
-  fill: var(--prefix-white);
-  stroke: var(--prefix-border);
-}
+  .cache-map-env rect,
+  .cache-map-store rect {
+    fill: var(--prefix-white);
+    stroke: var(--prefix-border);
+  }
 
-.cache-map-site {
-  fill: var(--prefix-yellow);
-}
+  .cache-map-site {
+    fill: var(--prefix-yellow);
+  }
 
-.cache-map-chip rect {
-  fill: var(--prefix-paper);
-}
+  .cache-map-chip rect {
+    fill: var(--prefix-paper);
+  }
 
-.cache-map-chip-site rect {
-  fill: var(--prefix-white);
-}
+  .cache-map-chip-site rect {
+    fill: var(--prefix-white);
+  }
 
-.cache-map-label,
-.cache-map-label text {
-  fill: var(--prefix-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: var(--prefix-tracking-wide);
-  text-transform: uppercase;
-}
+  .cache-map-label,
+  .cache-map-label text {
+    fill: var(--prefix-muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: var(--prefix-tracking-wide);
+    text-transform: uppercase;
+  }
 
-/* The name the plate belongs to, centred over the environments it holds */
-.cache-map-owner-name text {
-  fill: var(--prefix-ink);
-  font-size: 11px;
-  text-anchor: middle;
-  font-weight: 600;
-  letter-spacing: var(--prefix-tracking-wide);
-  text-transform: uppercase;
-}
+  /* The name the plate belongs to, centred over the environments it holds */
+  .cache-map-owner-name text {
+    fill: var(--prefix-ink);
+    font-size: 11px;
+    text-anchor: middle;
+    font-weight: 600;
+    letter-spacing: var(--prefix-tracking-wide);
+    text-transform: uppercase;
+  }
 
-/* A cache names itself over its middle, where its packages sit */
-.cache-map-label-cache text {
-  text-anchor: middle;
-}
+  /* A cache names itself over its middle, where its packages sit */
+  .cache-map-label-cache text {
+    text-anchor: middle;
+  }
 
-.cache-map-label-site {
-  fill: var(--prefix-ink);
-}
+  .cache-map-label-site {
+    fill: var(--prefix-ink);
+  }
 
-.cache-map-name text {
-  fill: var(--prefix-ink);
-  font-family: var(--prefix-font-mono);
-  font-size: 14px;
-  text-anchor: middle;
-}
+  .cache-map-name text {
+    fill: var(--prefix-ink);
+    font-family: var(--prefix-font-mono);
+    font-size: 14px;
+    text-anchor: middle;
+  }
 
-.cache-map-line path {
-  fill: none;
-  stroke: var(--prefix-ink);
-  stroke-width: 1.5;
-  opacity: 0.3;
+  .cache-map-line path {
+    fill: none;
+    stroke: var(--prefix-ink);
+    stroke-width: 1.5;
+    opacity: 0.3;
+  }
 }
 </style>

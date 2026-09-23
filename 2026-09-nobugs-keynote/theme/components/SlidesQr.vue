@@ -36,43 +36,43 @@ const imageSrc = computed(() => assetUrl(props.src))
   display: grid;
   justify-items: center;
   gap: 0.625rem;
-}
 
-.slides-qr img {
-  display: block;
-  width: 10rem;
-  height: 10rem;
-  padding: 0.5rem;
-  background: var(--prefix-white);
-  border: 1px solid var(--prefix-border);
-  border-radius: var(--prefix-radius-md);
-}
+  img {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    padding: 0.5rem;
+    background: var(--prefix-white);
+    border: 1px solid var(--prefix-border);
+    border-radius: var(--prefix-radius-md);
+  }
 
-.slides-qr span {
-  font-size: var(--prefix-text-xs);
-  font-weight: 500;
-  letter-spacing: var(--prefix-tracking-slight);
-}
+  span {
+    font-size: var(--prefix-text-xs);
+    font-weight: 500;
+    letter-spacing: var(--prefix-tracking-slight);
+  }
 
-.slides-qr-small {
-  gap: 0.375rem;
-}
+  &.slides-qr-small {
+    gap: 0.375rem;
 
-.slides-qr-small img {
-  width: 5.5rem;
-  height: 5.5rem;
-  /* The code itself carries the quiet zone at this size */
-  padding: 0;
-}
+    img {
+      width: 5.5rem;
+      height: 5.5rem;
+      /* The code itself carries the quiet zone at this size */
+      padding: 0;
+    }
 
-.slides-qr-small span {
-  font-size: var(--prefix-text-2xs);
-  color: var(--prefix-muted);
-}
+    span {
+      font-size: var(--prefix-text-2xs);
+      color: var(--prefix-muted);
+    }
+  }
 
-/* The code itself is the link, so it carries no underline of its own */
-.slidev-layout a.slides-qr,
-.slidev-layout a.slides-qr:hover {
-  border-bottom: 0;
+  /* The code itself is the link, so it carries no underline of its own */
+  &:is(.slidev-layout a),
+  &:is(.slidev-layout a):hover {
+    border-bottom: 0;
+  }
 }
 </style>

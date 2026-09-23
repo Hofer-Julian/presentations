@@ -29,46 +29,48 @@ defineProps<{
   background: var(--prefix-white);
   border: 1px solid var(--prefix-border);
   border-radius: var(--prefix-radius-md);
-}
 
-.verdict-kind {
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-2xs);
-  font-weight: 600;
-  letter-spacing: var(--prefix-tracking-wide);
-  text-transform: uppercase;
-}
+  .verdict-kind {
+    color: var(--prefix-muted);
+    font-size: var(--prefix-text-2xs);
+    font-weight: 600;
+    letter-spacing: var(--prefix-tracking-wide);
+    text-transform: uppercase;
+  }
 
-.slidev-layout .verdict-row strong {
-  font-size: var(--prefix-text-md);
-}
+  .slidev-layout & {
+    strong {
+      font-size: var(--prefix-text-md);
+    }
 
-.slidev-layout .verdict-sub {
-  margin: 0.125rem 0 0;
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-xs);
-}
+    .verdict-sub {
+      margin: 0.125rem 0 0;
+      color: var(--prefix-muted);
+      font-size: var(--prefix-text-xs);
+    }
+  }
 
-.verdict-badge {
-  /* One width for every badge, so they line up down the slide */
-  min-width: 6rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--prefix-radius-pill);
-  font-size: var(--prefix-text-2xs);
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-}
+  .verdict-badge {
+    /* One width for every badge, so they line up down the slide */
+    min-width: 6rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--prefix-radius-pill);
+    font-size: var(--prefix-text-2xs);
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
 
-.verdict-badge-open,
-.verdict-badge-free {
-  background: var(--prefix-shipped);
-  color: var(--prefix-shipped-ink);
-}
+    &.verdict-badge-open,
+    &.verdict-badge-free {
+      background: var(--prefix-shipped);
+      color: var(--prefix-shipped-ink);
+    }
 
-.verdict-badge-commercial,
-.verdict-badge-soon {
-  background: var(--prefix-preview);
-  color: var(--prefix-preview-ink);
+    &.verdict-badge-commercial,
+    &.verdict-badge-soon {
+      background: var(--prefix-preview);
+      color: var(--prefix-preview-ink);
+    }
+  }
 }
 </style>

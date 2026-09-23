@@ -25,31 +25,33 @@ defineProps<{
   background: var(--prefix-white);
   border-top: 0.5rem solid var(--prefix-ink);
   border-radius: 0 0 var(--prefix-radius-md) var(--prefix-radius-md);
-}
 
-.card-accent {
-  border-top-color: var(--prefix-yellow);
-}
+  &.card-accent {
+    border-top-color: var(--prefix-yellow);
+  }
 
-.slidev-layout .card h2 {
-  margin-top: 0.875rem;
-  margin-bottom: 0.75rem;
-}
+  .slidev-layout & {
+    h2 {
+      margin-top: 0.875rem;
+      margin-bottom: 0.75rem;
 
-.slidev-layout .card h2:first-child {
-  margin-top: 0;
-}
+      &:first-child {
+        margin-top: 0;
+      }
+    }
 
-.slidev-layout .card p {
-  color: var(--prefix-muted);
-  font-size: var(--prefix-text-base);
-}
+    p {
+      color: var(--prefix-muted);
+      font-size: var(--prefix-text-base);
 
-.slidev-layout .card p:last-child {
-  margin-bottom: 0;
-}
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
 
-.slidev-layout .card code {
-  font-size: var(--prefix-text-xs);
+    code {
+      font-size: var(--prefix-text-xs);
+    }
+  }
 }
 </style>
