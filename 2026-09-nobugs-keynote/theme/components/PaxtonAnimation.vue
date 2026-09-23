@@ -60,12 +60,18 @@ onBeforeUnmount(() => {
 
 <template>
   <img
-    v-if="stillOnly || failed || $nav.isPrintMode"
-    class="paxton-animation"
+    class="paxton-animation paxton-animation--still"
+    :class="{ 'paxton-animation--still-visible': stillOnly || failed || $nav.isPrintMode }"
     src="/paxton-vector-art.svg"
     :alt="label"
   />
-  <canvas v-else ref="canvas" class="paxton-animation" role="img" :aria-label="label" />
+  <canvas
+    v-if="!stillOnly && !failed && !$nav.isPrintMode"
+    ref="canvas"
+    class="paxton-animation paxton-animation--canvas"
+    role="img"
+    :aria-label="label"
+  />
 </template>
 
 <style>
@@ -73,5 +79,23 @@ onBeforeUnmount(() => {
   display: block;
   width: 100%;
   height: 100%;
+
+  &.paxton-animation--still {
+    display: none;
+
+    &.paxton-animation--still-visible {
+      display: block;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &.paxton-animation--still {
+      display: block;
+    }
+
+    &.paxton-animation--canvas {
+      display: none;
+    }
+  }
 }
 </style>

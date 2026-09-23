@@ -57,6 +57,10 @@ pixi install
 
 Keep every rule next to the markup it styles.
 
+Always use CSS nesting. Keep modifiers, descendants, pseudo-classes, and
+relevant at-rules inside their owning selector instead of repeating that
+selector in separate top-level rules.
+
 - `theme/styles/theme.css` holds design tokens and the base typography a slide
   gives its markdown. Nothing else, not even a class `slides.md` names
   directly.
