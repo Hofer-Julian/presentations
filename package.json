@@ -12,7 +12,7 @@
     "@slidev/cli": "^52.19.1",
     "@slidev/theme-default": "^0.25.0",
     "@slidev/theme-seriph": "^0.25.0",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.2",
     "esno": "^4.8.0",
     "execa": "^10.0.1",
     "playwright-chromium": "^1.63.0",
