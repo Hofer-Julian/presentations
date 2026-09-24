@@ -9,7 +9,7 @@
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/uim": "^1.2.3",
     "@rive-app/canvas-lite": "^2.42.2",
-    "@slidev/cli": "^52.19.1",
+    "@slidev/cli": "^53.0.0",
     "@slidev/theme-default": "^0.25.0",
     "@slidev/theme-seriph": "^0.25.0",
     "@types/node": "^26.5.1",
